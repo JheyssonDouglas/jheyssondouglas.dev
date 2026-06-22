@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jheysson Douglas — Analytics Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:     #080C14;
+  --bg2:    #0D1420;
+  --bg3:    #111927;
+  --bg4:    #141D2B;
+  --border: #1E2D42;
+  --bdr2:   #253447;
+  --accent: #3B82F6;
+  --acc2:   #60A5FA;
+  --gold:   #F59E0B;
+  --green:  #10B981;
+  --purple: #8B5CF6;
+  --text:   #E2E8F0;
+  --muted:  #64748B;
+  --muted2: #94A3B8;
+  --mono:   'JetBrains Mono', monospace;
+  --sans:   'Inter', sans-serif;
+  --r:      .75rem;
+  --sh:     0 4px 24px rgba(0,0,0,.45);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5rem;background:rgba(8,12,20,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--mono);font-size:.85rem;color:var(--accent);text-decoration:none;letter-spacing:.04em}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text)}
+
+/* BTN */
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.7rem 1.4rem;border-radius:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none;white-space:nowrap}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#2563EB;transform:translateY(-1px);box-shadow:0 4px 16px rgba(59,130,246,.35)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--bdr2)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+/* SECTION COMMONS */
+section{padding:6rem 5rem}
+.section-label{font-family:var(--mono);font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.14em;margin-bottom:.75rem}
+.section-title{font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;letter-spacing:-.03em;margin-bottom:1rem;line-height:1.1}
+.section-desc{color:var(--muted2);max-width:540px;line-height:1.8;margin-bottom:3rem}
+.tag{font-family:var(--mono);font-size:.7rem;color:var(--acc2);background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.18);padding:.2rem .6rem;border-radius:.3rem}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding:8rem 5rem 5rem;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(59,130,246,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,.035) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse 90% 70% at 40% 0%,black 30%,transparent 100%)}
+.hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.1) 0%,transparent 65%);top:-250px;right:-150px;pointer-events:none}
+.hero-glow2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.07) 0%,transparent 65%);bottom:-100px;left:-80px;pointer-events:none}
+.hero-inner{display:flex;align-items:center;justify-content:space-between;gap:4rem;width:100%;max-width:1200px;position:relative;z-index:1}
+.hero-content{flex:1;max-width:640px}
+.hero-photo-wrap{flex-shrink:0;position:relative}
+.hero-photo{width:280px;height:280px;border-radius:50%;object-fit:cover;border:2px solid var(--bdr2);box-shadow:0 0 0 6px rgba(59,130,246,.08),0 24px 48px rgba(0,0,0,.5);display:block}
+.hero-photo-placeholder{width:280px;height:280px;border-radius:50%;background:linear-gradient(135deg,var(--bg3) 0%,var(--bg4) 100%);border:2px solid var(--bdr2);box-shadow:0 0 0 6px rgba(59,130,246,.08),0 24px 48px rgba(0,0,0,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;font-size:.78rem;color:var(--muted);font-family:var(--mono);text-align:center;line-height:1.5}
+.hero-photo-ring{position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(59,130,246,.15);animation:spin 14s linear infinite;background:conic-gradient(from 0deg,transparent 85%,rgba(59,130,246,.4) 95%,transparent 100%)}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero-role{font-family:var(--mono);font-size:clamp(.85rem,1.5vw,1.05rem);color:var(--acc2);margin-bottom:1.6rem}
+.hero-name{font-size:clamp(2.6rem,5vw,4.2rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:.6rem}
+.hero-desc{font-size:1.05rem;color:var(--muted2);line-height:1.8;max-width:520px;margin-bottom:2.5rem}
+.hero-desc strong{color:var(--text);font-weight:600}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* IMPACTO */
+#impacto{background:var(--bg2);padding:5rem 5rem}
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.impact-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem;display:flex;flex-direction:column;gap:.6rem;transition:border-color .2s,transform .2s;position:relative;overflow:hidden}
+.impact-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--purple));opacity:0;transition:opacity .2s}
+.impact-card:hover{border-color:var(--bdr2);transform:translateY(-2px)}
+.impact-card:hover::before{opacity:1}
+.impact-value{font-family:var(--mono);font-size:1.9rem;font-weight:700;color:var(--accent);line-height:1}
+.impact-label{font-size:.95rem;font-weight:600;color:var(--text)}
+.impact-sub{font-size:.83rem;color:var(--muted);line-height:1.5}
+
+/* STATS */
+.stats-row{display:flex;flex-wrap:wrap;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg)}
+.stat{display:flex;flex-direction:column;padding:2rem 3rem;border-right:1px solid var(--border);flex:1;min-width:160px}
+.stat:last-child{border-right:none}
+.stat-num{font-family:var(--mono);font-size:1.7rem;font-weight:700;color:var(--accent)}
+.stat-label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-top:.2rem}
+
+/* STACK */
+#stack{background:var(--bg)}
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.stack-item{display:flex;align-items:center;gap:1rem;padding:1.1rem 1.4rem;background:var(--bg3);transition:background .18s}
+.stack-item:hover{background:var(--bg4)}
+.stack-icon{width:38px;height:38px;border-radius:.45rem;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.stack-name{font-size:.9rem;font-weight:600;color:var(--text)}
+.stack-level{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-top:.1rem}
+
+/* EXPERIENCE */
+#experience{background:var(--bg2)}
+.exp-list{display:flex;flex-direction:column}
+.exp-item{display:grid;grid-template-columns:200px 1fr;gap:2.5rem;padding:2.5rem 0;border-bottom:1px solid var(--border)}
+.exp-item:last-child{border-bottom:none}
+.exp-period{font-family:var(--mono);font-size:.78rem;color:var(--muted);line-height:1.7;padding-top:.2rem}
+.exp-duration{color:var(--green);font-size:.72rem;margin-top:.3rem;display:block}
+.exp-role{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.2rem}
+.exp-company{font-size:.875rem;color:var(--acc2);margin-bottom:.9rem;font-weight:500}
+.exp-desc{font-size:.9rem;color:var(--muted2);line-height:1.75;margin-bottom:1rem}
+.exp-tags{display:flex;flex-wrap:wrap;gap:.4rem}
+
+/* PROJECTS */
+#projects{background:var(--bg)}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.project-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem;display:flex;flex-direction:column;gap:1rem;transition:border-color .2s,transform .2s,box-shadow .2s;text-decoration:none}
+.project-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--sh)}
+.project-header{display:flex;align-items:flex-start;justify-content:space-between}
+.project-icon{font-size:1.9rem;line-height:1}
+.project-link-icon{color:var(--muted);font-size:1.1rem}
+.project-name{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.4rem}
+.project-desc{font-size:.875rem;color:var(--muted2);line-height:1.68;flex:1}
+.project-stack{display:flex;flex-wrap:wrap;gap:.4rem}
+
+/* CERTS */
+#certs{background:var(--bg2)}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+.cert-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:1.8rem;display:flex;gap:1.2rem;align-items:flex-start;transition:border-color .2s,transform .2s}
+.cert-card:hover{border-color:var(--bdr2);transform:translateY(-2px)}
+.cert-icon{width:48px;height:48px;border-radius:.6rem;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.15)}
+.cert-name{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.25rem}
+.cert-issuer{font-size:.83rem;color:var(--acc2);margin-bottom:.4rem}
+.cert-desc{font-size:.82rem;color:var(--muted);line-height:1.55}
+
+/* SOBRE */
+#sobre{background:var(--bg)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
+.story-text{display:flex;flex-direction:column;gap:1.3rem}
+.story-text p{color:var(--muted2);line-height:1.82;font-size:.975rem}
+.story-text p strong{color:var(--text);font-weight:600}
+.story-timeline{display:flex;flex-direction:column;position:relative}
+.story-timeline::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--border) 10%,var(--border) 90%,transparent)}
+.tl-item{position:relative;padding:0 0 2.2rem 3.2rem}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:10px;top:.35rem;width:18px;height:18px;border-radius:50%;background:var(--accent);border:3px solid var(--bg);z-index:1}
+.tl-badge{display:inline-block;font-family:var(--mono);font-size:.7rem;color:var(--accent);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.2);padding:.15rem .6rem;border-radius:2rem;margin-bottom:.5rem;letter-spacing:.05em}
+.tl-title{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.35rem}
+.tl-desc{font-size:.875rem;color:var(--muted2);line-height:1.65}
+
+/* CONTACT */
+#contact{background:var(--bg2);text-align:center}
+.contact-inner{max-width:580px;margin:0 auto}
+.contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.2rem}
+
+/* FOOTER */
+footer{padding:1.8rem 5rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg)}
+.footer-copy{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.footer-tag{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.footer-tag span{color:var(--accent)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:1rem 1.8rem}
+  .nav-links{gap:1.4rem}
+  #hero,section{padding:5rem 1.8rem 3.5rem}
+  #impacto{padding:4rem 1.8rem}
+  .hero-inner{flex-direction:column-reverse;gap:2.5rem}
+  .hero-photo,.hero-photo-placeholder{width:180px;height:180px}
+  .impact-grid{grid-template-columns:1fr 1fr}
+  .stat{min-width:45%;border-right:none;border-bottom:1px solid var(--border)}
+  .exp-item{grid-template-columns:1fr;gap:.6rem}
+  .story-grid{grid-template-columns:1fr;gap:3rem}
+  footer{padding:1.5rem 1.8rem;flex-direction:column;gap:.5rem;text-align:center}
+}
+@media(max-width:560px){
+  .impact-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  .certs-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">jheyssondouglas.dev</a>
+  <ul class="nav-links">
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#experience">Experiência</a></li>
+    <li><a href="#projects">Projetos</a></li>
+    <li><a href="#certs">Formação</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#contact">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <p class="hero-role">Analytics Engineer · Data Engineer · AI Builder</p>
+      <h1 class="hero-name">Jheysson<br>Douglas</h1>
+      <p class="hero-desc">
+        Quase <strong>5 anos construindo pipelines de dados em produção</strong> no iFood.
+        Especializado em <strong>ETL/ELT, modelagem de dados e arquitetura Medallion</strong>
+        com Python, SQL, Databricks, Airflow e dbt. Apaixonado por transformar
+        dado bruto em decisão estratégica.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn btn-primary">Vamos conversar →</a>
+        <a href="#projects" class="btn btn-outline">Ver projetos</a>
+        <a href="https://linkedin.com/in/jheyssondouglas" target="_blank" class="btn btn-outline">LinkedIn</a>
+      </div>
+    </div>
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring"></div>
+      <!--
+        FOTO: coloque seu arquivo de foto chamado "foto.jpg" na mesma pasta
+        do index.html, depois substitua o bloco abaixo por:
+        <img src="foto.jpg" alt="Jheysson Douglas" class="hero-photo">
+      -->
+      <div class="hero-photo-placeholder">
+        <span style="font-size:2.5rem">👤</span>
+        <span>foto.jpg</span>
+        <span style="font-size:.65rem;opacity:.6">280×280 px</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPACTO -->
+<section id="impacto">
+  <p class="section-label">Números</p>
+  <h2 class="section-title">Impacto</h2>
+  <div class="impact-grid">
+    <div class="impact-card">
+      <div class="impact-value">+5 anos</div>
+      <div class="impact-label">Experiência em dados</div>
+      <div class="impact-sub">Construindo produtos de dados em produção de alta escala.</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-value">iFood</div>
+      <div class="impact-label">Empresa</div>
+      <div class="impact-sub">Uma das maiores plataformas de tecnologia da América Latina.</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-value">Milhões</div>
+      <div class="impact-label">Registros/dia</div>
+      <div class="impact-sub">Pipelines críticos para decisões estratégicas de Growth.</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-value">90+</div>
+      <div class="impact-label">Requisições/mês</div>
+      <div class="impact-sub">Diagram Flow — agente de IA criado no iFood, 80% de taxa de retorno.</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-value">20 min</div>
+      <div class="impact-label">Documentação automatizada</div>
+      <div class="impact-sub">Antes: 1–2 dias. Diagram Flow reduziu para 20 minutos.</div>
+    </div>
+    <div class="impact-card">
+      <div class="impact-value" style="font-size:1rem;line-height:1.6">Python · SQL<br>Databricks · Airflow · dbt</div>
+      <div class="impact-label">Stack principal</div>
+      <div class="impact-sub">Todas com experiência profissional comprovada em produção.</div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat">
+    <span class="stat-num">5 anos</span>
+    <span class="stat-label">Experiência em dados</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">iFood</span>
+    <span class="stat-label">Empresa</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">90+</span>
+    <span class="stat-label">Req/mês — Agente de IA</span>
+  </div>
+  <div class="stat">
+    <span class="stat-num">Remoto</span>
+    <span class="stat-label">Goiânia, GO</span>
+  </div>
+</div>
+
+<!-- STACK -->
+<section id="stack">
+  <p class="section-label">Tecnologias</p>
+  <h2 class="section-title">Stack técnica</h2>
+  <p class="section-desc">Ferramentas com experiência profissional comprovada em ambiente de produção.</p>
+  <div class="stack-grid">
+    <div class="stack-item"><div class="stack-icon" style="background:rgba(59,130,246,.1)">🐍</div><div><div class="stack-name">Python</div><div class="stack-level">Profissional · 5 anos</div></div></div>
+    <div class="stack-item"><div class="stack-icon" style="background:rgba(16,185,129,.1)">📊</div><div><div class="stack-name">SQL</div><div class="stack-level">Profissional · 5 anos</div></div></div>
+    <div class="stack-item"><div class="stack-icon" style="background:rgba(245,158,11,.1)">⚡</div><div><div class="stack-name">PySpark</div><div class="stack-level">Profissional · 4 anos</div></div></div>
+    <div class="stack-item"><div class="stack-icon" style="background:rgba(239,68,68,.1)">🔴</div><div><div class="stack-name">Databricks</div><div class="stack-level">Profissional · 4 anos</div></div></div>
+    <div class="stack-item"><div class="stack-icon" style="background:rgba(16,185,129,.1)">🌊</div><div><div class="stack-name">Apache Airflow</div><div class="stack-level">Profissional · 4 anos</div></div></div>
+    <div class="stack-item"><div class="stack-icon" style="background:rgba(245,87,58,.1)">🔧</div><div><div class="stack-name">dbt Core</div><div class="stack-level">Profissional · 2 anos</div></div></div>
+    <div class="stack-item"><div class="stack-icon" style="background:rgba(59,130,246,.1)">🏔️</div><div><div class="stack-name">Delta Lake</div><div class="stack-level">Profissional · 4 anos</div></div></div>
+    <div class="stack-item"><div class="stack-icon" style="background:rgba(107,70,193,.1)">📦</div><div><div class="stack-name">DAB</div><div class="stack-level">Databricks Asset Bundles</div></div></div>
+    <div class="stack-item"><div class="stack-icon" style="background:rgba(16,185,129,.1)">✅</div><div><div class="stack-name">DQX</div><div class="stack-level">Qualidade de dados</div></div></div>
+    <div class="stack-item"><div class="stack-icon" style="background:rgba(245,158,11,.1)">📈</div><div><div class="stack-name">ThoughtSpot</div><div class="stack-level">Profissional · 3 anos</div></div></div>
+    <div class="stack-item"><div class="stack-icon" style="background:rgba(59,130,246,.1)">🐋</div><div><div class="stack-name">Docker</div><div class="stack-level">Intermediário</div></div></div>
+    <div class="stack-item"><div class="stack-icon" style="background:rgba(239,68,68,.1)">🔀</div><div><div class="stack-name">Git · GitLab</div><div class="stack-level">Profissional · 5 anos</div></div></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Carreira</p>
+  <h2 class="section-title">Experiência profissional</h2>
+  <p class="section-desc">Quase 5 anos construindo soluções de dados em produção no iFood.</p>
+  <div class="exp-list">
+    <div class="exp-item">
+      <div>
+        <div class="exp-period">Out 2025 — Mai 2026</div>
+        <span class="exp-duration">8 meses</span>
+      </div>
+      <div>
+        <div class="exp-role">Analytics Engineer</div>
+        <div class="exp-company">iFood · Remoto</div>
+        <p class="exp-desc">Growth Core, Squad de Promotions. Responsável pelos principais produtos de dados da jornada promocional do iFood para todas as verticais de Delivery. Migração de produtos do Airflow para DAB, validações de qualidade com DQX e desenvolvimento do Diagram Flow — agente de IA que reduziu documentação de 1–2 dias para 20 minutos.</p>
+        <div class="exp-tags">
+          <span class="tag">Databricks</span><span class="tag">Airflow</span><span class="tag">DAB</span><span class="tag">DQX</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">ThoughtSpot</span><span class="tag">ETL/ELT</span>
+        </div>
+      </div>
+    </div>
+    <div class="exp-item">
+      <div>
+        <div class="exp-period">Set 2021 — Out 2025</div>
+        <span class="exp-duration">4 anos e 2 meses</span>
+      </div>
+      <div>
+        <div class="exp-role">Cientista de Dados</div>
+        <div class="exp-company">iFood · Remoto</div>
+        <p class="exp-desc">Time de Groceries com foco em ML e pipelines em produção. Projetos estratégicos: GSR, Capacidade Dinâmica, Geller, Mewtwo e Avocado. DAGs no Airflow, pipelines no Databricks, dashboards com Grafana, métricas de NLP (Rouge Score, Bleurt) e testes A/B.</p>
+        <div class="exp-tags">
+          <span class="tag">Python</span><span class="tag">PySpark</span><span class="tag">SQL</span><span class="tag">Databricks</span><span class="tag">Airflow</span><span class="tag">Grafana</span><span class="tag">Machine Learning</span><span class="tag">A/B Testing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Portfólio</p>
+  <h2 class="section-title">Projetos</h2>
+  <p class="section-desc">Pipelines e soluções de dados construídas do zero.</p>
+  <div class="projects-grid">
+    <a href="https://github.com/JheysssonDouglas" target="_blank" class="project-card">
+      <div class="project-header"><span class="project-icon">✈️</span><span class="project-link-icon">↗</span></div>
+      <div><div class="project-name">Brazilian Flights Pipeline</div><p class="project-desc">Pipeline end-to-end com dados de voos da ANAC. Ingestão via Airflow, Delta Lake com arquitetura Bronze → Silver → Gold e disponibilização via FastAPI.</p></div>
+      <div class="project-stack"><span class="tag">Airflow</span><span class="tag">Databricks</span><span class="tag">dbt</span><span class="tag">FastAPI</span><span class="tag">Delta Lake</span></div>
+    </a>
+    <a href="https://github.com/JheysssonDouglas" target="_blank" class="project-card">
+      <div class="project-header"><span class="project-icon">🏛️</span><span class="project-link-icon">↗</span></div>
+      <div><div class="project-name">PNCP Analytics Pipeline</div><p class="project-desc">Pipeline de contratações governamentais brasileiras. API do PNCP → Bronze → Silver → Gold com análises sobre o que o governo compra, quanto paga e quem ganha.</p></div>
+      <div class="project-stack"><span class="tag">Python</span><span class="tag">Airflow</span><span class="tag">Databricks</span><span class="tag">dbt</span><span class="tag">FastAPI</span></div>
+    </a>
+    <a href="https://github.com/JheysssonDouglas" target="_blank" class="project-card">
+      <div class="project-header"><span class="project-icon">📊</span><span class="project-link-icon">↗</span></div>
+      <div><div class="project-name">SQL Showcase</div><p class="project-desc">Coleção de queries SQL avançadas com Window Functions, CTEs, JOINs complexos e otimização — resolvendo problemas reais de análise de dados.</p></div>
+      <div class="project-stack"><span class="tag">SQL</span><span class="tag">Window Functions</span><span class="tag">CTEs</span><span class="tag">Databricks SQL</span></div>
+    </a>
+    <div class="project-card" style="border-style:dashed;cursor:default;">
+      <div class="project-header"><span class="project-icon">🤖</span></div>
+      <div><div class="project-name">Diagram Flow — Agente de IA</div><p class="project-desc">Agente de IA criado no iFood para documentação automática de notebooks. Gerava diagramas XML para Draw.io, documentação completa e resumo executivo. 90+ req/mês, 80% de retorno.</p></div>
+      <div class="project-stack"><span class="tag">IA Generativa</span><span class="tag">Python</span><span class="tag">Draw.io XML</span><span class="tag">Automação</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS -->
+<section id="certs">
+  <p class="section-label">Educação</p>
+  <h2 class="section-title">Formação &amp; Certificações</h2>
+  <p class="section-desc">Formação técnica combinada com especializações práticas em dados e tecnologia.</p>
+  <div class="certs-grid">
+    <div class="cert-card">
+      <div class="cert-icon">🎓</div>
+      <div>
+        <div class="cert-name">Impacta Tecnologia</div>
+        <div class="cert-issuer">Jan 2023 – Jul 2025</div>
+        <div class="cert-desc">Tecnólogo em Análise e Desenvolvimento de Sistemas — formação técnica em computação, banco de dados e desenvolvimento de software.</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">⚡</div>
+      <div>
+        <div class="cert-name">FIAP + Alura — Pos Tech</div>
+        <div class="cert-issuer">Python Journey &amp; Machine Learning · Mar 2024</div>
+        <div class="cert-desc">Especialização em Python aplicado a Engenharia de Dados e Machine Learning com projetos práticos.</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📊</div>
+      <div>
+        <div class="cert-name">Tera</div>
+        <div class="cert-issuer">Data Science &amp; Machine Learning · Ago 2022</div>
+        <div class="cert-desc">Formação em Ciência de Dados com foco em Machine Learning, análise exploratória e modelagem preditiva.</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🐋</div>
+      <div>
+        <div class="cert-name">Alura</div>
+        <div class="cert-issuer">Docker: Containers na prática · Mai 2021</div>
+        <div class="cert-desc">Containerização de aplicações com Docker e Docker Compose para ambientes de desenvolvimento e produção.</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🌱</div>
+      <div>
+        <div class="cert-name">Resilia Educação</div>
+        <div class="cert-issuer">Análise de Dados · Jan – Jul 2021</div>
+        <div class="cert-desc">Bootcamp intensivo que iniciou minha jornada em dados — Python, SQL, Pandas e projetos práticos.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <p class="section-label">História</p>
+  <h2 class="section-title">Sobre mim</h2>
+  <div class="story-grid">
+    <div class="story-text">
+      <p>Sou <strong>Jheysson Douglas</strong>, Analytics Engineer de Goiânia, GO. Mas minha história começa longe de dados — em 2020, em plena pandemia, trabalhava como <strong>entregador do iFood</strong> para sobreviver.</p>
+      <p>Em dezembro de 2020, recebi uma mensagem no app: o iFood oferecia um <strong>curso de análise de dados para entregadores</strong>. Mais de 3 mil pessoas se inscreveram. Consegui uma vaga.</p>
+      <p>Seis meses depois, concluí a formação pela Resilia Educação e fui contratado pelo iFood como <strong>Cientista de Dados</strong> — a mesma empresa onde havia sido entregador.</p>
+      <p>Nos quatro anos seguintes, cresci para <strong>Analytics Engineer</strong>, construí pipelines críticos para milhões de usuários e criei o <strong>Diagram Flow</strong> — um agente de IA que automatiza documentação de notebooks.</p>
+      <p>Hoje busco novos desafios em <strong>Engenharia de Dados e IA</strong>, onde possa continuar construindo soluções que impactam o negócio de verdade.</p>
+      <div style="margin-top:1.8rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <a href="mailto:jheyssonx@gmail.com" class="btn btn-primary">Vamos conversar →</a>
+        <a href="https://linkedin.com/in/jheyssondouglas" target="_blank" class="btn btn-outline">LinkedIn</a>
+      </div>
+    </div>
+
+    <div class="story-timeline">
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--muted);box-shadow:0 0 0 1px var(--muted)"></div>
+        <div class="tl-badge">2020</div>
+        <div class="tl-title">Entregador iFood</div>
+        <div class="tl-desc">A pandemia parou minha área de vendas. Recorri às entregas para sobreviver — sem saber que o iFood mudaria minha vida de forma completamente diferente.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--gold);box-shadow:0 0 0 1px var(--gold)"></div>
+        <div class="tl-badge" style="color:var(--gold);background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.2)">Dez 2020</div>
+        <div class="tl-title">A mensagem que mudou tudo</div>
+        <div class="tl-desc">Recebi uma mensagem no app: curso de análise de dados para entregadores. Mais de 3 mil inscritos. Consegui uma das vagas.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--gold);box-shadow:0 0 0 1px var(--gold)"></div>
+        <div class="tl-badge" style="color:var(--gold);background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.2)">Jan – Jul 2021</div>
+        <div class="tl-title">Resilia Educação</div>
+        <div class="tl-desc">6 meses intensivos de Análise de Dados. Desafiador do início ao fim. Concluí em julho e fui contratado pelo iFood logo em seguida.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent);box-shadow:0 0 0 1px var(--accent)"></div>
+        <div class="tl-badge">Set 2021</div>
+        <div class="tl-title">Cientista de Dados — iFood</div>
+        <div class="tl-desc">Time de Groceries. ML em produção, pipelines no Databricks e Airflow, projetos estratégicos: GSR, Capacidade Dinâmica, Geller e Avocado.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--purple);box-shadow:0 0 0 1px var(--purple)"></div>
+        <div class="tl-badge" style="color:var(--purple);background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.2)">2023 – 2025</div>
+        <div class="tl-title">Formação e crescimento</div>
+        <div class="tl-desc">Tecnólogo em ADS pela Impacta. Python Journey pela FIAP. Diagnóstico de TDAH e TEA — entender meu cérebro foi outro divisor de águas.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--accent);box-shadow:0 0 0 1px var(--accent)"></div>
+        <div class="tl-badge">Out 2025</div>
+        <div class="tl-title">Analytics Engineer — iFood</div>
+        <div class="tl-desc">Growth Core, Squad Promotions. DAB, DQX e Diagram Flow — agente de IA que reduziu documentação de 2 dias para 20 minutos.</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:var(--gold);box-shadow:0 0 8px var(--gold),0 0 0 1px var(--gold)"></div>
+        <div class="tl-badge" style="color:var(--gold);background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25)">2026</div>
+        <div class="tl-title" style="color:var(--gold)">Próximo capítulo</div>
+        <div class="tl-desc">De entregador a Analytics Engineer em 5 anos. Em busca de novos desafios em Engenharia de Dados e IA.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <p class="section-label" style="text-align:center">Contato</p>
+    <h2 class="section-title">Vamos construir algo juntos</h2>
+    <p class="section-desc" style="margin:0 auto;text-align:center">
+      Estou aberto a oportunidades em Analytics Engineering, Data Engineering
+      e projetos envolvendo IA.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:jheyssonx@gmail.com" class="btn btn-primary">Vamos conversar →</a>
+      <a href="https://linkedin.com/in/jheyssondouglas" target="_blank" class="btn btn-outline">LinkedIn</a>
+      <a href="https://github.com/JheysssonDouglas" target="_blank" class="btn btn-outline">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-copy">© 2026 Jheysson Douglas</span>
+  <span class="footer-tag">Built with <span>♥</span> · jheyssondouglas.dev</span>
+</footer>
+
+</body>
+</html>
