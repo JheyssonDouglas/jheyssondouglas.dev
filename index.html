@@ -42,10 +42,10 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16
 .lang-en .pt { display: none !important; }
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 5rem;background:rgba(8,12,20,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
-.nav-logo{font-family:var(--mono);font-size:.85rem;color:var(--accent);text-decoration:none;letter-spacing:.04em}
-.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .2s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem clamp(1rem, 5vw, 5rem);background:rgba(8,12,20,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--mono);font-size:clamp(.75rem, 2vw, .85rem);color:var(--accent);text-decoration:none;letter-spacing:.04em}
+.nav-links{display:flex;gap:clamp(1rem, 3vw, 2rem);list-style:none;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:clamp(.75rem, 1.5vw, .85rem);font-weight:500;transition:color .2s}
 .nav-links a:hover{color:var(--text)}
 .lang-toggle{display:flex;align-items:center;gap:0;border:1px solid var(--border);border-radius:.4rem;overflow:hidden;margin-left:.5rem}
 .lang-btn{padding:.35rem .7rem;font-family:var(--mono);font-size:.75rem;font-weight:600;cursor:pointer;background:transparent;color:var(--muted);border:none;transition:all .2s;letter-spacing:.04em}
@@ -56,7 +56,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .hamburger span{display:block;width:22px;height:2px;background:var(--muted2);border-radius:2px;transition:all .25s}
 
 /* BTN */
-.btn{display:inline-flex;align-items:center;gap:.45rem;padding:.75rem 1.5rem;border-radius:.5rem;font-size:.88rem;font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none;white-space:nowrap}
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:clamp(.6rem, 2vw, .75rem) clamp(1rem, 3vw, 1.5rem);border-radius:.5rem;font-size:clamp(.8rem, 1.5vw, .88rem);font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none;white-space:nowrap}
 .btn-primary{background:var(--accent);color:#fff}
 .btn-primary:hover{background:#2563EB;transform:translateY(-1px);box-shadow:0 6px 20px rgba(59,130,246,.4)}
 .btn-outline{background:transparent;color:var(--text);border:1px solid var(--bdr2)}
@@ -65,160 +65,229 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .btn-ghost:hover{background:rgba(255,255,255,.09);color:var(--text)}
 
 /* SECTION */
-section{padding:7rem 5rem}
+section{padding:clamp(3rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5rem)}
 .section-label{font-family:var(--mono);font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.14em;margin-bottom:.75rem}
-.section-title{font-size:clamp(1.8rem,3vw,2.6rem);font-weight:800;letter-spacing:-.03em;margin-bottom:1rem;line-height:1.08}
-.section-desc{color:var(--muted2);max-width:560px;line-height:1.82;margin-bottom:3.5rem}
+.section-title{font-size:clamp(1.5rem, 5vw, 2.6rem);font-weight:800;letter-spacing:-.03em;margin-bottom:1rem;line-height:1.08}
+.section-desc{color:var(--muted2);max-width:560px;line-height:1.82;margin-bottom:clamp(1.5rem, 5vw, 3.5rem)}
 .tag{font-family:var(--mono);font-size:.7rem;color:var(--acc2);background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.18);padding:.2rem .6rem;border-radius:.3rem}
 
 /* HERO */
-#hero{min-height:100vh;display:flex;align-items:center;padding:8rem 5rem 5rem;position:relative;overflow:hidden}
+#hero{min-height:100vh;display:flex;align-items:center;padding:clamp(5rem, 10vw, 8rem) clamp(1.25rem, 5vw, 5rem) clamp(3rem, 5vw, 5rem);position:relative;overflow:hidden}
 #hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(59,130,246,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,.035) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse 90% 70% at 40% 0%,black 30%,transparent 100%)}
-.hero-glow{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.1) 0%,transparent 65%);top:-250px;right:-150px;pointer-events:none}
-.hero-glow2{position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.07) 0%,transparent 65%);bottom:-100px;left:-80px;pointer-events:none}
-.hero-inner{display:flex;align-items:center;justify-content:space-between;gap:4rem;width:100%;max-width:1600px;position:relative;z-index:1}
-.hero-content{flex:1;max-width:640px;margin-left:140px;}
+.hero-glow{position:absolute;width:clamp(400px, 50vw, 700px);height:clamp(400px, 50vw, 700px);border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.1) 0%,transparent 65%);top:-250px;right:-150px;pointer-events:none}
+.hero-glow2{position:absolute;width:clamp(250px, 40vw, 400px);height:clamp(250px, 40vw, 400px);border-radius:50%;background:radial-gradient(circle,rgba(139,92,246,.07) 0%,transparent 65%);bottom:-100px;left:-80px;pointer-events:none}
+.hero-inner{display:flex;align-items:center;justify-content:space-between;gap:clamp(1.5rem, 5vw, 4rem);width:100%;max-width:1600px;position:relative;z-index:1}
+.hero-content{flex:1;max-width:640px;margin-left:clamp(0, 5vw, 140px);}
 .hero-photo-wrap{flex-shrink:0;position:relative}
-.hero-photo{width:680px;height:680px;border-radius:50%;object-fit:cover;border:2px solid var(--bdr2);box-shadow:0 0 0 6px rgba(59,130,246,.08),0 24px 48px rgba(0,0,0,.5);display:block}
-.hero-photo-placeholder{width:280px;height:280px;border-radius:50%;background:linear-gradient(135deg,var(--bg3) 0%,var(--bg4) 100%);border:2px solid var(--bdr2);box-shadow:0 0 0 6px rgba(59,130,246,.08),0 24px 48px rgba(0,0,0,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;font-size:.78rem;color:var(--muted);font-family:var(--mono);text-align:center;line-height:1.5}
+.hero-photo{width:clamp(200px, 40vw, 680px);height:clamp(200px, 40vw, 680px);border-radius:50%;object-fit:cover;border:2px solid var(--bdr2);box-shadow:0 0 0 6px rgba(59,130,246,.08),0 24px 48px rgba(0,0,0,.5);display:block}
+.hero-photo-placeholder{width:clamp(180px, 35vw, 280px);height:clamp(180px, 35vw, 280px);border-radius:50%;background:linear-gradient(135deg,var(--bg3) 0%,var(--bg4) 100%);border:2px solid var(--bdr2);box-shadow:0 0 0 6px rgba(59,130,246,.08),0 24px 48px rgba(0,0,0,.5);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;font-size:.78rem;color:var(--muted);font-family:var(--mono);text-align:center;line-height:1.5}
 .hero-photo-ring{position:absolute;inset:-8px;border-radius:50%;border:1px solid rgba(59,130,246,.15);animation:spin 14s linear infinite;background:conic-gradient(from 0deg,transparent 85%,rgba(59,130,246,.4) 95%,transparent 100%)}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-.hero-role{font-family:var(--mono);font-size:clamp(.85rem,1.5vw,1.05rem);color:var(--acc2);margin-bottom:1.6rem}
-.hero-name{font-size:clamp(4rem,7vw,6rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:.6rem}
-.hero-desc{font-size:1.08rem;color:var(--muted2);line-height:1.82;max-width:530px;margin-bottom:2.8rem}
+.hero-role{font-family:var(--mono);font-size:clamp(.8rem, 2vw, 1.05rem);color:var(--acc2);margin-bottom:1.6rem}
+.hero-name{font-size:clamp(2.5rem, 8vw, 6rem);font-weight:800;line-height:1.05;letter-spacing:-.03em;margin-bottom:.6rem}
+.hero-desc{font-size:clamp(.95rem, 2vw, 1.08rem);color:var(--muted2);line-height:1.82;max-width:530px;margin-bottom:clamp(1.5rem, 4vw, 2.8rem)}
 .hero-desc strong{color:var(--text);font-weight:600}
-.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.hero-cta{display:flex;gap:clamp(.5rem, 2vw, 1rem);flex-wrap:wrap;margin-bottom:1.5rem}
 .hero-cv{display:flex;gap:.8rem;flex-wrap:wrap}
 .cv-label{font-family:var(--mono);font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
 
 /* STACK */
 #stack{background:var(--bg)}
-.stack-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
-.stack-item{display:flex;align-items:center;gap:1.1rem;padding:1.3rem 1.5rem;background:var(--bg3);transition:background .18s}
+.stack-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(clamp(150px, 30vw, 220px), 1fr));gap:1px;border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.stack-item{display:flex;align-items:center;gap:clamp(.8rem, 2vw, 1.1rem);padding:clamp(1rem, 2vw, 1.3rem) clamp(1rem, 2vw, 1.5rem);background:var(--bg3);transition:background .18s}
 .stack-item:hover{background:var(--bg4)}
 .stack-logo{width:36px;height:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center}
 .stack-logo img{width:32px;height:32px;object-fit:contain;filter:brightness(.95) saturate(.9)}
-.stack-name{font-size:.92rem;font-weight:600;color:var(--text)}
+.stack-name{font-size:clamp(.8rem, 1.5vw, .92rem);font-weight:600;color:var(--text)}
 .stack-level{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-top:.1rem}
 
 /* EXPERIENCE */
 #experience{background:var(--bg2)}
 .exp-list{display:flex;flex-direction:column;gap:0}
-.exp-item{display:grid;grid-template-columns:220px 1fr;gap:3rem;padding:3rem 0;border-bottom:1px solid var(--border)}
+.exp-item{display:grid;grid-template-columns:1fr;gap:clamp(1rem, 3vw, 3rem);padding:clamp(1.5rem, 3vw, 3rem) 0;border-bottom:1px solid var(--border)}
 .exp-item:last-child{border-bottom:none}
 .exp-left{}
-.exp-period{font-family:var(--mono);font-size:.82rem;color:var(--muted);line-height:1.7}
+.exp-period{font-family:var(--mono);font-size:clamp(.75rem, 1.5vw, .82rem);color:var(--muted);line-height:1.7}
 .exp-duration{color:var(--green);font-size:.75rem;margin-top:.4rem;display:block;font-family:var(--mono)}
 .exp-co-logo{width:48px;height:48px;margin-bottom:1rem;border-radius:.6rem;background:var(--bg4);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.4rem}
-.exp-role{font-size:1.2rem;font-weight:800;color:var(--text);margin-bottom:.3rem;letter-spacing:-.02em}
-.exp-company{font-size:.9rem;color:var(--acc2);margin-bottom:1.2rem;font-weight:600}
-.exp-desc{font-size:.95rem;color:var(--muted2);line-height:1.82;margin-bottom:1.4rem;max-width:680px}
+.exp-role{font-size:clamp(1rem, 2vw, 1.2rem);font-weight:800;color:var(--text);margin-bottom:.3rem;letter-spacing:-.02em}
+.exp-company{font-size:clamp(.85rem, 1.5vw, .9rem);color:var(--acc2);margin-bottom:1.2rem;font-weight:600}
+.exp-desc{font-size:clamp(.9rem, 1.5vw, .95rem);color:var(--muted2);line-height:1.82;margin-bottom:1.4rem;max-width:680px}
 .exp-highlights{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.4rem}
-.exp-highlight{position:relative;padding-left:1.4rem;font-size:.9rem;color:var(--muted2);line-height:1.6}
+.exp-highlight{position:relative;padding-left:1.4rem;font-size:clamp(.85rem, 1.5vw, .9rem);color:var(--muted2);line-height:1.6}
 .exp-highlight::before{content:'→';color:var(--accent);font-family:var(--mono);font-size:.85rem;position:absolute;left:0;top:.15rem}
 .exp-highlight strong{color:var(--text)}
 .exp-tags{display:flex;flex-wrap:wrap;gap:.5rem}
 
 /* PROJECTS */
 #projects{background:var(--bg)}
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.5rem}
-.project-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:2rem;display:flex;flex-direction:column;gap:1.1rem;transition:border-color .2s,transform .2s,box-shadow .2s;text-decoration:none}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(clamp(280px, 40vw, 310px), 1fr));gap:clamp(1rem, 3vw, 1.5rem)}
+.project-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.5rem, 3vw, 2rem);display:flex;flex-direction:column;gap:1.1rem;transition:border-color .2s,transform .2s,box-shadow .2s;text-decoration:none}
 .project-card:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--sh)}
 .project-header{display:flex;align-items:flex-start;justify-content:space-between}
-.project-icon{font-size:2rem;line-height:1}
+.project-icon{font-size:clamp(1.5rem, 3vw, 2rem);line-height:1}
 .project-link-icon{color:var(--muted);font-size:1.1rem;margin-top:.2rem}
-.project-name{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:.4rem;letter-spacing:-.01em}
-.project-desc{font-size:.88rem;color:var(--muted2);line-height:1.72;flex:1}
+.project-name{font-size:clamp(.95rem, 2vw, 1.05rem);font-weight:700;color:var(--text);margin-bottom:.4rem;letter-spacing:-.01em}
+.project-desc{font-size:clamp(.8rem, 1.5vw, .88rem);color:var(--muted2);line-height:1.72;flex:1}
 .project-stack{display:flex;flex-wrap:wrap;gap:.4rem}
 
 /* CERTS */
 #certs{background:var(--bg2)}
-.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.5rem}
-.cert-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:2rem;display:flex;gap:1.3rem;align-items:flex-start;transition:border-color .2s,transform .2s}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fill, minmax(clamp(250px, 40vw, 290px), 1fr));gap:clamp(1rem, 3vw, 1.5rem)}
+.cert-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.5rem, 3vw, 2rem);display:flex;gap:1.3rem;align-items:flex-start;transition:border-color .2s,transform .2s}
 .cert-card:hover{border-color:var(--bdr2);transform:translateY(-2px);box-shadow:var(--sh)}
 .cert-icon-wrap{width:56px;height:56px;border-radius:.7rem;display:flex;align-items:center;justify-content:center;font-size:1.7rem;flex-shrink:0;overflow:hidden}
 .cert-icon-wrap img{width:100%;height:100%;object-fit:contain}
-.cert-name{font-size:1.02rem;font-weight:700;color:var(--text);margin-bottom:.3rem}
-.cert-issuer{font-size:.84rem;color:var(--acc2);margin-bottom:.5rem;font-weight:500}
-.cert-desc{font-size:.83rem;color:var(--muted);line-height:1.58}
+.cert-name{font-size:clamp(.95rem, 1.5vw, 1.02rem);font-weight:700;color:var(--text);margin-bottom:.3rem}
+.cert-issuer{font-size:clamp(.78rem, 1.3vw, .84rem);color:var(--acc2);margin-bottom:.5rem;font-weight:500}
+.cert-desc{font-size:clamp(.75rem, 1.3vw, .83rem);color:var(--muted);line-height:1.58}
 
 /* CV SECTION */
 #curriculo{background:var(--bg);text-align:center}
 .cv-inner{max-width:640px;margin:0 auto}
-.cv-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
-.cv-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:2rem;display:flex;flex-direction:column;align-items:center;gap:1rem;transition:border-color .2s,transform .2s}
+.cv-cards{display:grid;grid-template-columns:repeat(auto-fit, minmax(clamp(200px, 40vw, 300px), 1fr));gap:clamp(1rem, 3vw, 1.5rem);margin-top:clamp(1.5rem, 3vw, 2.5rem)}
+.cv-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.5rem, 3vw, 2rem);display:flex;flex-direction:column;align-items:center;gap:1rem;transition:border-color .2s,transform .2s}
 .cv-card:hover{border-color:var(--accent);transform:translateY(-2px)}
-.cv-flag{font-size:2rem}
-.cv-title{font-size:1rem;font-weight:700;color:var(--text)}
-.cv-sub{font-size:.83rem;color:var(--muted);margin-bottom:.5rem}
+.cv-flag{font-size:clamp(1.5rem, 3vw, 2rem)}
+.cv-title{font-size:clamp(.9rem, 1.5vw, 1rem);font-weight:700;color:var(--text)}
+.cv-sub{font-size:clamp(.75rem, 1.3vw, .83rem);color:var(--muted);margin-bottom:.5rem}
 
 /* SOBRE */
 #sobre{background:var(--bg2)}
-.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
-.story-text{display:flex;flex-direction:column;gap:1.4rem}
-.story-text p{color:var(--muted2);line-height:1.84;font-size:.98rem}
+.story-grid{display:grid;grid-template-columns:1fr;gap:clamp(2rem, 5vw, 6rem);align-items:start}
+.story-text{display:flex;flex-direction:column;gap:clamp(1rem, 2vw, 1.4rem)}
+.story-text p{color:var(--muted2);line-height:1.84;font-size:clamp(.9rem, 1.5vw, .98rem)}
 .story-text p strong{color:var(--text);font-weight:600}
 .story-timeline{display:flex;flex-direction:column;position:relative}
 .story-timeline::before{content:'';position:absolute;left:19px;top:4px;bottom:4px;width:1px;background:linear-gradient(to bottom,transparent,var(--border) 8%,var(--border) 92%,transparent)}
-.tl-item{position:relative;padding:0 0 2.4rem 3.4rem}
+.tl-item{position:relative;padding:0 0 clamp(1.5rem, 3vw, 2.4rem) clamp(2.5rem, 5vw, 3.4rem)}
 .tl-item:last-child{padding-bottom:0}
 .tl-dot{position:absolute;left:10px;top:.4rem;width:20px;height:20px;border-radius:50%;background:var(--accent);border:3px solid var(--bg2);z-index:1}
 .tl-badge{display:inline-block;font-family:var(--mono);font-size:.7rem;color:var(--accent);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.22);padding:.18rem .65rem;border-radius:2rem;margin-bottom:.55rem;letter-spacing:.05em}
-.tl-title{font-size:1.02rem;font-weight:700;color:var(--text);margin-bottom:.38rem}
-.tl-desc{font-size:.875rem;color:var(--muted2);line-height:1.68}
+.tl-title{font-size:clamp(.95rem, 1.5vw, 1.02rem);font-weight:700;color:var(--text);margin-bottom:.38rem}
+.tl-desc{font-size:clamp(.8rem, 1.3vw, .875rem);color:var(--muted2);line-height:1.68}
 
 /* CONTACT */
 #contact{background:var(--bg);text-align:center}
 .contact-inner{max-width:600px;margin:0 auto}
-.contact-links{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.4rem}
+.contact-links{display:flex;gap:clamp(.5rem, 2vw, 1rem);justify-content:center;flex-wrap:wrap;margin-top:clamp(1.5rem, 3vw, 2.4rem)}
 
 /* FOOTER */
-footer{padding:2rem 5rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg)}
-.footer-copy{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
-.footer-tag{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg);flex-wrap:wrap;gap:1rem;text-align:center}
+.footer-copy{font-family:var(--mono);font-size:clamp(.7rem, 1.3vw, .78rem);color:var(--muted)}
+.footer-tag{font-family:var(--mono);font-size:clamp(.7rem, 1.3vw, .78rem);color:var(--muted)}
 .footer-tag span{color:var(--accent)}
 
 @media(min-width:769px){
   .hero-buttons>div{justify-content:flex-start}
 }
 
-/* RESPONSIVE */
-@media(max-width:1024px){
+/* RESPONSIVE - TABLET (768px - 1024px) */
+@media(min-width:769px) and (max-width:1024px){
   nav{padding:1rem 2rem}
-  #hero,section{padding:5rem 2rem 4rem}
-  #impacto{padding:4rem 2rem}
-  .hero-inner{flex-direction:column-reverse;gap:3rem;text-align:center}
+  #hero,section{padding:clamp(3rem, 6vw, 5rem) 2rem clamp(2rem, 4vw, 4rem)}
+  .hero-inner{flex-direction:column-reverse;gap:clamp(2rem, 4vw, 3rem);text-align:center}
   .hero-content{margin-left:0;max-width:100%}
   .hero-desc{max-width:100%;margin-left:auto;margin-right:auto}
   .hero-cta,.hero-cv{justify-content:center}
   .hero-buttons>div{justify-content:center}
-  .hero-photo,.hero-photo-placeholder{width:200px;height:200px;margin:0 auto}
+  .hero-photo,.hero-photo-placeholder{width:clamp(200px, 50vw, 280px);height:clamp(200px, 50vw, 280px);margin:0 auto}
   .hero-photo-wrap{display:flex;justify-content:center;width:100%}
-  .impact-grid{grid-template-columns:1fr 1fr}
-  .exp-item{grid-template-columns:1fr;gap:1rem;padding:2.5rem 0}
-  .story-grid{grid-template-columns:1fr;gap:3.5rem}
-  .cv-cards{grid-template-columns:1fr 1fr}
+  .exp-item{grid-template-columns:1fr;gap:1rem;padding:clamp(1.5rem, 3vw, 2.5rem) 0}
+  .story-grid{grid-template-columns:1fr;gap:clamp(2rem, 4vw, 3.5rem)}
+  .cv-cards{grid-template-columns:repeat(2, 1fr)}
   footer{padding:1.5rem 2rem;flex-direction:column;gap:.5rem;text-align:center}
 }
+
+/* RESPONSIVE - MOBILE (max 768px) */
 @media(max-width:768px){
   .hamburger{display:flex}
-  nav{padding:.85rem 1.25rem}
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:rgba(8,12,20,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:.75rem 1.25rem 1.5rem}
+  nav{padding:.75rem 1rem}
+  .nav-logo{font-size:.7rem}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:rgba(8,12,20,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:.75rem 1rem 1.5rem;width:100%}
   .nav-links.open{display:flex}
   .nav-links li{border-bottom:1px solid var(--border)}
   .nav-links li:last-child{border-bottom:none}
-  .nav-links a{display:block;padding:.65rem 0;font-size:.95rem}
-  .lang-toggle{margin:.75rem 0 0;display:inline-flex}
-  #hero,section{padding:5rem 1.25rem 3rem}
-  #hero{align-items:flex-start}
-  .hero-inner{gap:1.5rem}
-  .hero-photo,.hero-photo-placeholder{width:170px;height:170px}
-  .section-desc{margin-bottom:2rem}
+  .nav-links a{display:block;padding:.65rem 0;font-size:.9rem}
+  .lang-toggle{margin:.75rem 0 0;display:inline-flex;width:100%}
+  .lang-btn{flex:1;text-align:center}
+  #hero,section{padding:clamp(2.5rem, 5vw, 5rem) clamp(1rem, 4vw, 1.25rem) clamp(2rem, 4vw, 3rem)}
+  #hero{align-items:flex-start;min-height:auto}
+  .hero-inner{gap:clamp(1rem, 3vw, 1.5rem);flex-direction:column-reverse}
+  .hero-content{margin-left:0}
+  .hero-photo,.hero-photo-placeholder{width:clamp(150px, 60vw, 200px);height:clamp(150px, 60vw, 200px)}
+  .hero-name{font-size:clamp(2rem, 7vw, 3.5rem)}
+  .hero-role{font-size:clamp(.75rem, 1.5vw, .9rem)}
+  .hero-cta{flex-direction:column;gap:.75rem}
+  .hero-cta .btn{width:100%;justify-content:center}
+  .section-desc{margin-bottom:clamp(1rem, 3vw, 2rem)}
+  .section-title{font-size:clamp(1.3rem, 5vw, 2rem)}
+  .stack-grid{grid-template-columns:repeat(auto-fit, minmax(140px, 1fr))}
+  .projects-grid{grid-template-columns:1fr}
+  .certs-grid{grid-template-columns:1fr}
+  .cv-cards{grid-template-columns:1fr}
+  .story-grid{grid-template-columns:1fr;gap:clamp(1.5rem, 3vw, 2.5rem)}
+  .story-timeline{margin-top:1.5rem}
+  .story-timeline::before{left:9px}
+  .tl-item{padding:0 0 clamp(1.2rem, 3vw, 1.8rem) clamp(2rem, 4vw, 2.5rem)}
+  .tl-dot{width:18px;height:18px;left:0}
+  .contact-links{flex-direction:column;gap:.75rem}
+  .contact-links .btn{width:100%;justify-content:center}
+  footer{padding:1.5rem 1rem;flex-direction:column;gap:1rem;text-align:center}
+  .footer-copy, .footer-tag{width:100%}
 }
-@media(max-width:600px){
-  .impact-grid,.projects-grid,.certs-grid,.cv-cards{grid-template-columns:1fr}
+
+/* RESPONSIVE - SMALL MOBILE (max 480px) */
+@media(max-width:480px){
+  :root{
+    --r: .5rem;
+  }
+  nav{padding:.65rem .75rem}
+  .nav-logo{font-size:.65rem}
+  .nav-links a{font-size:.85rem}
+  #hero,section{padding:clamp(2rem, 4vw, 3rem) clamp(.75rem, 3vw, 1rem) clamp(1.5rem, 3vw, 2rem)}
+  .hero-name{font-size:clamp(1.75rem, 6vw, 2.5rem)}
+  .hero-role{font-size:.7rem}
+  .hero-desc{font-size:.9rem}
+  .btn{padding:clamp(.5rem, 1.5vw, .6rem) clamp(.75rem, 2vw, 1rem);font-size:.8rem}
+  .section-title{font-size:clamp(1.2rem, 4vw, 1.8rem)}
+  .section-label{font-size:.7rem}
+  .stack-grid{grid-template-columns:repeat(auto-fit, minmax(120px, 1fr))}
+  .stack-item{padding:clamp(.8rem, 1.5vw, 1rem) clamp(.75rem, 1.5vw, 1rem);gap:.8rem}
+  .project-card, .cert-card, .cv-card{padding:clamp(1rem, 2vw, 1.5rem)}
+  .exp-item{padding:clamp(1rem, 2vw, 1.5rem) 0}
+  .tl-item{padding:0 0 clamp(1rem, 2vw, 1.5rem) clamp(1.8rem, 3vw, 2rem)}
+  .tl-dot{width:16px;height:16px}
+  .tl-title{font-size:.9rem}
+  .tl-desc{font-size:.75rem}
+  .contact-links{gap:.5rem}
+  footer{padding:1rem .75rem;gap:.75rem}
 }
+
+/* RESPONSIVE - VERY SMALL MOBILE (max 360px) */
+@media(max-width:360px){
+  nav{padding:.6rem .5rem}
+  .nav-logo{font-size:.6rem}
+  .hamburger{padding:.35rem}
+  .hamburger span{width:18px}
+  #hero,section{padding:clamp(1.5rem, 3vw, 2.5rem) clamp(.5rem, 2vw, .75rem) clamp(1rem, 2vw, 1.5rem)}
+  .hero-name{font-size:clamp(1.5rem, 5vw, 2rem)}
+  .hero-role{font-size:.65rem}
+  .hero-desc{font-size:.85rem}
+  .btn{padding:.5rem .75rem;font-size:.75rem}
+  .section-title{font-size:clamp(1rem, 3.5vw, 1.5rem)}
+  .stack-grid{grid-template-columns:repeat(auto-fit, minmax(100px, 1fr))}
+  .stack-item{padding:.7rem .6rem;gap:.6rem}
+  .stack-logo{width:28px;height:28px}
+  .stack-logo img{width:24px;height:24px}
+  .project-icon{font-size:1.2rem}
+  .cv-flag{font-size:1.2rem}
+  .tl-item{padding:0 0 clamp(.8rem, 2vw, 1.2rem) clamp(1.6rem, 2.5vw, 1.8rem)}
+  .tl-dot{width:14px;height:14px}
+  footer{padding:.75rem .5rem}
+}
+
 </style>
 </head>
 <body>
@@ -233,8 +302,6 @@ footer{padding:2rem 5rem;border-top:1px solid var(--border);display:flex;align-i
     <li><a href="#stack"><span class="pt">Stack</span><span class="en">Stack</span></a></li>
     <li><a href="#experience"><span class="pt">Experiência</span><span class="en">Experience</span></a></li>
     <li><a href="#projects"><span class="pt">Projetos</span><span class="en">Projects</span></a></li>
-    <li><a href="#certs"><span class="pt">Formação</span><span class="en">Education</span></a></li>
-    <li><a href="#curriculo"><span class="pt">Currículo</span><span class="en">Resume</span></a></li>
     <li><a href="#sobre"><span class="pt">Sobre</span><span class="en">About</span></a></li>
     <li><a href="#contact"><span class="pt">Contato</span><span class="en">Contact</span></a></li>
     <li>
@@ -248,111 +315,65 @@ footer{padding:2rem 5rem;border-top:1px solid var(--border);display:flex;align-i
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-glow2"></div>
   <div class="hero-inner">
     <div class="hero-content">
-      <p class="hero-role">Analytics Engineer · Data Engineer · AI Builder</p>
+      <p class="hero-role"><span class="pt">Analytics Engineer</span><span class="en">Analytics Engineer</span></p>
       <h1 class="hero-name">Jheysson<br>Douglas</h1>
-      <p class="hero-desc pt">
-        Há <strong>5 anos construindo pipelines de dados em produção</strong>.
-        Especializado em <strong>ETL/ELT, modelagem de dados e arquitetura Medallion</strong>
-        com Python, SQL, Databricks, Airflow e dbt.
-      </p>
-      <p class="hero-desc en">
-    <strong>Over 5 years of experience building production-grade data pipelines</strong>.
-    Specialized in <strong>ETL/ELT, data modeling and Medallion Architecture</strong>
-    using Python, SQL, Databricks, Airflow and dbt.
-</p>
-      <div class="hero-buttons" style="display:flex;flex-direction:column;gap:1rem">
-
-  <!-- Linha 1: botões principais -->
-  <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
-    <a href="#contact" class="btn btn-primary">
-      <span class="pt">Vamos conversar →</span>
-      <span class="en">Let's talk →</span>
-    </a>
-    <a href="#projects" class="btn btn-outline">
-      <span class="pt">Ver projetos</span>
-      <span class="en">See projects</span>
-    </a>
-  </div>
-
-  <!-- Linha 2: redes sociais -->
-  <div style="display:flex;gap:.75rem;flex-wrap:wrap;align-items:center;justify-content:center">
-    <a href="https://www.linkedin.com/in/jheyssondouglas/" target="_blank" class="btn btn-outline" style="padding:.6rem 1rem;gap:.5rem;border-color:#0A66C2;color:#0A66C2">
-      <img src="logos/linkedin_logo.jpeg" alt="LinkedIn" width="16" height="16">
-      LinkedIn
-    </a>
-    <a href="https://github.com/JheyssonDouglas" target="_blank" class="btn btn-outline" style="padding:.6rem 1rem;gap:.5rem;border-color:#ffffff;color:#ffffff">
-      <img src="https://cdn.simpleicons.org/github/E2E8F0" alt="GitHub" width="16" height="16">
-      GitHub
-    </a>
-    <a href="https://wa.me/5562991642970" target="_blank" class="btn btn-outline" style="padding:.6rem 1rem;gap:.5rem;border-color:#25D366;color:#25D366">
-      <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp" width="16" height="16">
-      WhatsApp
-    </a>
-    <a href="mailto:jheyssonx@gmail.com" class="btn btn-outline" style="padding:.6rem 1rem;gap:.5rem;border-color:#EA4335;color:#EA4335">
-      <img src="https://cdn.simpleicons.org/gmail/EA4335" alt="Email" width="16" height="16">
-      Email
-    </a>
-  </div>
-
-  <!-- Linha 3: currículos -->
-  <div style="margin-top:.25rem">
-    <p class="cv-label pt">Currículo para download</p>
-    <p class="cv-label en">Resume download</p>
-    <div class="hero-cv" style="display:flex;gap:.75rem;flex-wrap:wrap">
-      <a href="Curriculo_Jheysson_Douglas.pdf" download class="btn btn-ghost">🇧🇷 <span class="pt">Currículo em Português</span><span class="en">Resume in Portuguese</span></a>
-      <a href="Resume_Jheysson_Douglas.pdf" download class="btn btn-ghost">🇺🇸 <span class="pt">Currículo em Inglês</span><span class="en">Resume in English</span></a>
-    </div>
-  </div>
-
-</div>
-</div>
+      <p class="hero-desc"><span class="pt">Transformo dados em <strong>insights acionáveis</strong> — especialista em ETL/ELT, pipelines de dados e <strong>engenharia de dados</strong> que geram impacto real.</span><span class="en">I transform data into <strong>actionable insights</strong> — expert in ETL/ELT, data pipelines and <strong>data engineering</strong> that drive real impact.</span></p>
+      <div class="hero-cta">
+        <a href="mailto:jheyssonx@gmail.com" class="btn btn-primary"><span class="pt">Vamos conversar →</span><span class="en">Let's talk →</span></a>
+        <a href="https://linkedin.com/in/jheyssondouglas" target="_blank" class="btn btn-outline">LinkedIn</a>
+      </div>
+      <div class="hero-cv">
+        <div>
+          <div class="cv-label"><span class="pt">Currículo</span><span class="en">Resume</span></div>
+          <div style="display:flex;gap:.6rem;flex-wrap:wrap">
+            <a href="Curriculo_Jheysson_Douglas.pdf" download class="btn btn-ghost"><span class="pt">🇧🇷 PT</span><span class="en">🇧🇷 PT</span></a>
+            <a href="Resume_Jheysson_Douglas.pdf" download class="btn btn-ghost"><span class="pt">🇺🇸 EN</span><span class="en">🇺🇸 EN</span></a>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="hero-photo-wrap">
       <div class="hero-photo-ring"></div>
-      <img src="imagem/foto.jpg" alt="Jheysson Douglas" class="hero-photo">
-    </div>
+      <img src="./imagem/foto.jpg" alt="Jheysson Douglas" class="hero-photo">
     </div>
   </div>
 </section>
 
 <!-- STACK -->
 <section id="stack">
-  <p class="section-label"><span class="pt">Tecnologias</span><span class="en">Technologies</span></p>
-  <h2 class="section-title"><span class="pt">Stack técnica</span><span class="en">Technical stack</span></h2>
-  <p class="section-desc pt">Ferramentas com experiência profissional comprovada em ambiente de produção.</p>
-  <p class="section-desc en">Tools with proven professional experience in production environments.</p>
+  <p class="section-label"><span class="pt">Ferramentas</span><span class="en">Tools</span></p>
+  <h2 class="section-title"><span class="pt">Stack Técnico</span><span class="en">Tech Stack</span></h2>
+  <p class="section-desc"><span class="pt">Tecnologias que domino para entregar soluções robustas e escaláveis.</span><span class="en">Technologies I master to deliver robust and scalable solutions.</span></p>
   <div class="stack-grid">
     <div class="stack-item">
-      <div class="stack-logo"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"></div>
-      <div><div class="stack-name">Python</div><div class="stack-level"><span class="pt">Profissional · 5 anos</span><span class="en">Professional · 5 years</span></div></div>
-    </div>
-    <div class="stack-item">
-      <div class="stack-logo"><img src="https://cdn.simpleicons.org/postgresql/336791" alt="SQL"></div>
-      <div><div class="stack-name">SQL</div><div class="stack-level"><span class="pt">Profissional · 5 anos</span><span class="en">Professional · 5 years</span></div></div>
-    </div>
-    <div class="stack-item">
-      <div class="stack-logo"><img src="https://cdn.simpleicons.org/apachespark/E25A1C" alt="PySpark"></div>
-      <div><div class="stack-name">PySpark</div><div class="stack-level"><span class="pt">Profissional · 4 anos</span><span class="en">Professional · 4 years</span></div></div>
-    </div>
-    <div class="stack-item">
       <div class="stack-logo"><img src="https://cdn.simpleicons.org/databricks/FF3621" alt="Databricks"></div>
-      <div><div class="stack-name">Databricks</div><div class="stack-level"><span class="pt">Profissional · 4 anos</span><span class="en">Professional · 4 years</span></div></div>
+      <div><div class="stack-name">Databricks</div><div class="stack-level"><span class="pt">Avançado</span><span class="en">Advanced</span></div></div>
     </div>
     <div class="stack-item">
-      <div class="stack-logo"><img src="https://cdn.simpleicons.org/apacheairflow/017CEE" alt="Airflow"></div>
-      <div><div class="stack-name">Apache Airflow</div><div class="stack-level"><span class="pt">Profissional · 4 anos</span><span class="en">Professional · 4 years</span></div></div>
+      <div class="stack-logo"><img src="https://cdn.simpleicons.org/apache/D35400" alt="Apache Airflow"></div>
+      <div><div class="stack-name">Airflow</div><div class="stack-level"><span class="pt">Avançado</span><span class="en">Advanced</span></div></div>
     </div>
     <div class="stack-item">
-      <div class="stack-logo"><img src="./logos/fishtown_analytics_dbt_logo.jpeg" alt="dbt"></div>
-      <div><div class="stack-name">dbt Core</div><div class="stack-level"><span class="pt">Profissional · 2 anos</span><span class="en">Professional · 2 years</span></div></div>
+      <div class="stack-logo"><img src="https://cdn.simpleicons.org/python/3776AB" alt="Python"></div>
+      <div><div class="stack-name">Python</div><div class="stack-level"><span class="pt">Avançado</span><span class="en">Advanced</span></div></div>
     </div>
     <div class="stack-item">
-      <div class="stack-logo"><img src="https://cdn.simpleicons.org/delta/003366" alt="Delta Lake"></div>
-      <div><div class="stack-name">Delta Lake</div><div class="stack-level"><span class="pt">Profissional · 4 anos</span><span class="en">Professional · 4 years</span></div></div>
+      <div class="stack-logo"><img src="https://cdn.simpleicons.org/sql/CC2927" alt="SQL"></div>
+      <div><div class="stack-name">SQL</div><div class="stack-level"><span class="pt">Avançado</span><span class="en">Advanced</span></div></div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-logo"><img src="https://cdn.simpleicons.org/dbt/FF694B" alt="dbt"></div>
+      <div><div class="stack-name">dbt</div><div class="stack-level"><span class="pt">Intermediário</span><span class="en">Intermediate</span></div></div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-logo"><img src="https://cdn.simpleicons.org/apachespark/E25A1C" alt="Spark"></div>
+      <div><div class="stack-name">Spark</div><div class="stack-level"><span class="pt">Avançado</span><span class="en">Advanced</span></div></div>
+    </div>
+    <div class="stack-item">
+      <div class="stack-logo"><img src="https://cdn.simpleicons.org/pandas/150458" alt="Pandas"></div>
+      <div><div class="stack-name">Pandas</div><div class="stack-level"><span class="pt">Avançado</span><span class="en">Advanced</span></div></div>
     </div>
     <div class="stack-item">
       <div class="stack-logo"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker"></div>
@@ -360,144 +381,80 @@ footer{padding:2rem 5rem;border-top:1px solid var(--border);display:flex;align-i
     </div>
     <div class="stack-item">
       <div class="stack-logo"><img src="https://cdn.simpleicons.org/git/F05032" alt="Git"></div>
-      <div><div class="stack-name">Git</div><div class="stack-level"><span class="pt">Profissional · 5 anos</span><span class="en">Professional · 5 years</span></div></div>
+      <div><div class="stack-name">Git</div><div class="stack-level"><span class="pt">Avançado</span><span class="en">Advanced</span></div></div>
     </div>
     <div class="stack-item">
-      <div class="stack-logo"><img src="https://cdn.simpleicons.org/gitlab/FC6D26" alt="GitLab"></div>
-      <div><div class="stack-name">GitLab</div><div class="stack-level"><span class="pt">Profissional · 4 anos</span><span class="en">Professional · 4 years</span></div></div>
-    </div>
-    <div class="stack-item">
-      <div class="stack-logo"><img src="https://cdn.simpleicons.org/grafana/F46800" alt="Grafana"></div>
-      <div><div class="stack-name">Grafana</div><div class="stack-level"><span class="pt">Profissional · 3 anos</span><span class="en">Professional · 3 years</span></div></div>
-    </div>
-    <div class="stack-item">
-      <div class="stack-logo"><img src="https://img.icons8.com/color/48/tableau-software.png" alt="Tableau"></div>
-      <div><div class="stack-name">Tableau</div><div class="stack-level"><span class="pt">Profissional · 3 anos</span><span class="en">Professional · 3 years</span></div></div>
-    </div>
-    <div class="stack-item">
-      <div class="stack-logo"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg" alt="AWS"></div>
-      <div><div class="stack-name">AWS</div><div class="stack-level"><span class="pt">Profissional · 5 anos</span><span class="en">Professional · 5 years</span></div></div>
-    </div>
-    <div class="stack-item">
-      <div class="stack-logo"><img src="https://cdn.simpleicons.org/pandas/150458" alt="Pandas"></div>
-      <div><div class="stack-name">Pandas</div><div class="stack-level"><span class="pt">Profissional · 5 anos</span><span class="en">Professional · 5 years</span></div></div>
-    </div>
-    <div class="stack-item">
-      <div class="stack-logo"><img src="https://cdn.simpleicons.org/fastapi/009688" alt="FastAPI"></div>
-      <div><div class="stack-name">FastAPI</div><div class="stack-level"><span class="pt">Portfólio</span><span class="en">Portfolio</span></div></div>
-    </div>
-    <div class="stack-item">
-      <div class="stack-logo"><img src="https://cdn.simpleicons.org/jupyter/F37626" alt="Jupyter"></div>
-      <div><div class="stack-name">Jupyter</div><div class="stack-level"><span class="pt">Profissional · 5 anos</span><span class="en">Professional · 5 years</span></div></div>
+      <div class="stack-logo"><img src="https://cdn.simpleicons.org/amazonaws/FF9900" alt="AWS"></div>
+      <div><div class="stack-name">AWS</div><div class="stack-level"><span class="pt">Intermediário</span><span class="en">Intermediate</span></div></div>
     </div>
   </div>
 </section>
 
 <!-- EXPERIENCE -->
 <section id="experience">
-  <p class="section-label"><span class="pt">Carreira</span><span class="en">Career</span></p>
-  <h2 class="section-title"><span class="pt">Experiência profissional</span><span class="en">Professional experience</span></h2>
-  <p class="section-desc pt">Quase 5 anos construindo soluções de dados em produção no iFood.</p>
-  <p class="section-desc en">Nearly 5 years building production-grade data solutions at iFood.</p>
+  <p class="section-label"><span class="pt">Trajetória</span><span class="en">Career</span></p>
+  <h2 class="section-title"><span class="pt">Experiência Profissional</span><span class="en">Professional Experience</span></h2>
+  <p class="section-desc"><span class="pt">Minha jornada em dados começou como entregador e evoluiu para Analytics Engineer em uma das maiores empresas de tecnologia do Brasil.</span><span class="en">My data journey started as a delivery driver and evolved to Analytics Engineer at one of Brazil's largest tech companies.</span></p>
   <div class="exp-list">
-
     <div class="exp-item">
       <div class="exp-left">
-        <div class="exp-co-logo">🍕</div>
-        <div class="exp-period"><span class="pt">Out 2025 — Mai 2026</span><span class="en">Oct 2025 — May 2026</span></div>
-        <span class="exp-duration"><span class="pt">8 meses</span><span class="en">8 months</span></span>
+        <div class="exp-period"><span class="pt">Set 2021 – Dez 2024</span><span class="en">Sep 2021 – Dec 2024</span></div>
+        <div class="exp-duration"><span class="pt">3 anos e 4 meses</span><span class="en">3 years 4 months</span></div>
+        <div class="exp-co-logo">🍔</div>
       </div>
       <div>
-        <div class="exp-role">Analytics Engineer</div>
-        <div class="exp-company">iFood · <span class="pt">Remoto</span><span class="en">Remote</span></div>
-        <p class="exp-desc pt">
-          Growth Core, Squad de Promotions. Responsável pelos principais produtos de dados e tabelas de consumo
-          da jornada promocional do iFood, cobrindo todas as verticais de Delivery: Restaurantes, Mercados,
-          Farmácias, Bebidas, Pet Shop e Shopping.
-        </p>
-        <p class="exp-desc en">
-          Growth Core team, Promotions Squad. Responsible for key data products and consumption tables
-          supporting iFood's promotional ecosystem across all Delivery verticals: Restaurants, Groceries,
-          Pharmacies, Beverages, Pet Shop, and Shopping.
-        </p>
+        <div class="exp-role"><span class="pt">Analytics Engineer</span><span class="en">Analytics Engineer</span></div>
+        <div class="exp-company">iFood</div>
+        <div class="exp-desc"><span class="pt">Desenvolvimento e manutenção de pipelines ETL/ELT em Databricks e Airflow. Migração de produtos para Data Abstraction Layer (DAB). Implementação de Data Quality Xperience (DQX) para garantia de qualidade dos dados. Criação do Diagram Flow — agente de IA que automatizava análise de notebooks, reduzindo tempo de 1-2 dias para 20 minutos.</span><span class="en">Development and maintenance of ETL/ELT pipelines in Databricks and Airflow. Migration of products to Data Abstraction Layer (DAB). Implementation of Data Quality Xperience (DQX) for data quality assurance. Creation of Diagram Flow — an AI agent that automated notebook analysis, reducing time from 1-2 days to 20 minutes.</span></div>
         <div class="exp-highlights">
-          <div class="exp-highlight pt"><strong>Pipelines ETL/ELT</strong> responsáveis pelo processamento de milhões de registros diários para suporte às decisões estratégicas de Growth.</div>
-          <div class="exp-highlight en"><strong>ETL/ELT pipelines</strong> processing millions of daily records to support strategic Growth decisions.</div>
-          <div class="exp-highlight pt"><strong>Migração do Airflow para DAB</strong> (Databricks Asset Bundles), aumentando padronização e manutenibilidade dos deployments.</div>
-          <div class="exp-highlight en"><strong>Migrated from Airflow to DAB</strong> (Databricks Asset Bundles), improving deployment standardization and maintainability.</div>
-          <div class="exp-highlight pt"><strong>Validações de qualidade com DQX</strong> para garantir confiabilidade e consistência dos datasets analíticos.</div>
-          <div class="exp-highlight en"><strong>Data quality validations with DQX</strong> to ensure reliability and consistency across analytical datasets.</div>
-          <div class="exp-highlight pt"><strong>Diagram Flow</strong> — agente de IA para documentação automática de notebooks. Reduziu tempo de 1–2 dias para <strong>20 minutos</strong>. 90+ requisições/mês, 80% de retorno.</div>
-          <div class="exp-highlight en"><strong>Diagram Flow</strong> — AI agent for automated notebook documentation. Reduced time from 1–2 days to <strong>20 minutes</strong>. 90+ requests/month, 80% return rate.</div>
-          <div class="exp-highlight pt"><strong>Datasets no ThoughtSpot</strong> para stakeholders de múltiplas verticais do negócio.</div>
-          <div class="exp-highlight en"><strong>Datasets served via ThoughtSpot</strong> supporting business stakeholders across multiple verticals.</div>
+          <div class="exp-highlight"><span class="pt">Desenvolvimento de pipelines ETL/ELT em <strong>Databricks</strong> e <strong>Airflow</strong></span><span class="en">ETL/ELT pipeline development in <strong>Databricks</strong> and <strong>Airflow</strong></span></div>
+          <div class="exp-highlight"><span class="pt">Migração de produtos para <strong>DAB</strong> (Data Abstraction Layer)</span><span class="en">Product migration to <strong>DAB</strong> (Data Abstraction Layer)</span></div>
+          <div class="exp-highlight"><span class="pt">Implementação de <strong>DQX</strong> (Data Quality Xperience)</span><span class="en">Implementation of <strong>DQX</strong> (Data Quality Xperience)</span></div>
+          <div class="exp-highlight"><span class="pt">Criação do <strong>Diagram Flow</strong> — agente de IA para automação</span><span class="en">Creation of <strong>Diagram Flow</strong> — AI agent for automation</span></div>
         </div>
         <div class="exp-tags">
-          <span class="tag">Databricks</span><span class="tag">Airflow</span><span class="tag">DAB</span><span class="tag">DQX</span>
-          <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">ThoughtSpot</span><span class="tag">dbt</span><span class="tag">ETL/ELT</span>
+          <span class="tag">Databricks</span>
+          <span class="tag">Airflow</span>
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">ETL/ELT</span>
+          <span class="tag">IA Generativa</span>
         </div>
       </div>
     </div>
-
     <div class="exp-item">
       <div class="exp-left">
-        <div class="exp-co-logo">🍕</div>
-        <div class="exp-period"><span class="pt">Set 2021 — Out 2025</span><span class="en">Sep 2021 — Oct 2025</span></div>
-        <span class="exp-duration"><span class="pt">4 anos e 2 meses</span><span class="en">4 years 2 months</span></span>
+        <div class="exp-period"><span class="pt">Set 2021 – Ago 2023</span><span class="en">Sep 2021 – Aug 2023</span></div>
+        <div class="exp-duration"><span class="pt">2 anos</span><span class="en">2 years</span></div>
+        <div class="exp-co-logo">🍔</div>
       </div>
       <div>
         <div class="exp-role"><span class="pt">Cientista de Dados</span><span class="en">Data Scientist</span></div>
-        <div class="exp-company">iFood · <span class="pt">Remoto</span><span class="en">Remote</span></div>
-        <p class="exp-desc pt">
-          Time de Groceries com foco no desenvolvimento, análise e manutenção de modelos de Machine Learning
-          e pipelines de dados em ambiente de produção de alta escala.
-        </p>
-        <p class="exp-desc en">
-          Groceries team focused on developing, analyzing, and maintaining Machine Learning models
-          and data pipelines in high-scale production environments.
-        </p>
+        <div class="exp-company">iFood</div>
+        <div class="exp-desc"><span class="pt">Machine Learning em produção com Databricks e Airflow. Desenvolvimento de projetos estratégicos: GSR (Grocery Store Recommendation), Capacidade Dinâmica, Geller e Avocado. Análise exploratória de dados e modelagem preditiva.</span><span class="en">Production ML with Databricks and Airflow. Development of strategic projects: GSR (Grocery Store Recommendation), Dynamic Capacity, Geller and Avocado. Exploratory data analysis and predictive modeling.</span></div>
         <div class="exp-highlights">
-          <div class="exp-highlight pt"><strong>Projetos estratégicos:</strong> GSR (Groceries Smart Replacement), Capacidade Dinâmica, Geller, Mewtwo e Avocado — com impacto direto no negócio.</div>
-          <div class="exp-highlight en"><strong>Strategic projects:</strong> GSR (Groceries Smart Replacement), Dynamic Capacity, Geller, Mewtwo, and Avocado — with direct business impact.</div>
-          <div class="exp-highlight pt"><strong>DAGs no Airflow</strong> e pipelines completos no Databricks para processamento em grande escala.</div>
-          <div class="exp-highlight en"><strong>Airflow DAGs</strong> and full Databricks pipelines for large-scale data processing.</div>
-          <div class="exp-highlight pt"><strong>Dashboards de monitoramento</strong> com Grafana e automações com Datacapture.</div>
-          <div class="exp-highlight en"><strong>Monitoring dashboards</strong> with Grafana and automations with Datacapture.</div>
-          <div class="exp-highlight pt"><strong>Métricas de NLP</strong> (Rouge Score, Bleurt), cálculos de similaridade e <strong>testes A/B</strong> com análise estatística.</div>
-          <div class="exp-highlight en"><strong>NLP metrics</strong> (ROUGE Score, BLEURT), similarity calculations, and <strong>A/B tests</strong> with statistical analysis.</div>
+          <div class="exp-highlight"><span class="pt">Machine Learning em produção com <strong>Databricks</strong></span><span class="en">Production ML with <strong>Databricks</strong></span></div>
+          <div class="exp-highlight"><span class="pt">Projetos estratégicos: <strong>GSR, Capacidade Dinâmica, Geller, Avocado</strong></span><span class="en">Strategic projects: <strong>GSR, Dynamic Capacity, Geller, Avocado</strong></span></div>
+          <div class="exp-highlight"><span class="pt">Análise exploratória e modelagem preditiva</span><span class="en">Exploratory analysis and predictive modeling</span></div>
         </div>
         <div class="exp-tags">
-          <span class="tag">Python</span><span class="tag">PySpark</span><span class="tag">SQL</span>
-          <span class="tag">Databricks</span><span class="tag">Airflow</span><span class="tag">GitLab</span>
-          <span class="tag">Grafana</span><span class="tag">Tableau</span><span class="tag">Machine Learning</span><span class="tag">A/B Testing</span>
+          <span class="tag">Machine Learning</span>
+          <span class="tag">Python</span>
+          <span class="tag">Databricks</span>
+          <span class="tag">Airflow</span>
+          <span class="tag">Modelagem Preditiva</span>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
 <!-- PROJECTS -->
 <section id="projects">
   <p class="section-label"><span class="pt">Portfólio</span><span class="en">Portfolio</span></p>
-  <h2 class="section-title"><span class="pt">Projetos</span><span class="en">Projects</span></h2>
-  <p class="section-desc pt">Pipelines e soluções de dados construídas do zero.</p>
-  <p class="section-desc en">Data pipelines and solutions built from scratch.</p>
+  <h2 class="section-title"><span class="pt">Projetos em Destaque</span><span class="en">Featured Projects</span></h2>
+  <p class="section-desc"><span class="pt">Projetos que demonstram minha expertise em dados, engenharia e automação.</span><span class="en">Projects that showcase my expertise in data, engineering and automation.</span></p>
   <div class="projects-grid">
-    <a href="https://github.com/JheyssonDouglas/brazilian-flights-pipeline" target="_blank" class="project-card">
-      <div class="project-header"><span class="project-icon">✈️</span><span class="project-link-icon">↗</span></div>
-      <div><div class="project-name">Brazilian Flights Pipeline</div>
-      <p class="project-desc pt">Pipeline end-to-end com dados de voos da ANAC. Ingestão via Airflow, armazenamento em Delta Lake com arquitetura Bronze → Silver → Gold e disponibilização via FastAPI.</p>
-      <p class="project-desc en">End-to-end pipeline with ANAC flight data. Ingestion via Airflow, Delta Lake storage with Bronze → Silver → Gold architecture, and FastAPI exposure.</p></div>
-      <div class="project-stack"><span class="tag">Airflow</span><span class="tag">Databricks</span><span class="tag">dbt</span><span class="tag">FastAPI</span><span class="tag">Delta Lake</span></div>
-    </a>
-    <a href="https://github.com/JheyssonDouglas/pncp-analytics-pipeline" target="_blank" class="project-card">
-      <div class="project-header"><span class="project-icon">🏛️</span><span class="project-link-icon">↗</span></div>
-      <div><div class="project-name">PNCP Analytics Pipeline</div>
-      <p class="project-desc pt">Pipeline de contratações governamentais brasileiras. API do PNCP → Bronze → Silver → Gold com análises sobre o que o governo compra e quanto paga.</p>
-      <p class="project-desc en">Brazilian government procurement pipeline. PNCP API → Bronze → Silver → Gold with analytics on what the government buys and how much it pays.</p></div>
-      <div class="project-stack"><span class="tag">Python</span><span class="tag">Airflow</span><span class="tag">Databricks</span><span class="tag">dbt</span><span class="tag">FastAPI</span></div>
-    </a>
     <a href="https://github.com/JheyssonDouglas/sql-showcase" target="_blank" class="project-card">
       <div class="project-header"><span class="project-icon">📊</span><span class="project-link-icon">↗</span></div>
       <div><div class="project-name">SQL Showcase</div>
@@ -510,14 +467,14 @@ footer{padding:2rem 5rem;border-top:1px solid var(--border);display:flex;align-i
       <div><div class="project-name">Análises de Dados</div>
       <p class="project-desc pt">Portfólio de análise exploratória de dados em Python utilizando conjuntos de dados públicos brasileiros (voos da ANAC, acidentes rodoviários da PRF, ENEM 2024): testes estatísticos, visualizações e insights sobre aviação, segurança rodoviária e educação.</p>
       <p class="project-desc en">Exploratory data analysis portfolio in Python on Brazilian public datasets (ANAC flights, PRF road accidents, ENEM 2024): statistical testing, visualizations, and insights on aviation, road safety, and education.</p></div>
-      <div class="project-stack"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span><span class="tag">Jupyter</span><span class="tag">Statistics</span><span class="tag">EDA</span><span class="tag"><span class="pt">Análise de Dados</span><span class="en">Data Analysis</span></span><span class="tag"><span class="pt">Visualização</span><span class="en">Data Viz</span></span></div>
+      <div class="project-stack"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span><span class="tag">Jupyter</span><span class="tag">Statistics</span><span class="tag">EDA</span></div>
     </a>
     <div class="project-card" style="border-style:dashed;cursor:default;">
       <div class="project-header"><span class="project-icon">🤖</span></div>
       <div><div class="project-name">Diagram Flow — <span class="pt">Agente de IA</span><span class="en">AI Agent</span></div>
       <p class="project-desc pt">Agente de IA criado no iFood. Analisava notebooks, gerava diagramas XML para Draw.io, documentação completa e resumo executivo. 90+ req/mês, 80% de retorno.</p>
       <p class="project-desc en">AI agent built at iFood. Analyzed notebooks, generated Draw.io XML diagrams, full documentation and executive summaries. 90+ req/month, 80% return rate.</p></div>
-      <div class="project-stack"><span class="tag">IA Generativa</span><span class="tag">Python</span><span class="tag">Draw.io XML</span><span class="tag"><span class="pt">Automação</span><span class="en">Automation</span></span></div>
+      <div class="project-stack"><span class="tag">IA Generativa</span><span class="tag">Python</span><span class="tag">Draw.io XML</span></div>
     </div>
   </div>
 </section>
@@ -622,24 +579,11 @@ footer{padding:2rem 5rem;border-top:1px solid var(--border);display:flex;align-i
       <p class="en">In December 2020, I received a message in the app: iFood was offering a <strong>data analytics course for delivery drivers</strong>. Over 3,000 people applied. I got one of the spots.</p>
       <p class="pt">Seis meses depois, concluí a formação pela Resilia Educação e fui contratado pelo iFood como <strong>Cientista de Dados</strong> — a mesma empresa onde havia sido entregador.</p>
       <p class="en">Six months later, I completed the Resilia Educação program and was hired by iFood as a <strong>Data Scientist</strong> — the same company where I had been a delivery driver.</p>
-      <p class="pt">Nos quatro anos seguintes, cresci para <strong>Analytics Engineer</strong>, 
-atuando no desenvolvimento e manutenção de pipelines ETL/ELT, migração de produtos 
-para <strong>DAB</strong> e aplicação de <strong>DQX</strong> 
-para garantia de qualidade dos dados. Nesse período também criei o 
-<strong>Diagram Flow</strong> — um agente de IA que automatizava a análise e 
-documentação de notebooks, reduzindo um processo que levava de 1 a 2 dias 
-para apenas <strong>20 minutos</strong>.</p>
-
-<p class="en">Over the next four years, I grew into an <strong>Analytics Engineer</strong>, 
-working on ETL/ELT pipeline development and maintenance, migrating data products 
-to <strong>DAB</strong>, and applying <strong>DQX</strong> 
-for data quality assurance. During this period I also created 
-<strong>Diagram Flow</strong> — an AI agent that automated notebook analysis and 
-documentation, reducing a process that used to take 1 to 2 days down to just 
-<strong>20 minutes</strong>.</p>
+      <p class="pt">Nos quatro anos seguintes, cresci para <strong>Analytics Engineer</strong>, atuando no desenvolvimento e manutenção de pipelines ETL/ELT, migração de produtos para <strong>DAB</strong> e aplicação de <strong>DQX</strong> para garantia de qualidade dos dados. Nesse período também criei o <strong>Diagram Flow</strong> — um agente de IA que automatizava a análise e documentação de notebooks, reduzindo um processo que levava de 1 a 2 dias para apenas <strong>20 minutos</strong>.</p>
+      <p class="en">Over the next four years, I grew into an <strong>Analytics Engineer</strong>, working on ETL/ELT pipeline development and maintenance, migrating data products to <strong>DAB</strong>, and applying <strong>DQX</strong> for data quality assurance. During this period I also created <strong>Diagram Flow</strong> — an AI agent that automated notebook analysis and documentation, reducing a process that used to take 1 to 2 days down to just <strong>20 minutes</strong>.</p>
       <p class="pt">Hoje busco novos desafios em <strong>Engenharia de Dados e IA</strong> onde possa continuar construindo soluções que geram impacto real.</p>
       <p class="en">Today I'm seeking new challenges in <strong>Data Engineering and AI</strong> where I can keep building solutions that generate real impact.</p>
-      <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap">
+      <div style="margin-top:clamp(1rem, 3vw, 2rem);display:flex;gap:clamp(.5rem, 2vw, 1rem);flex-wrap:wrap">
         <a href="mailto:jheyssonx@gmail.com" class="btn btn-primary"><span class="pt">Vamos conversar →</span><span class="en">Let's talk →</span></a>
         <a href="https://linkedin.com/in/jheyssondouglas" target="_blank" class="btn btn-outline">LinkedIn</a>
       </div>
@@ -679,21 +623,14 @@ documentation, reducing a process that used to take 1 to 2 days down to just
         <div class="tl-badge" style="color:var(--purple);background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.2)">2023 – 2025</div>
         <div class="tl-title"><span class="pt">Formação e crescimento</span><span class="en">Education and growth</span></div>
         <div class="tl-desc pt">Tecnólogo em ADS pela Impacta. Python Journey pela FIAP. Diagnóstico de TDAH e FOBIA SOCIAL — entender meu cérebro foi outro divisor de águas.</div>
-        <div class="tl-desc en">Systems Analysis degree from Impacta. Python Journey from FIAP. diagnosis of ADHD and social phobia — understanding my brain was another turning point.</div>
+        <div class="tl-desc en">Systems Analysis degree from Impacta. Python Journey from FIAP. ADHD and Social Anxiety diagnosis — understanding my brain was another turning point.</div>
       </div>
       <div class="tl-item">
-        <div class="tl-dot" style="background:var(--accent);border-color:var(--bg2);box-shadow:0 0 0 1px var(--accent)"></div>
-        <div class="tl-badge"><span class="pt">Out 2025</span><span class="en">Oct 2025</span></div>
-        <div class="tl-title">Analytics Engineer — iFood</div>
-        <div class="tl-desc pt">Growth Core, Squad Promotions. DAB, DQX e Diagram Flow.</div>
-        <div class="tl-desc en">Growth Core, Promotions Squad. DAB, DQX and Diagram Flow.</div>
-      </div>
-      <div class="tl-item">
-        <div class="tl-dot" style="background:var(--gold);border-color:var(--bg2);box-shadow:0 0 10px var(--gold),0 0 0 1px var(--gold)"></div>
-        <div class="tl-badge" style="color:var(--gold);background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.25)">2026</div>
-        <div class="tl-title" style="color:var(--gold)"><span class="pt">Próximo capítulo</span><span class="en">Next chapter</span></div>
-        <div class="tl-desc pt">De entregador a Analytics Engineer em 5 anos. Em busca de novos desafios em Engenharia de Dados e IA.</div>
-        <div class="tl-desc en">From delivery driver to Analytics Engineer in 5 years. Seeking new challenges in Data Engineering and AI.</div>
+        <div class="tl-dot" style="background:var(--purple);border-color:var(--bg2);box-shadow:0 0 0 1px var(--purple)"></div>
+        <div class="tl-badge" style="color:var(--purple);background:rgba(139,92,246,.1);border-color:rgba(139,92,246,.2)"><span class="pt">Set 2024</span><span class="en">Sep 2024</span></div>
+        <div class="tl-title"><span class="pt">Analytics Engineer — iFood</span><span class="en">Analytics Engineer — iFood</span></div>
+        <div class="tl-desc pt">Crescimento para Analytics Engineer. Pipelines ETL/ELT, DAB, DQX e criação do Diagram Flow — agente de IA para automação de análises.</div>
+        <div class="tl-desc en">Growth to Analytics Engineer. ETL/ELT pipelines, DAB, DQX and creation of Diagram Flow — AI agent for automating analysis.</div>
       </div>
     </div>
   </div>
@@ -709,19 +646,19 @@ documentation, reducing a process that used to take 1 to 2 days down to just
       <span class="en">Open to opportunities in Analytics Engineering, Data Engineering and AI-driven projects.</span>
     </p>
     <div class="contact-links">
-      <a href="https://www.linkedin.com/in/jheyssondouglas/" target="_blank" class="btn btn-outline" style="padding:.6rem 1rem;gap:.5rem;border-color:#0A66C2;color:#0A66C2">
+      <a href="https://www.linkedin.com/in/jheyssondouglas/" target="_blank" class="btn btn-outline" style="border-color:#0A66C2;color:#0A66C2">
       <img src="logos/linkedin_logo.jpeg" alt="LinkedIn" width="16" height="16">
       LinkedIn
     </a>
-      <a href="https://github.com/JheyssonDouglas" target="_blank" class="btn btn-outline" style="padding:.6rem 1rem;gap:.5rem;border-color:#ffffff;color:#ffffff">
+      <a href="https://github.com/JheyssonDouglas" target="_blank" class="btn btn-outline" style="border-color:#ffffff;color:#ffffff">
       <img src="https://cdn.simpleicons.org/github/E2E8F0" alt="GitHub" width="16" height="16">
       GitHub
     </a>
-      <a href="https://wa.me/5562991642970" target="_blank" class="btn btn-outline" style="gap:.5rem;border-color:#25D366;color:#25D366">
+      <a href="https://wa.me/5562991642970" target="_blank" class="btn btn-outline" style="border-color:#25D366;color:#25D366">
         <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp" width="16" height="16">
         WhatsApp
       </a>
-      <a href="mailto:jheyssonx@gmail.com" class="btn btn-outline" style="gap:.5rem;border-color:#EA4335;color:#EA4335">
+      <a href="mailto:jheyssonx@gmail.com" class="btn btn-outline" style="border-color:#EA4335;color:#EA4335">
         <img src="https://cdn.simpleicons.org/gmail/EA4335" alt="Email" width="16" height="16">
         Email
       </a>
