@@ -170,8 +170,50 @@ section{padding:clamp(3rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5rem)}
 
 /* CONTACT */
 #contact{background:var(--bg);text-align:center}
-.contact-inner{max-width:600px;margin:0 auto}
-.contact-links{display:flex;gap:clamp(.5rem, 2vw, 1rem);justify-content:center;flex-wrap:wrap;margin-top:clamp(1.5rem, 3vw, 2.4rem)}
+.contact-inner{max-width:700px;margin:0 auto}
+.contact-inner .section-title{text-align:center}
+.contact-form{
+    margin:2.5rem 0 0;
+    display:flex;
+    flex-direction:column;
+    gap:1.25rem;
+    text-align:left;
+}
+.input-group{
+    display:flex;
+    flex-direction:column;
+    gap:.5rem;
+}
+.input-group label{
+    color:var(--text);
+    font-size:.9rem;
+    font-weight:600;
+}
+.input-group input,
+.input-group textarea{
+    background:var(--bg3);
+    border:1px solid var(--border);
+    border-radius:.6rem;
+    padding:1rem;
+    color:var(--text);
+    font-size:.95rem;
+    font-family:var(--sans);
+    outline:none;
+    transition:border-color .2s;
+    width:100%;
+}
+.input-group input:focus,
+.input-group textarea:focus{border-color:var(--accent)}
+.input-group input::placeholder,
+.input-group textarea::placeholder{color:var(--muted)}
+.input-group textarea{resize:vertical;min-height:140px}
+.contact-links{
+    display:flex;
+    justify-content:center;
+    gap:1rem;
+    flex-wrap:wrap;
+    margin-top:2rem;
+}
 
 /* FOOTER */
 footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg);flex-wrap:wrap;gap:1rem;text-align:center}
@@ -734,30 +776,89 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
-    <p class="section-label" style="text-align:center"><span class="pt">Contato</span><span class="en">Contact</span></p>
-    <h2 class="section-title"><span class="pt">Vamos construir algo juntos?</span><span class="en">Let's build something together?</span></h2>
-    <p class="section-desc" style="margin:0 auto;text-align:center">
-      <span class="pt">Aberto a oportunidades em Analytics Engineering, Data Engineering e projetos envolvendo IA.</span>
-      <span class="en">Open to opportunities in Analytics Engineering, Data Engineering and AI-driven projects.</span>
+
+    <p class="section-label" style="text-align:center">
+      <span class="pt">Contato</span>
+      <span class="en">Contact</span>
     </p>
+
+    <h2 class="section-title">
+      <span class="pt">Vamos construir algo juntos?</span>
+      <span class="en">Let's build something together?</span>
+    </h2>
+
+    <p class="section-desc" style="margin:0 auto;text-align:center">
+      <span class="pt">
+        Aberto a oportunidades em Analytics Engineering, Data Engineering e projetos envolvendo IA.
+      </span>
+      <span class="en">
+        Open to opportunities in Analytics Engineering, Data Engineering and AI-driven projects.
+      </span>
+    </p>
+
+    <!-- FORMULÁRIO -->
+    <div class="contact-form">
+
+      <div class="input-group">
+        <label>Nome</label>
+        <input type="text" id="nome" placeholder="Seu nome">
+      </div>
+
+      <div class="input-group">
+        <label>Empresa</label>
+        <input type="text" id="empresa" placeholder="Empresa (opcional)">
+      </div>
+
+      <div class="input-group">
+        <label>E-mail</label>
+        <input type="email" id="email" placeholder="seu@email.com">
+      </div>
+
+      <div class="input-group">
+        <label>Mensagem</label>
+        <textarea id="mensagem" rows="6"
+          placeholder="Conte um pouco sobre o projeto ou oportunidade"></textarea>
+      </div>
+
+      <button class="btn btn-primary" id="btnEnviar">
+        Enviar mensagem →
+      </button>
+
+    </div>
+
+    <!-- REDES SOCIAIS -->
     <div class="contact-links">
-      <a href="https://www.linkedin.com/in/jheyssondouglas/" target="_blank" class="btn btn-outline" style="border-color:#0A66C2;color:#0A66C2">
-      <img src="logos/linkedin_logo.jpeg" alt="LinkedIn" width="16" height="16">
-      LinkedIn
-    </a>
-      <a href="https://github.com/JheyssonDouglas" target="_blank" class="btn btn-outline" style="border-color:#ffffff;color:#ffffff">
-      <img src="https://cdn.simpleicons.org/github/E2E8F0" alt="GitHub" width="16" height="16">
-      GitHub
-    </a>
-      <a href="https://wa.me/5562991642970" target="_blank" class="btn btn-outline" style="border-color:#25D366;color:#25D366">
-        <img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp" width="16" height="16">
+
+      <a href="https://www.linkedin.com/in/jheyssondouglas/"
+         target="_blank"
+         class="btn btn-outline"
+         style="border-color:#0A66C2;color:#0A66C2">
+
+        <img src="logos/linkedin_logo.jpeg" width="16">
+        LinkedIn
+      </a>
+
+      <a href="https://github.com/JheyssonDouglas"
+         target="_blank"
+         class="btn btn-outline">
+
+        <img src="https://cdn.simpleicons.org/github/E2E8F0"
+             width="16">
+        GitHub
+      </a>
+
+      <a href="https://wa.me/5562991642970"
+         target="_blank"
+         class="btn btn-outline"
+         style="border-color:#25D366;color:#25D366">
+
+        <img src="https://cdn.simpleicons.org/whatsapp/25D366"
+             width="16">
         WhatsApp
       </a>
-      <a href="mailto:jheyssonx@gmail.com" class="btn btn-outline" style="border-color:#EA4335;color:#EA4335">
-        <img src="https://cdn.simpleicons.org/gmail/EA4335" alt="Email" width="16" height="16">
-        Email
-      </a>
+
     </div>
+
   </div>
 </section>
 
