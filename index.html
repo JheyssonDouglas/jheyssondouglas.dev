@@ -168,6 +168,37 @@ section{padding:clamp(3rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5rem)}
 .tl-title{font-size:clamp(.95rem, 1.5vw, 1.02rem);font-weight:700;color:var(--text);margin-bottom:.38rem}
 .tl-desc{font-size:clamp(.8rem, 1.3vw, .875rem);color:var(--muted2);line-height:1.68}
 
+/* FAQ */
+#faq { background: var(--bg); }
+.faq-list { display: flex; flex-direction: column; gap: 0; max-width: 860px; }
+.faq-item { border-bottom: 1px solid var(--border); }
+.faq-question {
+  width: 100%; background: none; border: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.6rem 0; text-align: left; gap: 1rem;
+}
+.faq-q-text {
+  font-size: 1rem; font-weight: 600; color: var(--text);
+  line-height: 1.5; transition: color .2s;
+}
+.faq-question:hover .faq-q-text { color: var(--accent); }
+.faq-icon {
+  font-size: 1.2rem; color: var(--muted); flex-shrink: 0;
+  transition: transform .3s; font-family: var(--mono);
+}
+.faq-answer {
+  overflow: hidden; max-height: 0;
+  transition: max-height .35s ease, padding .35s ease;
+}
+.faq-answer-inner {
+  padding: 0 0 1.6rem;
+  font-size: .95rem; color: var(--muted2); line-height: 1.82;
+}
+.faq-answer-inner strong { color: var(--text); }
+.faq-answer-inner ul { margin: .8rem 0 0 1.2rem; display: flex; flex-direction: column; gap: .5rem; }
+.faq-item.open .faq-icon { transform: rotate(45deg); color: var(--accent); }
+.faq-item.open .faq-answer { max-height: 600px; }
+
 /* CONTACT */
 #contact{background:var(--bg);text-align:center}
 .contact-inner{max-width:700px;margin:0 auto}
@@ -797,6 +828,159 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
   </div>
 </section>
 
+<!-- FAQ -->
+<section id="faq">
+  <p class="section-label"><span class="pt">Dúvidas frequentes</span><span class="en">FAQ</span></p>
+  <h2 class="section-title"><span class="pt">Perguntas frequentes</span><span class="en">Frequently asked questions</span></h2>
+  <p class="section-desc pt">Dúvidas comuns sobre a área de dados — respondidas de forma direta.</p>
+  <p class="section-desc en">Common questions about the data field — answered straight to the point.</p>
+
+  <div class="faq-list">
+
+    <!-- Q1 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text">
+          <span class="pt">Qual a diferença entre Analytics Engineer e Engenheiro de Dados?</span>
+          <span class="en">What's the difference between Analytics Engineer and Data Engineer?</span>
+        </span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p class="pt">O <strong>Engenheiro de Dados</strong> foca na infraestrutura — move, armazena e processa dados em grande escala. É responsável pelos pipelines de ingestão, pela estabilidade e pela performance.<br><br>
+          O <strong>Analytics Engineer</strong> fica na camada intermediária — pega os dados já ingeridos pelo DE e os transforma em modelos limpos, documentados e prontos para análise. Trabalha muito com <strong>dbt, SQL e modelagem dimensional</strong>.<br><br>
+          Na prática: o DE constrói a estrada, o AE organiza as rotas. Ambos são essenciais.</p>
+          <p class="en">The <strong>Data Engineer</strong> focuses on infrastructure — moving, storing and processing data at scale. They're responsible for ingestion pipelines, stability and performance.<br><br>
+          The <strong>Analytics Engineer</strong> sits in the middle layer — they take data already ingested by the DE and transform it into clean, documented models ready for analysis. They work heavily with <strong>dbt, SQL and dimensional modeling</strong>.<br><br>
+          In practice: the DE builds the road, the AE organizes the routes. Both are essential.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text">
+          <span class="pt">O que um Analytics Engineer faz no dia a dia?</span>
+          <span class="en">What does an Analytics Engineer do day to day?</span>
+        </span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p class="pt">No dia a dia, um AE normalmente:</p>
+          <ul class="pt">
+            <li>Cria e mantém modelos de dados com <strong>dbt</strong></li>
+            <li>Escreve SQL avançado para transformar dados brutos em tabelas limpas e documentadas</li>
+            <li>Colabora com times de negócio para entender quais dados precisam e como estruturá-los</li>
+            <li>Garante qualidade dos dados com testes automatizados</li>
+            <li>Cria a camada <strong>Silver e Gold</strong> da arquitetura Medallion</li>
+            <li>Suporta analistas e cientistas de dados com datasets confiáveis</li>
+          </ul>
+          <p class="en">Day to day, an AE typically:</p>
+          <ul class="en">
+            <li>Creates and maintains data models with <strong>dbt</strong></li>
+            <li>Writes advanced SQL to transform raw data into clean, documented tables</li>
+            <li>Collaborates with business teams to understand data needs and structure</li>
+            <li>Ensures data quality with automated tests</li>
+            <li>Builds the <strong>Silver and Gold</strong> layers of the Medallion Architecture</li>
+            <li>Supports analysts and data scientists with reliable datasets</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text">
+          <span class="pt">Qual a diferença entre Cientista de Dados, Analista de Dados, Analytics Engineer e Engenheiro de Dados?</span>
+          <span class="en">What's the difference between Data Scientist, Data Analyst, Analytics Engineer and Data Engineer?</span>
+        </span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p class="pt">Cada papel tem um foco diferente na jornada do dado:</p>
+          <ul class="pt">
+            <li><strong>Engenheiro de Dados</strong> — move e armazena os dados. Cuida da infraestrutura, pipelines e ingestão em escala.</li>
+            <li><strong>Analytics Engineer</strong> — transforma os dados. Cria modelos limpos e confiáveis que conectam engenharia com análise.</li>
+            <li><strong>Analista de Dados</strong> — consome os dados. Cria dashboards, relatórios e responde perguntas de negócio.</li>
+            <li><strong>Cientista de Dados</strong> — prediz com os dados. Constrói modelos estatísticos e de Machine Learning para antecipar comportamentos.</li>
+          </ul>
+          <p class="pt">Pense assim: DE coleta a matéria-prima, AE refina, Analista usa, Cientista experimenta.</p>
+          <p class="en">Each role has a different focus in the data journey:</p>
+          <ul class="en">
+            <li><strong>Data Engineer</strong> — moves and stores data. Handles infrastructure, pipelines and large-scale ingestion.</li>
+            <li><strong>Analytics Engineer</strong> — transforms data. Creates clean, reliable models connecting engineering and analysis.</li>
+            <li><strong>Data Analyst</strong> — consumes data. Builds dashboards, reports and answers business questions.</li>
+            <li><strong>Data Scientist</strong> — predicts with data. Builds statistical and Machine Learning models to anticipate behaviors.</li>
+          </ul>
+          <p class="en">Think of it this way: DE collects the raw material, AE refines it, Analyst uses it, Scientist experiments with it.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text">
+          <span class="pt">Precisa saber programar para trabalhar com dados?</span>
+          <span class="en">Do you need to know how to code to work with data?</span>
+        </span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p class="pt">Depende do papel. Para <strong>Analista de Dados</strong>, ferramentas como Excel, Power BI e SQL básico já abrem muitas portas.<br><br>
+          Para <strong>Analytics Engineer e Engenheiro de Dados</strong>, programação é essencial — principalmente <strong>Python e SQL</strong>. Quanto mais profundo, melhor.<br><br>
+          Para <strong>Cientista de Dados</strong>, além de Python, é importante entender estatística e algoritmos de Machine Learning.<br><br>
+          A boa notícia: você não precisa ter formação em TI. Eu mesmo comecei do zero, sem nenhuma base técnica prévia.</p>
+          <p class="en">It depends on the role. For <strong>Data Analysts</strong>, tools like Excel, Power BI and basic SQL already open many doors.<br><br>
+          For <strong>Analytics Engineers and Data Engineers</strong>, programming is essential — mainly <strong>Python and SQL</strong>. The deeper, the better.<br><br>
+          For <strong>Data Scientists</strong>, beyond Python, it's important to understand statistics and Machine Learning algorithms.<br><br>
+          The good news: you don't need a CS degree. I started from scratch myself, with no prior technical background.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span class="faq-q-text">
+          <span class="pt">Por onde começar na área de dados?</span>
+          <span class="en">Where to start in the data field?</span>
+        </span>
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner">
+          <p class="pt">Minha recomendação baseada na minha própria experiência:</p>
+          <ul class="pt">
+            <li><strong>Comece pelo SQL</strong> — é a linguagem universal de dados e a mais cobrada em entrevistas</li>
+            <li><strong>Aprenda Python básico</strong> — foque em Pandas para manipular dados</li>
+            <li><strong>Faça projetos reais</strong> — dados públicos do governo, Kaggle, APIs abertas</li>
+            <li><strong>Coloque no GitHub</strong> — portfólio vale mais que certificado</li>
+            <li><strong>Escolha um caminho</strong> — Analista, Engenheiro ou Cientista. Cada um tem uma trilha diferente</li>
+            <li><strong>Não espere estar pronto</strong> — eu entrei no iFood sem me sentir pronto. Aprendi fazendo</li>
+          </ul>
+          <p class="en">My recommendation based on my own experience:</p>
+          <ul class="en">
+            <li><strong>Start with SQL</strong> — it's the universal language of data and the most tested in interviews</li>
+            <li><strong>Learn basic Python</strong> — focus on Pandas for data manipulation</li>
+            <li><strong>Build real projects</strong> — government open data, Kaggle, public APIs</li>
+            <li><strong>Put it on GitHub</strong> — portfolio is worth more than certificates</li>
+            <li><strong>Choose a path</strong> — Analyst, Engineer or Scientist. Each has a different learning track</li>
+            <li><strong>Don't wait to feel ready</strong> — I joined iFood without feeling ready. I learned by doing</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
   <div class="contact-inner">
@@ -941,6 +1125,15 @@ function setLang(lang) {
 })();
 </script>
 <script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+
+<script>
 document.getElementById("btnEnviar").addEventListener("click", async () => {
 
   const nome = document.getElementById("nome").value.trim();
@@ -987,9 +1180,12 @@ document.getElementById("btnEnviar").addEventListener("click", async () => {
 
     const data = await response.json();
 
-    // Mensagem de sucesso
-    statusMensagem.innerHTML =
-      "✅ Obrigado pela sua mensagem! Retornarei em breve.";
+if (!response.ok) {
+  throw new Error(JSON.stringify(data));
+}
+
+statusMensagem.innerHTML =
+  "✅ " + data.message;
 
     // Limpa formulário
     document.getElementById("nome").value = "";
