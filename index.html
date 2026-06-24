@@ -233,6 +233,13 @@ section{padding:clamp(3rem, 8vw, 7rem) clamp(1.25rem, 5vw, 5rem)}
   text-decoration:underline;
 }
 
+#statusMensagem{
+  margin-top:1rem;
+  font-size:.95rem;
+  color:#22c55e;
+  font-weight:500;
+}
+
 /* FOOTER */
 footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg);flex-wrap:wrap;gap:1rem;text-align:center}
 .footer-copy{font-family:var(--mono);font-size:clamp(.7rem, 1.3vw, .78rem);color:var(--muted)}
@@ -832,6 +839,14 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
       </div>
 
       <div class="input-group">
+  <label>LinkedIn (opcional)</label>
+  <input
+    type="text"
+    id="linkedin"
+    placeholder="https://linkedin.com/in/seu-perfil">
+</div>
+
+      <div class="input-group">
         <label>Mensagem</label>
         <textarea id="mensagem" rows="6"
           placeholder="Conte um pouco sobre o projeto ou oportunidade"></textarea>
@@ -840,8 +855,9 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
       <button class="btn btn-primary" id="btnEnviar">
         Enviar mensagem →
       </button>
-
+      <div id="statusMensagem"></div>
     </div>
+    
 
     <!-- REDES SOCIAIS -->
     <div class="contact-links">
@@ -923,6 +939,80 @@ function setLang(lang) {
     if (saved === 'en') setLang('en');
   } catch(e) {}
 })();
+</script>
+<script>
+document.getElementById("btnEnviar").addEventListener("click", async () => {
+
+  const nome = document.getElementById("nome").value.trim();
+  const empresa = document.getElementById("empresa").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const linkedin = document.getElementById("linkedin").value.trim();
+  const mensagem = document.getElementById("mensagem").value.trim();
+
+  const statusMensagem = document.getElementById("statusMensagem");
+  const botao = document.getElementById("btnEnviar");
+
+  // Validação
+  if (!nome || !email || !mensagem) {
+
+    statusMensagem.innerHTML =
+      "⚠️ Preencha Nome, E-mail e Mensagem.";
+
+    return;
+  }
+
+  try {
+
+    // Estado de carregamento
+    botao.disabled = true;
+    botao.innerHTML = "⏳ Enviando...";
+    statusMensagem.innerHTML = "";
+
+    const response = await fetch(
+      "https://portfolio-contact.jheyssonx.workers.dev",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          nome,
+          empresa,
+          email,
+          linkedin,
+          mensagem
+        })
+      }
+    );
+
+    const data = await response.json();
+
+    // Mensagem de sucesso
+    statusMensagem.innerHTML =
+      "✅ Obrigado pela sua mensagem! Retornarei em breve.";
+
+    // Limpa formulário
+    document.getElementById("nome").value = "";
+    document.getElementById("empresa").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("linkedin").value = "";
+    document.getElementById("mensagem").value = "";
+
+  } catch (error) {
+
+    console.error(error);
+
+    statusMensagem.innerHTML =
+      "❌ Erro ao enviar mensagem. Tente novamente.";
+
+  } finally {
+
+    botao.disabled = false;
+    botao.innerHTML = "Enviar mensagem →";
+
+  }
+
+});
 </script>
 </body>
 </html>
