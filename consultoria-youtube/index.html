@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LE7PK1FRN6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LE7PK1FRN6');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análise Inteligente para Canais do YouTube — Jheysson Douglas</title>
+<meta name="description" content="Descubra o que seus espectadores realmente pensam: análise com Inteligência Artificial dos comentários reais do seu canal — sentimento, temas recorrentes, super fãs e plano de ação.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230B0F1A'/><rect x='24' y='52' width='13' height='28' rx='2' fill='%232563EB'/><rect x='44' y='38' width='13' height='42' rx='2' fill='%2360A5FA'/><rect x='64' y='26' width='13' height='54' rx='2' fill='%232563EB'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:     #080C14;
+  --bg2:    #0D1420;
+  --bg3:    #111927;
+  --bg4:    #141D2B;
+  --border: #1E2D42;
+  --bdr2:   #253447;
+  --accent: #3B82F6;
+  --acc2:   #60A5FA;
+  --gold:   #F59E0B;
+  --green:  #10B981;
+  --red:    #EF4444;
+  --text:   #E2E8F0;
+  --muted:  #64748B;
+  --muted2: #94A3B8;
+  --mono:   'JetBrains Mono', monospace;
+  --sans:   'Inter', sans-serif;
+  --r:      .75rem;
+  --sh:     0 4px 32px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem clamp(1rem, 5vw, 5rem);background:rgba(8,12,20,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--mono);font-size:clamp(.7rem, 2vw, .85rem);color:var(--accent);text-decoration:none;letter-spacing:.04em}
+.nav-back{color:var(--muted);text-decoration:none;font-size:clamp(.75rem, 1.5vw, .85rem);font-weight:500;transition:color .2s}
+.nav-back:hover{color:var(--text)}
+
+.btn{display:inline-flex;align-items:center;gap:.45rem;padding:clamp(.65rem, 2vw, .8rem) clamp(1.1rem, 3vw, 1.6rem);border-radius:.5rem;font-size:clamp(.8rem, 1.5vw, .9rem);font-weight:600;text-decoration:none;transition:all .2s;cursor:pointer;border:none;white-space:nowrap}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:#2563EB;transform:translateY(-1px);box-shadow:0 6px 20px rgba(59,130,246,.4)}
+.btn-outline{background:transparent;color:var(--text);border:1px solid var(--bdr2)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+.btn-green{background:#25D366;color:#fff}
+.btn-green:hover{background:#1fb457;transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,211,102,.35)}
+
+section{padding:clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 5rem)}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-family:var(--mono);font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.14em;margin-bottom:.75rem;text-align:center}
+.section-title{font-size:clamp(1.5rem, 4.5vw, 2.4rem);font-weight:800;letter-spacing:-.03em;margin-bottom:1rem;line-height:1.15;text-align:center}
+.section-desc{color:var(--muted2);max-width:640px;line-height:1.82;margin:0 auto clamp(2rem, 5vw, 3.5rem);text-align:center}
+.tag{font-family:var(--mono);font-size:.7rem;color:var(--acc2);background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.18);padding:.25rem .65rem;border-radius:.3rem}
+
+/* HERO */
+#hero{min-height:92vh;display:flex;align-items:center;padding:clamp(6rem, 10vw, 8rem) clamp(1.25rem, 5vw, 5rem) clamp(3rem, 5vw, 5rem);position:relative;overflow:hidden;text-align:center}
+#hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(59,130,246,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(59,130,246,.035) 1px,transparent 1px);background-size:52px 52px;mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,black 30%,transparent 100%)}
+.hero-glow{position:absolute;width:clamp(400px, 55vw, 750px);height:clamp(400px, 55vw, 750px);border-radius:50%;background:radial-gradient(circle,rgba(59,130,246,.12) 0%,transparent 65%);top:-280px;left:50%;transform:translateX(-50%);pointer-events:none}
+.hero-inner{max-width:820px;margin:0 auto;position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:clamp(.72rem, 1.5vw, .82rem);color:var(--acc2);background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);padding:.4rem .9rem;border-radius:2rem;margin-bottom:1.6rem}
+.hero-title{font-size:clamp(2rem, 5.5vw, 3.4rem);font-weight:800;line-height:1.12;letter-spacing:-.03em;margin-bottom:1.3rem}
+.hero-title span{color:var(--acc2)}
+.hero-desc{font-size:clamp(1rem, 2vw, 1.15rem);color:var(--muted2);line-height:1.8;max-width:620px;margin:0 auto clamp(2rem, 4vw, 2.6rem)}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.4rem}
+.hero-note{font-size:.82rem;color:var(--muted);font-family:var(--mono)}
+.hero-badge-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:2.2rem}
+.hero-badge{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--muted2);background:var(--bg3);border:1px solid var(--border);padding:.4rem .8rem;border-radius:2rem}
+
+/* PROBLEMA */
+#problema{background:var(--bg2)}
+.problema-box{max-width:620px;margin:0 auto;text-align:center}
+.problema-box p{color:var(--muted2);font-size:1.02rem;line-height:1.75;margin-bottom:.4rem}
+.problema-mas,.problema-enquanto{font-family:var(--mono);font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin:1.4rem 0 1.1rem}
+.problema-list{list-style:none;display:flex;flex-direction:column;gap:.7rem;text-align:left;max-width:480px;margin:0 auto 1.4rem}
+.problema-list li{position:relative;padding-left:1.4rem;color:var(--muted2);font-size:.95rem;line-height:1.6}
+.problema-list li::before{content:'✕';color:var(--red);font-family:var(--mono);font-size:.8rem;position:absolute;left:0;top:.15rem}
+.problema-resposta{color:var(--text)!important;font-weight:600;font-size:1.08rem!important;margin-top:.2rem}
+
+/* AUTOR */
+#autor{background:var(--bg)}
+.author-box{max-width:780px;margin:0 auto;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.8rem, 4vw, 2.6rem);display:flex;gap:clamp(1.6rem, 4vw, 2.6rem);align-items:center}
+.author-photo{flex-shrink:0;width:clamp(96px, 14vw, 130px);height:clamp(96px, 14vw, 130px);border-radius:50%;object-fit:cover;border:2px solid var(--bdr2);box-shadow:0 0 0 5px rgba(59,130,246,.08)}
+.author-text p{color:var(--muted2);font-size:.92rem;line-height:1.82;margin-bottom:.9rem}
+.author-text p:last-of-type{margin-bottom:1.1rem}
+.author-name{color:var(--text);font-weight:700;font-size:1.02rem;margin-bottom:.6rem}
+@media(max-width:640px){.author-box{flex-direction:column;text-align:center}.author-text{display:flex;flex-direction:column;align-items:center}}
+
+/* STEPS */
+#como-funciona{background:var(--bg2)}
+.steps{display:grid;grid-template-columns:repeat(3, 1fr);gap:clamp(1rem, 3vw, 1.5rem)}
+.step{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.5rem, 3vw, 2rem)}
+.step-num{font-family:var(--mono);font-size:.8rem;color:var(--accent);background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.25);width:2rem;height:2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;font-weight:700}
+.step h3{font-size:1.02rem;font-weight:700;margin-bottom:.5rem}
+.step p{color:var(--muted2);font-size:.9rem;line-height:1.7}
+
+/* FEATURES GRID */
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));gap:clamp(1rem, 3vw, 1.5rem)}
+.feature-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.4rem, 3vw, 1.8rem);transition:border-color .2s,transform .2s}
+.feature-card:hover{border-color:var(--bdr2);transform:translateY(-2px)}
+.feature-icon{font-size:1.6rem;margin-bottom:.9rem;display:block}
+.feature-card h3{font-size:.95rem;font-weight:700;margin-bottom:.5rem}
+.feature-card p{color:var(--muted2);font-size:.85rem;line-height:1.68}
+
+/* PRICING */
+#pacotes{background:var(--bg2)}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));gap:clamp(1rem, 3vw, 1.5rem);align-items:stretch}
+.price-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.6rem, 3vw, 2rem);display:flex;flex-direction:column;gap:1rem;transition:border-color .2s,transform .2s}
+.price-card:hover{border-color:var(--bdr2);transform:translateY(-2px)}
+.price-card.featured{border-color:var(--accent);box-shadow:0 0 0 1px rgba(59,130,246,.3),var(--sh)}
+.price-badge{font-family:var(--mono);font-size:.68rem;color:var(--gold);background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);padding:.2rem .55rem;border-radius:.3rem;align-self:flex-start}
+.price-name{font-size:1.05rem;font-weight:700}
+.price-value{font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--acc2)}
+.price-value small{font-size:.75rem;color:var(--muted);font-weight:400}
+.price-feats{display:flex;flex-direction:column;gap:.55rem;flex:1}
+.price-feats div{position:relative;padding-left:1.2rem;font-size:.85rem;color:var(--muted2);line-height:1.6}
+.price-feats div::before{content:'✓';color:var(--green);font-family:var(--mono);position:absolute;left:0}
+.price-addons{margin-top:clamp(1.5rem, 3vw, 2.5rem);text-align:center;color:var(--muted2);font-size:.88rem;line-height:1.9}
+.price-addons strong{color:var(--text)}
+.price-note{font-size:.76rem;color:var(--muted);line-height:1.6;margin-top:.2rem}
+.price-card .btn{margin-top:auto;justify-content:center}
+
+/* NICHOS */
+.niches-wrap{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
+
+/* SAMPLE */
+#exemplo{background:var(--bg)}
+.samples-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:clamp(1rem, 3vw, 1.5rem)}
+.sample-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.4rem, 3vw, 1.8rem);text-align:center;display:flex;flex-direction:column;align-items:center;gap:.9rem;transition:border-color .2s,transform .2s}
+.sample-card:hover{border-color:var(--bdr2);transform:translateY(-2px)}
+.sample-card .file-icon{font-size:1.8rem}
+.sample-card h3{font-size:.95rem;font-weight:700}
+.sample-card p{color:var(--muted2);font-size:.82rem;line-height:1.62;flex:1}
+.sample-soon{background:var(--bg4);color:var(--muted);border:1px dashed var(--bdr2);cursor:default;pointer-events:none}
+
+/* FAQ */
+#faq{background:var(--bg2)}
+.faq-list{display:flex;flex-direction:column;gap:0;max-width:760px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-question{width:100%;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;text-align:left;gap:1rem}
+.faq-q-text{font-size:.98rem;font-weight:600;color:var(--text);line-height:1.5}
+.faq-icon{font-size:1.2rem;color:var(--muted);flex-shrink:0;transition:transform .3s;font-family:var(--mono)}
+.faq-answer{overflow:hidden;max-height:0;transition:max-height .35s ease}
+.faq-answer-inner{padding:0 0 1.5rem;font-size:.92rem;color:var(--muted2);line-height:1.8}
+.faq-item.open .faq-icon{transform:rotate(45deg);color:var(--accent)}
+.faq-item.open .faq-answer{max-height:400px}
+
+/* CONTACT */
+#contact{background:var(--bg);text-align:center}
+.contact-inner{max-width:640px;margin:0 auto}
+.contact-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:2rem}
+.contact-email{display:inline-block;margin-top:1.5rem;font-size:1rem;color:var(--acc2);text-decoration:none}
+.contact-email:hover{text-decoration:underline}
+
+/* FOOTER */
+footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg);flex-wrap:wrap;gap:1rem;text-align:center}
+.footer-copy{font-family:var(--mono);font-size:clamp(.7rem, 1.3vw, .78rem);color:var(--muted)}
+.footer-tag{font-family:var(--mono);font-size:clamp(.7rem, 1.3vw, .78rem);color:var(--muted)}
+.footer-tag a{color:var(--accent);text-decoration:none}
+
+@media(max-width:768px){
+  .steps{grid-template-columns:1fr}
+  nav{padding:.85rem 1rem}
+  section{padding:clamp(2.5rem, 6vw, 4rem) 1.1rem}
+  footer{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://jheyssondouglas.dev" class="nav-logo">jheyssondouglas.dev</a>
+  <a href="https://jheyssondouglas.dev" class="nav-back">← Portfólio técnico</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow">📊 Análise Inteligente para Canais do YouTube</div>
+    <h1 class="hero-title">Descubra o que seus espectadores <span>realmente pensam</span> antes de gravar o próximo vídeo</h1>
+    <p class="hero-desc">Analiso os comentários reais do seu canal — sentimento, temas que mais aparecem, quem são seus super fãs. Um relatório claro, baseado em dados públicos do próprio YouTube, não em opinião.</p>
+    <div class="hero-cta">
+      <a href="https://wa.me/5562991642970?text=Quero%20an%C3%A1lise%20gratuita%20de%20um%20v%C3%ADdeo" target="_blank" class="btn btn-green">💬 Receber análise gratuita</a>
+      <a href="relatorio-amostra.pdf" target="_blank" class="btn btn-outline">Ver exemplo de relatório</a>
+    </div>
+    <p class="hero-note">Análise de 1 vídeo por canal é gratuita — você só paga se quiser ir mais fundo.</p>
+    <div class="hero-badge-row">
+      
+      <span class="hero-badge">📊 Dados reais, não opinião</span>
+      <span class="hero-badge">▶️ Direto do seu canal no YouTube</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMA -->
+<section id="problema">
+  <div class="section-inner">
+    <p class="section-label">O problema</p>
+    <h2 class="section-title">Você já passou por isso?</h2>
+    <div class="problema-box">
+      <p>Você grava um vídeo.</p>
+      <p>Ele recebe centenas ou milhares de comentários.</p>
+      <p class="problema-mas">Mas...</p>
+      <ul class="problema-list">
+        <li>ninguém lê todos eles</li>
+        <li>você não sabe exatamente o que agradou a audiência</li>
+        <li>não sabe quais temas deveria repetir</li>
+        <li>não sabe por que alguns vídeos performam muito melhor que outros</li>
+      </ul>
+      <p class="problema-enquanto">Enquanto isso...</p>
+      <p class="problema-resposta">A resposta para todas essas perguntas está justamente nos comentários.</p>
+    </div>
+  </div>
+</section>
+
+<!-- AUTOR -->
+<section id="autor">
+  <div class="section-inner">
+    <p class="section-label">Quem vai fazer essa análise</p>
+    <h2 class="section-title">Uma análise técnica, não um resumo genérico</h2>
+    <div class="author-box">
+      <img src="../imagem/foto.jpg" alt="Jheysson Douglas" class="author-photo">
+      <div class="author-text">
+        <div class="author-name">Jheysson Douglas</div>
+        <p>Sou Analytics Engineer e trabalho diariamente construindo pipelines, modelos analíticos e soluções de dados em ambiente de produção.</p>
+        <p>Essa solução nasceu quando percebi que os comentários do YouTube escondem informações extremamente valiosas, mas quase ninguém consegue analisá-los em escala.</p>
+        <p>Por isso desenvolvi um processo que utiliza IA, NLP e técnicas de Analytics Engineering para transformar milhares de comentários em insights práticos para criadores de conteúdo.</p>
+        <div class="niches-wrap">
+          <span class="tag">Analytics Engineer</span>
+          <span class="tag">Data Engineer</span>
+          <span class="tag">Especialista em Analytics</span>
+          <span class="tag">IA aplicada a Dados</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="section-inner">
+    <p class="section-label">Como funciona</p>
+    <h2 class="section-title">Do link do vídeo ao plano de ação</h2>
+    <p class="section-desc">Um processo simples, com dados extraídos direto da API oficial do YouTube — nada de achismo ou métricas de vaidade.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Você envia o link</h3>
+        <p>Me manda a URL do vídeo (ou do canal, nos pacotes maiores). Não precisa de acesso ao YouTube Studio — uso apenas dados públicos.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>A IA analisa os comentários reais</h3>
+        <p>Leio e organizo todos os comentários automaticamente — identificando sentimento, os temas que mais se repetem e quem são seus super fãs.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Você recebe o relatório</h3>
+        <p>Um PDF direto ao ponto: o que está funcionando, o que está incomodando a audiência, e um plano de ação para o próximo vídeo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE VOCÊ RECEBE -->
+<section id="entrega">
+  <div class="section-inner">
+    <p class="section-label">A análise</p>
+    <h2 class="section-title">O que a análise revela</h2>
+    <p class="section-desc">Tudo calculado a partir dos comentários reais do seu vídeo — dados públicos, extraídos direto do YouTube. Nada de achismo.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">😊</span>
+        <h3>Sentimento dos comentários</h3>
+        <p>Percentual de comentários positivos, negativos e neutros — para saber se o vídeo está agradando de verdade.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🧩</span>
+        <h3>Temas recorrentes</h3>
+        <p>Os assuntos que mais aparecem nos comentários, agrupados para você ver num relance.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">⭐</span>
+        <h3>Super fãs identificados</h3>
+        <p>Quem comenta várias vezes no mesmo vídeo — seu público mais engajado, ótimo para focar em retenção.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">📈</span>
+        <h3>Métricas de engajamento</h3>
+        <p>Taxa de like, taxa de comentário e engajamento geral, comparados ao tamanho do canal.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">💬</span>
+        <h3>Comentários mais curtidos</h3>
+        <p>O que a audiência mais validou publicamente — sinal direto do que ressoou no vídeo.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔤</span>
+        <h3>Palavras mais frequentes</h3>
+        <p>As palavras que mais se repetem nos comentários, para entender o vocabulário da sua audiência.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXEMPLO -->
+<section id="exemplo">
+  <div class="section-inner">
+    <p class="section-label">Prova real</p>
+    <h2 class="section-title">Veja um exemplo de cada relatório</h2>
+    <p class="section-desc">Modelos com dados fictícios, no mesmo formato que você recebe — para ver a profundidade da análise antes de decidir.</p>
+    <div class="samples-grid">
+      <div class="sample-card">
+        <span class="file-icon">📄</span>
+        <h3>Análise Gratuita</h3>
+        <p>Sentimento, temas em destaque, engajamento e uma prévia dos super fãs do vídeo.</p>
+        <a href="relatorio-amostra.pdf" target="_blank" class="btn btn-primary">⬇ Baixar exemplo</a>
+      </div>
+      <div class="sample-card">
+        <span class="file-icon">📄</span>
+        <h3>Relatório Aprofundado</h3>
+        <p>A versão completa: todos os pontos de atenção e o plano de ação para o próximo vídeo.</p>
+        <a href="relatorio-aprofundado-exemplo.pdf" target="_blank" class="btn btn-primary">⬇ Baixar exemplo</a>
+      </div>
+      <div class="sample-card">
+        <span class="file-icon">📄</span>
+        <h3>Diagnóstico de Conteúdo</h3>
+        <p>Comparativo entre os vídeos que mais importam para o seu canal.</p>
+        <a href="diagnostico-exemplo.pdf" target="_blank" class="btn btn-primary">⬇ Baixar exemplo</a>
+      </div>
+      <div class="sample-card">
+        <span class="file-icon">📄</span>
+        <h3>Raio-X do Canal</h3>
+        <p>Tendência do canal inteiro e mergulho fundo nos melhores e piores vídeos.</p>
+        <span class="btn btn-outline sample-soon" data-file="raiox-exemplo.pdf">Em breve</span>
+      </div>
+      <div class="sample-card">
+        <span class="file-icon">📄</span>
+        <h3>Add-on Benchmark</h3>
+        <p>Comparação do seu canal com 2–3 concorrentes do nicho.</p>
+        <span class="btn btn-outline sample-soon" data-file="benchmark-exemplo.pdf">Em breve</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PACOTES -->
+<section id="pacotes">
+  <div class="section-inner">
+    <p class="section-label">Pacotes</p>
+    <h2 class="section-title">Comece grátis, aprofunde quando quiser</h2>
+    <p class="section-desc">A análise de 1 vídeo é gratuita e sem compromisso. Os demais pacotes são dimensionados de acordo com o tamanho do seu canal — solicite uma proposta.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <span class="price-badge">GRÁTIS</span>
+        <div class="price-name">Análise Gratuita</div>
+        <div class="price-value">R$ 0</div>
+        <div class="price-feats">
+          <div>Sentimento dos comentários</div>
+          <div>Temas que mais aparecem nos comentários</div>
+          <div>Métricas de engajamento</div>
+          <div>Prévia dos super fãs</div>
+        </div>
+        <p class="price-note">Válida para 1 vídeo por canal. Novos pedidos gratuitos para o mesmo canal não são elegíveis.</p>
+        <a href="https://wa.me/5562991642970?text=Quero%20an%C3%A1lise%20gratuita%20de%20um%20v%C3%ADdeo" target="_blank" class="btn btn-green">Receber análise gratuita</a>
+      </div>
+      <div class="price-card featured">
+        <span class="price-badge" style="color:var(--acc2);background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3)">MAIS PEDIDO</span>
+        <div class="price-name">Relatório Aprofundado</div>
+        <div class="price-feats">
+          <div>Versão completa do relatório grátis</div>
+          <div>Todos os pontos de atenção</div>
+          <div>Todos os temas identificados nos comentários</div>
+          <div>Plano de ação para o próximo vídeo</div>
+        </div>
+        <a href="https://wa.me/5562991642970?text=Ol%C3%A1%21%20Quero%20contratar%20o%20Relat%C3%B3rio%20Aprofundado." target="_blank" class="btn btn-primary">Solicitar proposta</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Diagnóstico de Conteúdo</div>
+        <div class="price-feats">
+          <div>Comparativo entre 5 ou 10 vídeos do canal</div>
+          <div>Comparativo entre os vídeos que mais importam</div>
+          <div>Comunidade que se repete entre eles</div>
+          <div>Visão do que funciona em cada formato</div>
+        </div>
+        <a href="https://wa.me/5562991642970?text=Quero%20o%20Diagn%C3%B3stico%20de%20Conte%C3%BAdo." target="_blank" class="btn btn-primary">Solicitar proposta</a>
+      </div>
+      <div class="price-card">
+        <div class="price-name">Raio-X do Canal</div>
+        <div class="price-feats">
+          <div>Tendência do canal inteiro</div>
+          <div>Comunidade recorrente mapeada</div>
+          <div>Mergulho fundo nos melhores e piores vídeos</div>
+          <div>Benchmark com concorrentes (add-on)</div>
+        </div>
+        <a href="https://wa.me/5562991642970?text=Tenho%20interesse%20no%20Raio-X%20do%20Canal." target="_blank" class="btn btn-primary">Solicitar proposta</a>
+      </div>
+    </div>
+    <div class="price-addons">
+      <strong>Add-on Benchmark</strong> com canais concorrentes e <strong>assinatura mensal</strong> de acompanhamento também disponíveis — sob proposta.
+    </div>
+  </div>
+</section>
+
+<!-- PARA QUEM É -->
+<section id="para-quem">
+  <div class="section-inner">
+    <p class="section-label">Para quem é</p>
+    <h2 class="section-title">Ideal para canais em crescimento com comunidade ativa</h2>
+    <p class="section-desc">Funciona melhor em nichos com comentários abertos e audiência que interage de verdade.</p>
+    <div class="niches-wrap">
+      <span class="tag">Finanças pessoais</span>
+      <span class="tag">Investimentos</span>
+      <span class="tag">Empreendedorismo</span>
+      <span class="tag">Marketing digital</span>
+      <span class="tag">Concurso público</span>
+      <span class="tag">Psicologia</span>
+      <span class="tag">Direito</span>
+      <span class="tag">Emagrecimento</span>
+      <span class="tag">Carreira</span>
+      <span class="tag">Idiomas</span>
+      <span class="tag">Imóveis / Corretores</span>
+      <span class="tag">Gastronomia / Culinária</span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <p class="section-label">Dúvidas frequentes</p>
+    <h2 class="section-title">Perguntas frequentes</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Preciso dar acesso ao meu canal ou senha?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Não. Uso apenas dados públicos disponíveis pela API oficial do YouTube — vídeo, canal e comentários públicos. Você só precisa me enviar o link.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Quanto tempo leva para eu receber o relatório?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">O relatório grátis de 1 vídeo costuma sair no mesmo dia. Pacotes maiores (Diagnóstico e Raio-X) levam de 1 a 3 dias, dependendo da quantidade de vídeos analisados.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Funciona para qualquer canal?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Funciona melhor em canais com comentários abertos e volume real de interação. Nichos dominados por megacanais (infantil, música mainstream, futebol) ou com comentários desativados tendem a gerar uma análise mais rasa.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Meu canal é pequeno / tem poucos comentários. Funciona?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Funciona sim. Mesmo com poucos comentários já dá para tirar uma leitura útil sobre sentimento e temas recorrentes — o volume de comentários só muda a profundidade da análise, não impede que ela aconteça.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <p class="section-label">Vamos começar</p>
+    <h2 class="section-title">Descubra o que sua audiência está tentando te dizer</h2>
+    <p class="section-desc">Receba gratuitamente a análise de um vídeo do seu canal — sentimento, temas recorrentes e super fãs, baseado em dados reais.</p>
+    <div class="contact-links">
+      <a href="https://wa.me/5562991642970?text=Quero%20an%C3%A1lise%20gratuita%20de%20um%20v%C3%ADdeo" target="_blank" class="btn btn-green">💬 Receber análise gratuita</a>
+      <a href="mailto:contato@jheyssondouglas.dev" class="btn btn-outline">✉ Enviar e-mail</a>
+    </div>
+    <a href="mailto:contato@jheyssondouglas.dev" class="contact-email">contato@jheyssondouglas.dev</a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">© 2026 Jheysson Douglas · Todos os direitos reservados</span>
+  <span class="footer-tag">Um projeto de <a href="https://jheyssondouglas.dev">jheyssondouglas.dev</a></span>
+</footer>
+
+<script>
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+</script>
+</body>
+</html>
