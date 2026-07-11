@@ -58,6 +58,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .btn-outline:hover{border-color:var(--accent);color:var(--accent)}
 .btn-green{background:#25D366;color:#fff}
 .btn-green:hover{background:#1fb457;transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,211,102,.35)}
+.btn-icon{width:1.15em;height:1.15em;object-fit:contain;flex-shrink:0}
 
 section{padding:clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 5rem)}
 .section-inner{max-width:1100px;margin:0 auto}
@@ -138,8 +139,8 @@ section{padding:clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 5rem)}
 
 /* SAMPLE */
 #exemplo{background:var(--bg)}
-.samples-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));gap:clamp(1rem, 3vw, 1.5rem)}
-.sample-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.4rem, 3vw, 1.8rem);text-align:center;display:flex;flex-direction:column;align-items:center;gap:.9rem;transition:border-color .2s,transform .2s}
+.samples-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(1rem, 3vw, 1.5rem);}
+.sample-card{flex:0 1 320px;              /* base ~320px, sem esticar → 3 por linha */background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.4rem, 3vw, 1.8rem);text-align:center;display:flex;flex-direction:column;align-items:center;gap:.9rem;transition:border-color .2s,transform .2s;}
 .sample-card:hover{border-color:var(--bdr2);transform:translateY(-2px)}
 .sample-card .file-icon{font-size:1.8rem}
 .sample-card h3{font-size:.95rem;font-weight:700}
@@ -194,7 +195,7 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
     <h1 class="hero-title">Descubra o que seus espectadores <span>realmente pensam</span> antes de gravar o próximo vídeo</h1>
     <p class="hero-desc">Analiso os comentários reais do seu canal — sentimento, temas que mais aparecem, quem são seus super fãs. Um relatório claro, baseado em dados públicos do próprio YouTube, não em opinião.</p>
     <div class="hero-cta">
-      <a href="https://wa.me/5562991642970?text=Quero%20an%C3%A1lise%20gratuita%20de%20um%20v%C3%ADdeo" target="_blank" class="btn btn-green">💬 Receber análise gratuita</a>
+      <a href="https://wa.me/5562991642970?text=Quero%20an%C3%A1lise%20gratuita%20de%20um%20v%C3%ADdeo" target="_blank" class="btn btn-green"><img src="../logos/social-media_15789331.png" alt="WhatsApp" class="btn-icon">Receber análise gratuita</a>
       <a href="relatorio-amostra.pdf" target="_blank" class="btn btn-outline">Ver exemplo de relatório</a>
     </div>
     <p class="hero-note">Análise de 1 vídeo por canal é gratuita — você só paga se quiser ir mais fundo.</p>
@@ -313,6 +314,16 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
         <h3>Palavras mais frequentes</h3>
         <p>As palavras que mais se repetem nos comentários, para entender o vocabulário da sua audiência.</p>
       </div>
+      <div class="feature-card">
+  <span class="feature-icon">🚀</span>
+  <h3>Alcance além dos inscritos</h3>
+  <p>Quantas vezes o vídeo foi visto além do tamanho da sua base — o sinal de que ele furou a bolha.</p>
+</div>
+<div class="feature-card">
+  <span class="feature-icon">⏳</span>
+  <h3>Fôlego ao longo do tempo</h3>
+  <p>Se o vídeo morreu no primeiro dia ou continua sendo descoberto por gente nova, semana após semana.</p>
+</div>
     </div>
   </div>
 </section>
@@ -346,13 +357,13 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
         <span class="file-icon">📄</span>
         <h3>Raio-X do Canal</h3>
         <p>Tendência do canal inteiro e mergulho fundo nos melhores e piores vídeos.</p>
-        <span class="btn btn-outline sample-soon" data-file="raiox-exemplo.pdf">Em breve</span>
+        <a href="raiox-exemplo.pdf" target="_blank" class="btn btn-primary">⬇ Baixar exemplo</a>
       </div>
       <div class="sample-card">
         <span class="file-icon">📄</span>
         <h3>Add-on Benchmark</h3>
         <p>Comparação do seu canal com 2–3 concorrentes do nicho.</p>
-        <span class="btn btn-outline sample-soon" data-file="benchmark-exemplo.pdf">Em breve</span>
+        <a href="benchmark-exemplo.pdf" target="_blank" class="btn btn-primary">⬇ Baixar exemplo</a>
       </div>
     </div>
   </div>
@@ -492,8 +503,8 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
     <h2 class="section-title">Descubra o que sua audiência está tentando te dizer</h2>
     <p class="section-desc">Receba gratuitamente a análise de um vídeo do seu canal — sentimento, temas recorrentes e super fãs, baseado em dados reais.</p>
     <div class="contact-links">
-      <a href="https://wa.me/5562991642970?text=Quero%20an%C3%A1lise%20gratuita%20de%20um%20v%C3%ADdeo" target="_blank" class="btn btn-green">💬 Receber análise gratuita</a>
-      <a href="mailto:contato@jheyssondouglas.dev" class="btn btn-outline">✉ Enviar e-mail</a>
+      <a href="https://wa.me/5562991642970?text=Quero%20an%C3%A1lise%20gratuita%20de%20um%20v%C3%ADdeo" target="_blank" class="btn btn-green"><img src="../logos/social-media_15789331.png" alt="WhatsApp" class="btn-icon">Receber análise gratuita</a>
+      <a href="mailto:contato@jheyssondouglas.dev" class="btn btn-outline"><img src="https://cdn.simpleicons.org/gmail/EA4335" alt="WhatsApp" class="btn-icon">Enviar e-mail</a>
     </div>
     <a href="mailto:contato@jheyssondouglas.dev" class="contact-email">contato@jheyssondouglas.dev</a>
   </div>
