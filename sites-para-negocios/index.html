@@ -79,6 +79,7 @@ section{padding:clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 5rem)}
 .hero-note{font-size:.82rem;color:var(--muted);font-family:var(--mono)}
 .hero-badge-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:2.2rem}
 .hero-badge{display:flex;align-items:center;gap:.4rem;font-size:.78rem;color:var(--muted2);background:var(--bg3);border:1px solid var(--border);padding:.4rem .8rem;border-radius:2rem}
+.ic-wa{width:1.05em;height:1.05em;display:inline-block;vertical-align:-.15em;flex-shrink:0}
 
 /* STEPS */
 #como-funciona{background:var(--bg2)}
@@ -104,17 +105,19 @@ section{padding:clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 5rem)}
 
 /* PRICING */
 #preco{background:var(--bg2)}
-.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:clamp(1rem, 3vw, 1.5rem);max-width:760px;margin:0 auto}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:clamp(1rem, 3vw, 1.5rem);max-width:1000px;margin:0 auto}
 .price-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.6rem, 3vw, 2rem);display:flex;flex-direction:column;gap:1rem;transition:border-color .2s,transform .2s}
 .price-card:hover{border-color:var(--bdr2);transform:translateY(-2px)}
 .price-card.featured{border-color:var(--accent);box-shadow:0 0 0 1px rgba(59,130,246,.3),var(--sh)}
 .price-badge{font-family:var(--mono);font-size:.68rem;color:var(--gold);background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);padding:.2rem .55rem;border-radius:.3rem;align-self:flex-start}
 .price-name{font-size:1.05rem;font-weight:700}
-.price-value{font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--acc2)}
-.price-value small{font-size:.75rem;color:var(--muted);font-weight:400}
+.price-value{font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--acc2)}
+.price-value small{font-size:.7rem;color:var(--muted);font-weight:400;display:block;margin-top:.2rem}
 .price-feats{display:flex;flex-direction:column;gap:.55rem;flex:1}
 .price-feats div{position:relative;padding-left:1.2rem;font-size:.85rem;color:var(--muted2);line-height:1.6}
 .price-feats div::before{content:'✓';color:var(--green);font-family:var(--mono);position:absolute;left:0}
+.pricing-note{max-width:640px;margin:2.5rem auto 0;text-align:center;font-size:.88rem;color:var(--muted2);background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:1.1rem 1.4rem}
+.pricing-note strong{color:var(--text)}
 
 /* NICHOS */
 .niches-wrap{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center}
@@ -167,13 +170,13 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
     <h1 class="hero-title">Seu negócio no Google Maps merece um site <span>à altura da sua nota</span></h1>
     <p class="hero-desc">Você já tem avaliações reais, clientes satisfeitos e um endereço fixo. O que falta é um site que mostre isso. Eu construo um, pronto em dias, com os dados verdadeiros do seu negócio — nada inventado.</p>
     <div class="hero-cta">
-      <a href="https://wa.me/5562991642970?text=Oi%2C%20Jheysson%21%20Vi%20a%20p%C3%A1gina%20de%20sites%20para%20neg%C3%B3cios%20locais%20e%20quero%20um%20para%20o%20meu." target="_blank" class="btn btn-green">💬 Quero um site para meu negócio</a>
+      <a href="https://wa.me/5562991642970?text=Oi%2C%20Jheysson%21%20Vi%20a%20p%C3%A1gina%20de%20sites%20para%20neg%C3%B3cios%20locais%20e%20quero%20um%20para%20o%20meu." target="_blank" class="btn btn-green"><svg class="ic-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.512 5.26l-.999 3.648 3.736-.979z"/></svg> Quero um site para meu negócio</a>
       <a href="#como-funciona" class="btn btn-outline">Como funciona</a>
     </div>
     <p class="hero-note">Me manda o nome do seu negócio e eu te mostro um preview real pelo WhatsApp.</p>
     <div class="hero-badge-row">
       <span class="hero-badge">⭐ Nota real do Google</span>
-      <span class="hero-badge">📱 Botão de WhatsApp</span>
+      <span class="hero-badge"><svg class="ic-wa" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.512 5.26l-.999 3.648 3.736-.979z"/></svg> Botão de WhatsApp</span>
       <span class="hero-badge">🗺️ Mapa incorporado</span>
       <span class="hero-badge">💬 Depoimentos reais</span>
     </div>
@@ -200,7 +203,7 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
       <div class="step">
         <div class="step-num">3</div>
         <h3>Você aprova e coloca no ar</h3>
-        <p>Te envio o link do preview pronto. Se aprovar, publico com domínio próprio ou no seu domínio de preferência.</p>
+        <p>Te envio o link do preview pronto. Se aprovar, publico com domínio próprio ou no domínio de sua preferência.</p>
       </div>
     </div>
   </div>
@@ -209,7 +212,7 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
 <!-- PRINCÍPIO -->
 <section id="principio">
   <div class="principle-box">
-    <p>A regra é simples: <strong>a IA não inventa fatos, ela organiza dados reais.</strong> Nota, avaliações, telefone, endereço e horário vêm direto do seu perfil no Google. A inteligência artificial escreve apenas a parte narrativa — headline, "sobre" e serviços — com base nas suas próprias avaliações. Sem prêmios inventados, sem anos de experiência forjados, sem número solto.</p>
+    <p>A regra é simples: <strong>a IA não inventa fatos, ela organiza dados reais.</strong> Nota, avaliações, telefone, endereço e horário vêm direto do seu perfil no Google. A inteligência artificial escreve apenas a parte narrativa — headline, "sobre" e serviços — com base nas suas próprias avaliações reais (nunca nas negativas fora de contexto). Sem prêmios inventados, sem anos de experiência forjados, sem depoimento fabricado.</p>
   </div>
 </section>
 
@@ -226,11 +229,11 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
       </div>
       <div class="feature-card">
         <span class="feature-icon">💬</span>
-        <h3>Depoimentos reais</h3>
-        <p>Avaliações com nota 4 ou mais, extraídas do seu próprio perfil — depoimento verdadeiro, não texto genérico.</p>
+        <h3>Depoimentos reais e curados</h3>
+        <p>Só avaliações genuinamente positivas no texto (não só na nota), extraídas do seu próprio perfil — nunca um depoimento inventado.</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">📱</span>
+        <svg class="feature-icon" style="width:1.6rem;height:1.6rem" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.512 5.26l-.999 3.648 3.736-.979z"/></svg>
         <h3>Botão de WhatsApp</h3>
         <p>Direto para o seu número, com mensagem pré-preenchida — o cliente já chega pronto para conversar.</p>
       </div>
@@ -245,7 +248,7 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
         <p>Mapa incorporado com a localização exata do seu negócio, com botão direto para o Google Maps.</p>
       </div>
       <div class="feature-card">
-        <span class="feature-icon">🕒</span>
+        <span class="feature-icon">🕐</span>
         <h3>Horário de funcionamento</h3>
         <p>Seus horários reais, dia a dia, para o cliente saber exatamente quando te encontrar.</p>
       </div>
@@ -257,31 +260,44 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
 <section id="preco">
   <div class="section-inner">
     <p class="section-label">Investimento</p>
-    <h2 class="section-title">Simples e transparente</h2>
-    <p class="section-desc">Sem contrato de fidelidade, sem letra miúda. Você paga o setup uma vez e uma mensalidade que cobre hospedagem e manutenção.</p>
+    <h2 class="section-title">Um plano pra cada momento do seu negócio</h2>
+    <p class="section-desc">Sem contrato de fidelidade, sem letra miúda. Você escolhe o formato que faz sentido agora — dá pra evoluir depois.</p>
     <div class="pricing-grid">
-      <div class="price-card featured">
-        <span class="price-badge" style="color:var(--acc2);background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3)">SETUP</span>
-        <div class="price-name">Criação do site</div>
-        <div class="price-value">R$ 500 <small>– R$ 800</small></div>
+      <div class="price-card">
+        <span class="price-badge">PROMOÇÃO</span>
+        <div class="price-name">Básico</div>
+        <div class="price-value">R$ 199,90<small>site institucional simples — pagamento único</small></div>
         <div class="price-feats">
-          <div>Site completo com dados reais</div>
-          <div>Design responsivo (celular e desktop)</div>
-          <div>Botões de WhatsApp, ligar e mapa</div>
+          <div>Nome, contato, endereço e mapa</div>
+          <div>Nota e avaliações reais do Google</div>
+          <div>Botões de WhatsApp e ligar</div>
+          <div>Você recebe o arquivo pronto</div>
+        </div>
+      </div>
+      <div class="price-card featured">
+        <span class="price-badge" style="color:var(--acc2);background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.3)">MAIS PEDIDO</span>
+        <div class="price-name">Profissional</div>
+        <div class="price-value">R$ 1.500 <small>até R$ 3.000, conforme o escopo</small></div>
+        <div class="price-feats">
+          <div>Site sob medida, design personalizado</div>
+          <div>Conversa com você pra entender o que precisa</div>
+          <div>Até 3 rodadas de revisão inclusas</div>
           <div>Publicação no ar</div>
         </div>
       </div>
       <div class="price-card">
-        <span class="price-badge">MENSALIDADE</span>
-        <div class="price-name">Hospedagem + manutenção</div>
-        <div class="price-value">R$ 100 <small>– R$ 150/mês</small></div>
+        <span class="price-badge">RECORRENTE</span>
+        <div class="price-name">Gestão Mensal</div>
+        <div class="price-value">R$ 800 <small>+ R$ 150–250/mês (setup + mensalidade)</small></div>
         <div class="price-feats">
-          <div>Site sempre no ar</div>
+          <div>Site sempre no ar, sem você se preocupar</div>
+          <div>Hospedagem e manutenção inclusas</div>
           <div>Atualização de dados quando precisar</div>
           <div>Suporte direto comigo</div>
         </div>
       </div>
     </div>
+    <div class="pricing-note">Já recebeu um preview grátis pelo WhatsApp e só quer ficar com ele do jeitinho que está, sem mudanças? Sai por <strong>R$ 75</strong>.</div>
   </div>
 </section>
 
@@ -292,13 +308,16 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
     <h2 class="section-title">Ideal para quem já atende bem e ainda não aparece online</h2>
     <p class="section-desc">Funciona melhor para negócios locais com boas avaliações no Google mas nenhuma (ou pouca) presença digital.</p>
     <div class="niches-wrap">
-      <span class="tag">Barbearia</span>
-      <span class="tag">Clínica odontológica</span>
-      <span class="tag">Clínica de estética</span>
-      <span class="tag">Mecânica automotiva</span>
-      <span class="tag">Academia</span>
-      <span class="tag">Petshop</span>
+      <span class="tag">Dentista / Clínica odontológica</span>
+      <span class="tag">Corretor de imóveis</span>
       <span class="tag">Design de interiores</span>
+      <span class="tag">Salão de beleza / Estética</span>
+      <span class="tag">Barbearia</span>
+      <span class="tag">Advogado</span>
+      <span class="tag">Engenheiro</span>
+      <span class="tag">Petshop</span>
+      <span class="tag">Academia</span>
+      <span class="tag">Mecânica automotiva</span>
     </div>
   </div>
 </section>
@@ -324,7 +343,25 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          <div class="faq-answer-inner">Direto do seu perfil no Google Maps. Não invento nada — a IA só escreve a narrativa (headline, texto "sobre", lista de serviços) com base nos seus próprios dados e avaliações.</div>
+          <div class="faq-answer-inner">Direto do seu perfil no Google Maps. Não invento nada — a IA só escreve a narrativa (headline, texto "sobre", lista de serviços) com base nos seus próprios dados e avaliações. Os depoimentos mostrados são sempre reais, e passam por uma curadoria pra garantir que só apareçam avaliações genuinamente positivas no texto.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Qual a diferença entre o plano Básico e o Profissional?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">O Básico é um site institucional simples e rápido, com preço de lançamento. O Profissional é feito sob medida, com uma conversa pra entender o que você precisa, design personalizado e até 3 rodadas de revisão incluídas — revisões extras têm valor à parte.</div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-q-text">Como funciona a Gestão Mensal?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Você paga o setup uma vez e uma mensalidade que cobre hospedagem, manutenção e pequenas atualizações — assim o site fica sempre no ar e atualizado, sem você precisar mexer em nada.</div>
         </div>
       </div>
       <div class="faq-item">
@@ -347,7 +384,7 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
     <h2 class="section-title">Me manda o nome do seu negócio</h2>
     <p class="section-desc">Chama no WhatsApp com o nome e a cidade do seu negócio e eu te mostro um preview real de como o site pode ficar.</p>
     <div class="contact-links">
-      <a href="https://wa.me/5562991642970?text=Oi%2C%20Jheysson%21%20Vi%20a%20p%C3%A1gina%20de%20sites%20para%20neg%C3%B3cios%20locais%20e%20quero%20um%20para%20o%20meu." target="_blank" class="btn btn-green">💬 Chamar no WhatsApp</a>
+      <a href="https://wa.me/5562991642970?text=Oi%2C%20Jheysson%21%20Vi%20a%20p%C3%A1gina%20de%20sites%20para%20neg%C3%B3cios%20locais%20e%20quero%20um%20para%20o%20meu." target="_blank" class="btn btn-green"><svg class="ic-wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.512 5.26l-.999 3.648 3.736-.979z"/></svg> Chamar no WhatsApp</a>
       <a href="mailto:contato@jheyssondouglas.dev" class="btn btn-outline">✉ Enviar e-mail</a>
     </div>
     <a href="mailto:contato@jheyssondouglas.dev" class="contact-email">contato@jheyssondouglas.dev</a>
