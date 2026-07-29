@@ -162,20 +162,23 @@ section{padding:clamp(3rem, 8vw, 6rem) clamp(1.25rem, 5vw, 5rem)}
 .rubric-disclaimer{max-width:720px;margin:2rem auto 0;text-align:center;font-size:.85rem;color:var(--muted);background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.3rem}
 .rubric-disclaimer strong{color:var(--text)}
 
-/* EXAMPLES */
+/* EXAMPLES / CASES (antes/depois — fictício, ilustrativo) */
 #exemplos{background:var(--bg)}
-.examples-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:clamp(1.2rem, 3vw, 2rem);max-width:900px;margin:0 auto}
-.example-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.5rem, 3vw, 2rem);display:flex;flex-direction:column;align-items:center;gap:1.2rem;text-align:center}
-.example-card.weak{border-color:rgba(208,59,59,.25)}
-.example-card.strong{border-color:rgba(12,163,12,.25)}
-.example-label{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em}
-.example-label.weak{color:var(--st-critical)}
-.example-label.strong{color:var(--st-good)}
-.example-list{list-style:none;display:flex;flex-direction:column;gap:.55rem;text-align:left;width:100%;font-size:.85rem;color:var(--muted)}
-.example-list li{display:flex;gap:.5rem;align-items:flex-start}
-.example-list.weak li::before{content:'✗';color:var(--st-critical);font-weight:700;flex-shrink:0}
-.example-list.strong li::before{content:'✓';color:var(--st-good);font-weight:700;flex-shrink:0}
-.example-note{font-size:.72rem;color:var(--muted2);font-style:italic}
+.cases-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:clamp(1.2rem, 3vw, 1.8rem);max-width:1000px;margin:0 auto}
+.case-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:clamp(1.3rem, 3vw, 1.7rem);display:flex;flex-direction:column;align-items:center;gap:1rem;text-align:center}
+.case-nicho{font-weight:700;font-size:.95rem}
+.case-gauges{display:flex;align-items:center;gap:.8rem}
+.case-gauge-block{display:flex;flex-direction:column;align-items:center;gap:.35rem}
+.case-gauge-label{font-family:var(--mono);font-size:.65rem;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em}
+.case-arrow{font-size:1.3rem;color:var(--muted2)}
+.gauge-sm{width:76px;height:76px}
+.gauge-sm .gauge-inner{width:58px;height:58px}
+.gauge-sm .gauge-value{font-size:1rem}
+.gauge-sm .gauge-max{display:none}
+.case-changes{list-style:none;display:flex;flex-direction:column;gap:.4rem;text-align:left;width:100%;font-size:.82rem;color:var(--muted)}
+.case-changes li{display:flex;gap:.45rem}
+.case-changes li::before{content:'✓';color:var(--st-good);font-weight:700;flex-shrink:0}
+.case-note{font-size:.7rem;color:var(--muted2);font-style:italic}
 
 /* IMPACT */
 #impacto{background:var(--bg2)}
@@ -381,40 +384,72 @@ footer{padding:clamp(1.5rem, 3vw, 2rem) clamp(1.25rem, 5vw, 5rem);border-top:1px
   </div>
 </section>
 
-<!-- EXEMPLOS -->
+<!-- EXEMPLOS (antes/depois — fictício, ilustrativo) -->
 <section id="exemplos">
   <div class="section-inner">
     <p class="section-label">Na prática</p>
-    <h2 class="section-title">Veja como a pontuação muda o perfil</h2>
-    <p class="section-desc">Dois exemplos ilustrativos, com o mesmo tipo de negócio, mostrando a diferença entre um perfil desleixado e um perfil bem cuidado.</p>
-    <div class="examples-grid">
-      <div class="example-card weak">
-        <span class="example-label weak">Exemplo ilustrativo</span>
-        <div class="gauge gauge-lg" style="--pct:14;--gauge-color:var(--st-critical)">
-          <div class="gauge-inner"><div class="gauge-value" style="color:var(--st-critical)">14</div><div class="gauge-max">/ 100</div></div>
+    <h2 class="section-title">O que dá pra conquistar com ajustes simples</h2>
+    <p class="section-desc">Três exemplos ilustrativos — <strong>dados fictícios, não são clientes reais</strong> — mostrando como pequenos ajustes no perfil mudam a pontuação. Perfil mais completo tende a aparecer com mais destaque nas buscas locais; não é uma garantia de posição no Google, é uma tendência observada.</p>
+    <div class="cases-grid">
+      <div class="case-card">
+        <span class="case-nicho">💈 Barbearia</span>
+        <div class="case-gauges">
+          <div class="case-gauge-block">
+            <div class="gauge gauge-sm" style="--pct:22;--gauge-color:var(--st-critical)"><div class="gauge-inner"><div class="gauge-value" style="color:var(--st-critical)">22</div></div></div>
+            <span class="case-gauge-label">Antes</span>
+          </div>
+          <span class="case-arrow">→</span>
+          <div class="case-gauge-block">
+            <div class="gauge gauge-sm" style="--pct:91;--gauge-color:var(--st-good)"><div class="gauge-inner"><div class="gauge-value" style="color:var(--st-good)">91</div></div></div>
+            <span class="case-gauge-label">Depois</span>
+          </div>
         </div>
-        <ul class="example-list weak">
-          <li>Sem site vinculado à ficha</li>
-          <li>Nenhuma foto além da de capa</li>
-          <li>Poucas avaliações, nota abaixo de 3.5</li>
-          <li>Sem descrição do negócio</li>
-          <li>Horário de funcionamento não cadastrado</li>
+        <ul class="case-changes">
+          <li>Cadastrou um site na ficha</li>
+          <li>Adicionou 14 fotos do local</li>
+          <li>Preencheu a descrição do negócio</li>
         </ul>
-        <span class="example-note">Perfil típico de quem nunca cuidou disso</span>
+        <span class="case-note">Exemplo ilustrativo — dados fictícios</span>
       </div>
-      <div class="example-card strong">
-        <span class="example-label strong">Exemplo ilustrativo</span>
-        <div class="gauge gauge-lg" style="--pct:96;--gauge-color:var(--st-good)">
-          <div class="gauge-inner"><div class="gauge-value" style="color:var(--st-good)">96</div><div class="gauge-max">/ 100</div></div>
+      <div class="case-card">
+        <span class="case-nicho">🦷 Clínica odontológica</span>
+        <div class="case-gauges">
+          <div class="case-gauge-block">
+            <div class="gauge gauge-sm" style="--pct:38;--gauge-color:var(--st-serious)"><div class="gauge-inner"><div class="gauge-value" style="color:var(--st-serious)">38</div></div></div>
+            <span class="case-gauge-label">Antes</span>
+          </div>
+          <span class="case-arrow">→</span>
+          <div class="case-gauge-block">
+            <div class="gauge gauge-sm" style="--pct:88;--gauge-color:var(--st-good)"><div class="gauge-inner"><div class="gauge-value" style="color:var(--st-good)">88</div></div></div>
+            <span class="case-gauge-label">Depois</span>
+          </div>
         </div>
-        <ul class="example-list strong">
-          <li>Site vinculado e responsivo pro celular</li>
-          <li>Mais de 10 fotos recentes do local</li>
-          <li>Nota 4.8+ com dezenas de avaliações</li>
-          <li>Descrição completa do negócio</li>
-          <li>Telefone, endereço, categoria e horário cadastrados</li>
+        <ul class="case-changes">
+          <li>Completou horário e endereço</li>
+          <li>Adicionou fotos do consultório</li>
+          <li>Pediu avaliações a pacientes recentes</li>
         </ul>
-        <span class="example-note">Perfil de quem trata o Google como vitrine</span>
+        <span class="case-note">Exemplo ilustrativo — dados fictícios</span>
+      </div>
+      <div class="case-card">
+        <span class="case-nicho">💅 Salão de estética</span>
+        <div class="case-gauges">
+          <div class="case-gauge-block">
+            <div class="gauge gauge-sm" style="--pct:17;--gauge-color:var(--st-critical)"><div class="gauge-inner"><div class="gauge-value" style="color:var(--st-critical)">17</div></div></div>
+            <span class="case-gauge-label">Antes</span>
+          </div>
+          <span class="case-arrow">→</span>
+          <div class="case-gauge-block">
+            <div class="gauge gauge-sm" style="--pct:94;--gauge-color:var(--st-good)"><div class="gauge-inner"><div class="gauge-value" style="color:var(--st-good)">94</div></div></div>
+            <span class="case-gauge-label">Depois</span>
+          </div>
+        </div>
+        <ul class="case-changes">
+          <li>Criou um site simples</li>
+          <li>Escreveu a descrição completa</li>
+          <li>Subiu 20 fotos dos trabalhos</li>
+        </ul>
+        <span class="case-note">Exemplo ilustrativo — dados fictícios</span>
       </div>
     </div>
   </div>
