@@ -83,6 +83,10 @@ main{max-width:720px;margin:0 auto;padding:clamp(1.5rem, 5vw, 3rem) clamp(1.1rem
 .plano-texto{white-space:pre-wrap;font-size:.94rem;color:var(--text);line-height:1.85}
 .plano-texto strong{color:var(--g-blue)}
 
+/* OFERTA DE AJUDA */
+.oferta-card{background:var(--bg2)}
+.oferta-texto{font-size:.94rem;font-weight:500;color:var(--text);line-height:1.7;text-align:center}
+
 /* DISCLAIMER */
 .disclaimer{font-size:.82rem;color:var(--muted);line-height:1.7;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.2rem}
 .disclaimer strong{color:var(--text)}
@@ -144,6 +148,28 @@ footer{padding:clamp(1.2rem, 3vw, 1.6rem) clamp(1.25rem, 5vw, 5rem);border-top:1
     <div class="card" id="card-plano" style="display:none">
       <div class="plano-title">📋 Resumo da avaliação</div>
       <div class="plano-texto" id="plano-texto"></div>
+    </div>
+
+    <!-- POTENCIAL -->
+    <div class="card">
+      <div class="rel-header">
+        <div class="gauge" style="--pct:100;--gauge-color:var(--st-good)">
+          <div class="gauge-inner">
+            <div class="gauge-value" style="color:var(--st-good)">100</div>
+            <div class="gauge-max">/ 100</div>
+          </div>
+        </div>
+        <div class="rel-info">
+          <div class="rel-eyebrow">Potencial do perfil</div>
+          <div class="rel-empresa">Até onde dá pra chegar</div>
+          <div class="rel-sub">Trabalhando os pontos de melhoria, seu perfil pode chegar bem perto disso — mais visibilidade e mais confiança pra quem pesquisa no Google.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- OFERTA DE AJUDA -->
+    <div class="card oferta-card">
+      <div class="oferta-texto">💬 Se precisar de orientação prática para implementar essas melhorias no perfil, fico à disposição para ajudar.</div>
     </div>
 
     <!-- DISCLAIMER -->
