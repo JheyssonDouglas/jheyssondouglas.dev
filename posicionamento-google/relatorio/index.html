@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LE7PK1FRN6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LE7PK1FRN6');
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Relatório de Avaliação — Jheysson Douglas</title>
+<meta name="description" content="Relatório personalizado da pontuação do seu negócio no Google.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23FFFFFF'/><circle cx='32' cy='32' r='15' fill='%234285F4'/><circle cx='68' cy='32' r='15' fill='%23EA4335'/><circle cx='32' cy='68' r='15' fill='%23FBBC05'/><circle cx='68' cy='68' r='15' fill='%2334A853'/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:      #FFFFFF;
+  --bg2:     #F8F9FA;
+  --surface: #FFFFFF;
+  --border:  #E8EAED;
+  --bdr2:    #DADCE0;
+  --text:    #202124;
+  --muted:   #5F6368;
+  --muted2:  #80868B;
+  --mono:    'JetBrains Mono', monospace;
+  --sans:    'Roboto', 'Inter', sans-serif;
+  --r:       .75rem;
+  --sh:      0 4px 24px rgba(60,64,67,.12);
+
+  --g-blue:   #4285F4;
+  --g-red:    #EA4335;
+  --g-yellow: #FBBC05;
+  --g-green:  #34A853;
+
+  --st-good:     #0ca30c;
+  --st-warning:  #fab219;
+  --st-serious:  #ec835a;
+  --st-critical: #d03b3b;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;min-width:0}
+html,body{max-width:100%;overflow-x:hidden}
+body{overflow-wrap:anywhere}
+body{background:var(--bg2);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.6}
+
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;row-gap:.4rem;padding:1rem clamp(1rem, 5vw, 5rem);background:rgba(255,255,255,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--mono);font-size:clamp(.7rem, 2vw, .85rem);color:var(--g-blue);text-decoration:none;letter-spacing:.04em;display:flex;align-items:center;gap:.5rem}
+.g-dots{display:inline-flex;gap:3px}
+.g-dots span{width:6px;height:6px;border-radius:50%;display:inline-block}
+.nav-back{color:var(--muted);text-decoration:none;font-size:clamp(.75rem, 1.5vw, .85rem);font-weight:500;transition:color .2s}
+.nav-back:hover{color:var(--text)}
+
+main{max-width:720px;margin:0 auto;padding:clamp(1.5rem, 5vw, 3rem) clamp(1.1rem, 4vw, 1.5rem) clamp(3rem, 6vw, 5rem)}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);padding:clamp(1.4rem, 4vw, 2.2rem);margin-bottom:1.5rem}
+
+/* HEADER DO RELATÓRIO */
+.rel-header{display:flex;gap:1.4rem;align-items:center;flex-wrap:wrap}
+.rel-info{flex:1;min-width:200px}
+.rel-eyebrow{font-family:var(--mono);font-size:.72rem;color:var(--g-blue);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem}
+.rel-empresa{font-size:1.3rem;font-weight:700;margin-bottom:.4rem}
+.rel-sub{font-size:.88rem;color:var(--muted);line-height:1.6}
+.rel-status-line{display:flex;align-items:center;gap:.4rem;margin-top:.6rem;font-size:.9rem;font-weight:600}
+
+/* GAUGE */
+.gauge{position:relative;width:120px;height:120px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center}
+.gauge::before{content:'';position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--gauge-color, var(--g-blue)) calc(var(--pct,0) * 1%), var(--border) 0)}
+.gauge-inner{position:relative;width:94px;height:94px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:1}
+.gauge-value{font-size:1.7rem;font-weight:700;line-height:1}
+.gauge-max{font-size:.65rem;color:var(--muted2);font-family:var(--mono)}
+
+/* GANHO (onde dá pra ganhar pontos) */
+.ganho-title{font-size:.9rem;font-weight:700;margin-bottom:.7rem}
+.ganho-title span{color:var(--st-good)}
+.ganho-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.ganho-list li{display:flex;gap:.6rem;font-size:.88rem;color:var(--muted)}
+.ganho-pts{font-family:var(--mono);font-weight:700;color:var(--st-good);flex-shrink:0;min-width:2.6rem}
+
+/* PLANO DE AÇÃO (texto gerado com IA) */
+.plano-title{font-size:1.05rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.plano-texto{white-space:pre-wrap;font-size:.94rem;color:var(--text);line-height:1.85}
+.plano-texto strong{color:var(--g-blue)}
+
+/* DISCLAIMER */
+.disclaimer{font-size:.82rem;color:var(--muted);line-height:1.7;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.2rem}
+.disclaimer strong{color:var(--text)}
+
+/* FALLBACK (link incompleto) */
+#fallback{display:none;text-align:center;padding:3rem 1rem}
+#fallback.show{display:block}
+#fallback h1{font-size:1.3rem;margin-bottom:.7rem}
+#fallback p{color:var(--muted);font-size:.92rem}
+
+/* FOOTER */
+footer{padding:clamp(1.2rem, 3vw, 1.6rem) clamp(1.25rem, 5vw, 5rem);border-top:1px solid var(--border);text-align:center;background:var(--bg)}
+.footer-tag{font-family:var(--mono);font-size:.75rem;color:var(--muted2)}
+.footer-tag a{color:var(--g-blue);text-decoration:none}
+
+@media(max-width:600px){
+  .rel-header{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="https://jheyssondouglas.dev" class="nav-logo">
+    <span class="g-dots"><span style="background:var(--g-blue)"></span><span style="background:var(--g-red)"></span><span style="background:var(--g-yellow)"></span><span style="background:var(--g-green)"></span></span>
+    jheyssondouglas.dev
+  </a>
+  <a href="https://jheyssondouglas.dev/posicionamento-google/" class="nav-back">← Voltar</a>
+</nav>
+
+<main>
+
+  <div id="fallback">
+    <h1>Esse link parece estar incompleto</h1>
+    <p>Entre em contato pra receber seu relatório certinho.</p>
+  </div>
+
+  <div id="conteudo" style="display:none">
+
+    <!-- HEADER: pontuação -->
+    <div class="card">
+      <div class="rel-header">
+        <div class="gauge" id="rel-gauge">
+          <div class="gauge-inner">
+            <div class="gauge-value" id="rel-score">0</div>
+            <div class="gauge-max">/ 100</div>
+          </div>
+        </div>
+        <div class="rel-info">
+          <div class="rel-eyebrow">Relatório de avaliação</div>
+          <div class="rel-empresa" id="rel-empresa">—</div>
+          <div class="rel-sub" id="rel-sub">Calculado a partir do perfil real no Google — não é um número genérico.</div>
+          <div class="rel-status-line" id="rel-status-line"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ONDE GANHAR PONTOS -->
+    <div class="card" id="card-ganho" style="display:none">
+      <div class="ganho-title">Onde dá pra ganhar pontos agora (<span id="ganho-total">0</span> pts em aberto)</div>
+      <ul class="ganho-list" id="ganho-list"></ul>
+    </div>
+
+    <!-- PLANO DE AÇÃO (IA) -->
+    <div class="card" id="card-plano" style="display:none">
+      <div class="plano-title">📋 O que pode ser feito pra melhorar</div>
+      <div class="plano-texto" id="plano-texto"></div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer">
+      <strong>Importante:</strong> essa pontuação é a nossa metodologia própria de avaliação de completude do perfil público do Google — não é o algoritmo oficial (e secreto) de ranqueamento do Google, ao qual ninguém tem acesso. É um indicador honesto de quanto o seu perfil está aproveitando o que está ao seu alcance melhorar.
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <span class="footer-tag">Relatório gerado por <a href="https://jheyssondouglas.dev">jheyssondouglas.dev</a></span>
+</footer>
+
+<script>
+function bandFor(score) {
+  if (score < 40) return { label: 'Crítico', icon: '⛔', color: 'var(--st-critical)' };
+  if (score < 60) return { label: 'Fraco', icon: '⚠️', color: 'var(--st-serious)' };
+  if (score < 80) return { label: 'Regular', icon: '⚠️', color: 'var(--st-warning)' };
+  return { label: 'Bom', icon: '✅', color: 'var(--st-good)' };
+}
+
+// Mesmos pesos do minerador_seo.py
+const CRITERIOS = [
+  { key: 'site',        max: 15, label: 'Cadastrar um site na ficha' },
+  { key: 'descricao',   max: 10, label: 'Preencher a descrição do negócio' },
+  { key: 'fotos',       max: 15, label: 'Adicionar mais fotos do negócio' },
+  { key: 'completude',  max: 20, label: 'Completar telefone, endereço, categoria e horário' },
+  { key: 'avaliacoes',  max: 20, label: 'Conseguir mais avaliações de clientes' },
+  { key: 'nota',        max: 20, label: 'Melhorar a nota média das avaliações' },
+];
+
+// Converte o texto do gerador_relatorio.py (formato WhatsApp: *negrito*) pra HTML,
+// escapando antes de formatar — evita que conteúdo do parâmetro vire HTML/JS.
+function formatarPlano(texto) {
+  const div = document.createElement('div');
+  div.textContent = texto;
+  const escapado = div.innerHTML;
+  return escapado.replace(/\*(.+?)\*/g, '<strong>$1</strong>');
+}
+
+(function render() {
+  const params = new URLSearchParams(window.location.search);
+  const empresa = params.get('empresa');
+  const scoreRaw = params.get('pontuacao');
+  const score = Math.max(0, Math.min(100, parseInt(scoreRaw, 10)));
+
+  if (!empresa || isNaN(score)) {
+    document.getElementById('fallback').classList.add('show');
+    return;
+  }
+
+  document.getElementById('conteudo').style.display = 'block';
+  document.getElementById('rel-empresa').textContent = empresa;
+  document.getElementById('rel-score').textContent = score;
+  document.getElementById('rel-sub').textContent =
+    `Calculamos essa pontuação a partir do perfil real de ${empresa} no Google — não é um número genérico.`;
+
+  const gauge = document.getElementById('rel-gauge');
+  const band = bandFor(score);
+  gauge.style.setProperty('--pct', score);
+  gauge.style.setProperty('--gauge-color', band.color);
+  document.getElementById('rel-score').style.color = band.color;
+
+  const statusLine = document.getElementById('rel-status-line');
+  statusLine.style.color = band.color;
+  statusLine.textContent = band.icon + ' ' + band.label;
+
+  const gaps = CRITERIOS
+    .map(c => {
+      const raw = params.get(c.key);
+      if (raw === null) return null;
+      const achieved = Math.max(0, Math.min(c.max, parseInt(raw, 10)));
+      if (isNaN(achieved)) return null;
+      return { label: c.label, gap: c.max - achieved };
+    })
+    .filter(c => c && c.gap > 0)
+    .sort((a, b) => b.gap - a.gap);
+
+  if (gaps.length > 0) {
+    const total = gaps.reduce((sum, g) => sum + g.gap, 0);
+    document.getElementById('ganho-total').textContent = total;
+    const list = document.getElementById('ganho-list');
+    list.innerHTML = '';
+    gaps.forEach(g => {
+      const li = document.createElement('li');
+      const pts = document.createElement('span');
+      pts.className = 'ganho-pts';
+      pts.textContent = `+${g.gap}`;
+      const label = document.createElement('span');
+      label.textContent = g.label;
+      li.appendChild(pts);
+      li.appendChild(label);
+      list.appendChild(li);
+    });
+    document.getElementById('card-ganho').style.display = 'block';
+  }
+
+  const plano = params.get('plano');
+  if (plano) {
+    document.getElementById('plano-texto').innerHTML = formatarPlano(plano);
+    document.getElementById('card-plano').style.display = 'block';
+  }
+})();
+</script>
+</body>
+</html>
