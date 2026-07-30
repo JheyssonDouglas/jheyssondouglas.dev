@@ -78,13 +78,6 @@ main{max-width:720px;margin:0 auto;padding:clamp(1.5rem, 5vw, 3rem) clamp(1.1rem
 .gauge-value{font-size:1.7rem;font-weight:700;line-height:1}
 .gauge-max{font-size:.65rem;color:var(--muted2);font-family:var(--mono)}
 
-/* GANHO (onde dá pra ganhar pontos) */
-.ganho-title{font-size:.9rem;font-weight:700;margin-bottom:.7rem}
-.ganho-title span{color:var(--st-good)}
-.ganho-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
-.ganho-list li{display:flex;gap:.6rem;font-size:.88rem;color:var(--muted)}
-.ganho-pts{font-family:var(--mono);font-weight:700;color:var(--st-good);flex-shrink:0;min-width:2.6rem}
-
 /* PLANO DE AÇÃO (texto gerado com IA) */
 .plano-title{font-size:1.05rem;font-weight:700;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
 .plano-texto{white-space:pre-wrap;font-size:.94rem;color:var(--text);line-height:1.85}
@@ -147,15 +140,9 @@ footer{padding:clamp(1.2rem, 3vw, 1.6rem) clamp(1.25rem, 5vw, 5rem);border-top:1
       </div>
     </div>
 
-    <!-- ONDE GANHAR PONTOS -->
-    <div class="card" id="card-ganho" style="display:none">
-      <div class="ganho-title">Onde dá pra ganhar pontos agora (<span id="ganho-total">0</span> pts em aberto)</div>
-      <ul class="ganho-list" id="ganho-list"></ul>
-    </div>
-
-    <!-- PLANO DE AÇÃO (IA) -->
+    <!-- RESUMO DA AVALIAÇÃO (IA) -->
     <div class="card" id="card-plano" style="display:none">
-      <div class="plano-title">📋 O que pode ser feito pra melhorar</div>
+      <div class="plano-title">📋 Resumo da avaliação</div>
       <div class="plano-texto" id="plano-texto"></div>
     </div>
 
@@ -179,16 +166,6 @@ function bandFor(score) {
   if (score < 80) return { label: 'Regular', icon: '⚠️', color: 'var(--st-warning)' };
   return { label: 'Bom', icon: '✅', color: 'var(--st-good)' };
 }
-
-// Mesmos pesos do minerador_seo.py
-const CRITERIOS = [
-  { key: 'site',        max: 15, label: 'Cadastrar um site na ficha' },
-  { key: 'descricao',   max: 10, label: 'Preencher a descrição do negócio' },
-  { key: 'fotos',       max: 15, label: 'Adicionar mais fotos do negócio' },
-  { key: 'completude',  max: 20, label: 'Completar telefone, endereço, categoria e horário' },
-  { key: 'avaliacoes',  max: 20, label: 'Conseguir mais avaliações de clientes' },
-  { key: 'nota',        max: 20, label: 'Melhorar a nota média das avaliações' },
-];
 
 // Converte o texto do gerador_relatorio.py (formato WhatsApp: *negrito*) pra HTML,
 // escapando antes de formatar — evita que conteúdo do parâmetro vire HTML/JS.
@@ -225,36 +202,6 @@ function formatarPlano(texto) {
   const statusLine = document.getElementById('rel-status-line');
   statusLine.style.color = band.color;
   statusLine.textContent = band.icon + ' ' + band.label;
-
-  const gaps = CRITERIOS
-    .map(c => {
-      const raw = params.get(c.key);
-      if (raw === null) return null;
-      const achieved = Math.max(0, Math.min(c.max, parseInt(raw, 10)));
-      if (isNaN(achieved)) return null;
-      return { label: c.label, gap: c.max - achieved };
-    })
-    .filter(c => c && c.gap > 0)
-    .sort((a, b) => b.gap - a.gap);
-
-  if (gaps.length > 0) {
-    const total = gaps.reduce((sum, g) => sum + g.gap, 0);
-    document.getElementById('ganho-total').textContent = total;
-    const list = document.getElementById('ganho-list');
-    list.innerHTML = '';
-    gaps.forEach(g => {
-      const li = document.createElement('li');
-      const pts = document.createElement('span');
-      pts.className = 'ganho-pts';
-      pts.textContent = `+${g.gap}`;
-      const label = document.createElement('span');
-      label.textContent = g.label;
-      li.appendChild(pts);
-      li.appendChild(label);
-      list.appendChild(li);
-    });
-    document.getElementById('card-ganho').style.display = 'block';
-  }
 
   const plano = params.get('plano');
   if (plano) {
