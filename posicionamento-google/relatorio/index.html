@@ -202,7 +202,23 @@ function formatarPlano(texto) {
   return escapado.replace(/\*(.+?)\*/g, '<strong>$1</strong>');
 }
 
-(function render() {
+// Descomprime o parâmetro "pz" (gzip + base64url, gerado pelo gerador_relatorio.py)
+// usando a DecompressionStream nativa do navegador — sem biblioteca externa.
+async function descomprimirPz(b64url) {
+  try {
+    const b64 = b64url.replace(/-/g, '+').replace(/_/g, '/');
+    const padded = b64 + '='.repeat((4 - (b64.length % 4)) % 4);
+    const binario = atob(padded);
+    const bytes = new Uint8Array(binario.length);
+    for (let i = 0; i < binario.length; i++) bytes[i] = binario.charCodeAt(i);
+    const stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+    return await new Response(stream).text();
+  } catch (e) {
+    return null;
+  }
+}
+
+(async function render() {
   const params = new URLSearchParams(window.location.search);
   const empresa = params.get('empresa');
   const scoreRaw = params.get('pontuacao');
@@ -229,7 +245,17 @@ function formatarPlano(texto) {
   statusLine.style.color = band.color;
   statusLine.textContent = band.icon + ' ' + band.label;
 
-  const plano = params.get('plano');
+  // "pz" = novo formato comprimido. "plano" = links antigos já enviados
+  // (formato antigo, texto puro) — mantido funcionando pra não quebrar.
+  let plano = null;
+  const pz = params.get('pz');
+  if (pz && typeof DecompressionStream !== 'undefined') {
+    plano = await descomprimirPz(pz);
+  }
+  if (!plano) {
+    plano = params.get('plano');
+  }
+
   if (plano) {
     document.getElementById('plano-texto').innerHTML = formatarPlano(plano);
     document.getElementById('card-plano').style.display = 'block';
