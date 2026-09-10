@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultoria de Dados para Empresas | Jheysson Douglas</title>
+  <meta name="description" content="Você traz o problema. Eu investigo os dados da sua empresa e construo uma solução que faça sentido para sua realidade.">
+  <meta name="theme-color" content="#2563EB">
+
+  <style>
+    :root {
+      --bg: #F8FAFC;
+      --surface: #FFFFFF;
+      --surface-soft: #EFF6FF;
+      --text: #0F172A;
+      --text-2: #475569;
+      --muted: #64748B;
+      --border: #E2E8F0;
+      --blue: #2563EB;
+      --blue-dark: #1D4ED8;
+      --blue-soft: #DBEAFE;
+      --green: #16A34A;
+      --shadow: 0 18px 50px rgba(15, 23, 42, .08);
+      --radius: 18px;
+      --max: 1120px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(248,250,252,.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(226,232,240,.8);
+    }
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand {
+      font-weight: 800;
+      letter-spacing: -.03em;
+    }
+    .brand span { color: var(--blue); }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--text-2);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .nav-links a:hover { color: var(--blue); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 0;
+      border-radius: 11px;
+      padding: 13px 18px;
+      font-weight: 750;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+    .btn-primary {
+      color: white;
+      background: var(--blue);
+      box-shadow: 0 8px 20px rgba(37,99,235,.2);
+    }
+    .btn-primary:hover {
+      background: var(--blue-dark);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      color: var(--text);
+      background: white;
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: #CBD5E1; transform: translateY(-1px); }
+
+    .hero {
+      padding: 92px 0 82px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 560px;
+      height: 560px;
+      right: -260px;
+      top: -230px;
+      background: radial-gradient(circle, rgba(37,99,235,.13), transparent 68%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      align-items: center;
+      gap: 72px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 18px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 22px;
+      height: 2px;
+      background: var(--blue);
+    }
+    h1 {
+      font-size: clamp(42px, 5.5vw, 70px);
+      line-height: 1.03;
+      letter-spacing: -.055em;
+      margin: 0 0 24px;
+      max-width: 760px;
+    }
+    .hero h1 strong { color: var(--blue); }
+    .hero-copy {
+      font-size: 19px;
+      color: var(--text-2);
+      max-width: 650px;
+      margin: 0 0 30px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+    .microcopy {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .insight-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .card-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 20px;
+    }
+    .question {
+      font-size: 23px;
+      line-height: 1.2;
+      letter-spacing: -.025em;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .fake-chart {
+  height: 125px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  background: linear-gradient(to bottom, #fff, #F8FAFC);
+  display: flex;
+  align-items: end;
+  gap: 9px;
+  position: relative;
+  overflow: hidden;
+}
+
+.bar {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  border-radius: 6px 6px 2px 2px;
+  background: #DBEAFE;
+  min-height: 18px;
+}
+
+/* Crescimento */
+.bar-1 { height: 34%; }
+.bar-2 { height: 45%; }
+.bar-3 { height: 57%; }
+.bar-4 { height: 70%; }
+.bar-5 { height: 88%; }
+
+/* Queda brusca */
+.bar-6 {
+  height: 38%;
+  background: #F87171;
+}
+
+/* Linhas horizontais discretas */
+.grid-line {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  height: 1px;
+  border-top: 1px dashed #E2E8F0;
+  z-index: 0;
+}
+
+.grid-line-1 { top: 38px; }
+.grid-line-2 { top: 75px; }
+.grid-line-3 { top: 112px; }
+
+/* Linha de tendência */
+.trend-line {
+  position: absolute;
+  inset: 18px;
+  width: calc(100% - 36px);
+  height: calc(100% - 36px);
+  z-index: 3;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.trend-blue,
+.trend-red {
+  fill: none;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 7 7;
+}
+
+.trend-blue {
+  stroke: #3B82F6;
+}
+
+.trend-red {
+  stroke: #EF4444;
+}
+
+.trend-point {
+  fill: white;
+  stroke-width: 2.5;
+}
+
+.blue-point {
+  stroke: #3B82F6;
+}
+
+.red-point {
+  stroke: #EF4444;
+}
+
+    section { padding: 92px 0; }
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+    .section-kicker {
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: -.045em;
+      margin: 0 0 16px;
+    }
+    .section-head p {
+      color: var(--text-2);
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .pain-section { background: white; }
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .pain {
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: #fff;
+    }
+    .pain strong {
+      display: block;
+      font-size: 19px;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .pain p { margin: 0; color: var(--text-2); }
+
+    .consequence {
+      padding: 68px 0;
+      background: var(--text);
+      color: white;
+    }
+    .consequence-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .consequence h2 { max-width: 650px; }
+    .consequence p { color: #CBD5E1; font-size: 18px; }
+    .numbers {
+      display: grid;
+      gap: 14px;
+    }
+    .number {
+      border: 1px solid #263449;
+      background: #111C2D;
+      border-radius: 14px;
+      padding: 20px;
+    }
+    .number strong { display: block; font-size: 18px; margin-bottom: 4px; }
+    .number span { color: #94A3B8; font-size: 14px; }
+
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .step {
+      padding: 22px 18px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+    }
+    .step-no {
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 900;
+      margin-bottom: 28px;
+    }
+    .step strong {
+      display: block;
+      font-size: 17px;
+      margin-bottom: 7px;
+    }
+    .step p { margin: 0; color: var(--text-2); font-size: 14px; }
+
+    .examples { background: white; }
+    .example-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .example {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .example-tag {
+      display: inline-block;
+      background: var(--surface-soft);
+      color: var(--blue-dark);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+    .example h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+      letter-spacing: -.02em;
+    }
+    .example p { color: var(--text-2); margin: 0; }
+
+    .investigation {
+      background: var(--surface-soft);
+    }
+    .question-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .q {
+      background: white;
+      border: 1px solid #D9E8FC;
+      border-radius: 15px;
+      padding: 23px;
+      font-weight: 750;
+      line-height: 1.3;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .proof-main, .proof-side {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+    }
+    .proof-main p, .proof-side p { color: var(--text-2); }
+    .proof-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 22px;
+    }
+    .proof-item {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+    }
+    .check {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 22px;
+      border-radius: 50%;
+      background: #DCFCE7;
+      color: var(--green);
+      display: grid;
+      place-items: center;
+      font-size: 13px;
+      font-weight: 900;
+      margin-top: 2px;
+    }
+    .proof-item span { color: var(--text-2); }
+
+    .cta {
+      background: var(--blue);
+      color: white;
+      padding: 86px 0;
+    }
+    .cta-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .cta h2 { max-width: 600px; }
+    .cta p { color: #DBEAFE; font-size: 18px; }
+    .form {
+      background: white;
+      color: var(--text);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 20px 60px rgba(15,23,42,.18);
+    }
+    .form h3 {
+      margin: 0 0 5px;
+      font-size: 24px;
+      letter-spacing: -.025em;
+    }
+    .form-intro { color: var(--text-2); margin: 0 0 22px; font-size: 14px; }
+    .field { margin-bottom: 15px; }
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .field input, .field select, .field textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 13px;
+      outline: none;
+      color: var(--text);
+      background: white;
+    }
+    .field textarea { min-height: 110px; resize: vertical; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      border-color: #93C5FD;
+      box-shadow: 0 0 0 3px rgba(37,99,235,.1);
+    }
+    .form .btn { width: 100%; }
+    .form-note { color: var(--muted); font-size: 12px; margin: 12px 0 0; text-align: center; }
+
+    footer {
+      padding: 32px 0;
+      background: #0B1220;
+      color: #CBD5E1;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      font-size: 13px;
+    }
+    footer a { color: white; font-weight: 700; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .consequence-grid, .proof-grid, .cta-grid { grid-template-columns: 1fr; }
+      .hero-grid { gap: 42px; }
+      .method-grid { grid-template-columns: repeat(2, 1fr); }
+      .question-grid { grid-template-columns: repeat(2, 1fr); }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 620px) {
+      .container { width: min(calc(100% - 28px), var(--max)); }
+      .hero { padding: 65px 0 60px; }
+      section { padding: 65px 0; }
+      .pain-grid, .example-grid, .question-grid, .method-grid { grid-template-columns: 1fr; }
+      .hero-actions .btn { width: 100%; }
+      .insight-card { padding: 22px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+
+  <!-- Analytics: substitua pelo seu ID se quiser usar outra propriedade -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LE7PK1FRN6"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LE7PK1FRN6');
+  </script>
+</head>
+
+<body>
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">Jheysson<span>.</span></a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#problemas">Problemas</a>
+        <a href="#como-funciona">Como funciona</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato" class="btn btn-primary">Conversar</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Consultoria de dados</div>
+          <h1>Seus dados estão espalhados. Eu descubro o que eles podem <strong>fazer pela sua empresa.</strong></h1>
+          <p class="hero-copy">
+            ERP, CRM, Excel, e-commerce, sistemas internos... sua empresa provavelmente já tem muita informação.
+            O desafio é transformar isso em respostas para decisões importantes.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contato" data-event="hero_cta">Quero conversar sobre minha empresa →</a>
+            <a class="btn btn-secondary" href="#como-funciona">Entender como funciona</a>
+          </div>
+          <div class="microcopy">Você não precisa saber qual ferramenta precisa. Basta trazer o problema.</div>
+        </div>
+
+        <div class="insight-card">
+          <div class="card-label">O tipo de pergunta que começa o trabalho</div>
+          <div class="question">“Minhas vendas mudaram. O que está acontecendo?”</div>
+          <div class="fake-chart">
+  <div class="grid-line grid-line-1"></div>
+  <div class="grid-line grid-line-2"></div>
+  <div class="grid-line grid-line-3"></div>
+
+  <div class="bar bar-1"></div>
+  <div class="bar bar-2"></div>
+  <div class="bar bar-3"></div>
+  <div class="bar bar-4"></div>
+  <div class="bar bar-5"></div>
+  <div class="bar bar-6"></div>
+
+  <svg class="trend-line" viewBox="0 0 600 150" preserveAspectRatio="none">
+    <path
+      class="trend-blue"
+      d="M 45 112
+         L 145 96
+         L 245 76
+         L 345 52
+         L 445 28"
+    />
+    <path
+      class="trend-red"
+      d="M 445 28
+         C 480 27, 510 42, 555 92"
+    />
+
+    <circle class="trend-point blue-point" cx="45" cy="112" r="5"></circle>
+    <circle class="trend-point blue-point" cx="145" cy="96" r="5"></circle>
+    <circle class="trend-point blue-point" cx="245" cy="76" r="5"></circle>
+    <circle class="trend-point blue-point" cx="345" cy="52" r="5"></circle>
+    <circle class="trend-point blue-point" cx="445" cy="28" r="5"></circle>
+    <circle class="trend-point red-point" cx="555" cy="92" r="5"></circle>
+  </svg>
+</div>
+          <div class="chart-note">Os dados mostram o que merece ser investigado.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pain-section" id="problemas">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Talvez sua empresa esteja aqui</div>
+          <h2>Você tem os dados. Mas ainda não consegue usá-los como gostaria.</h2>
+          <p>Alguns problemas parecem operacionais, mas escondem uma oportunidade de usar melhor os dados que você já possui.</p>
+        </div>
+
+        <div class="pain-grid">
+          <article class="pain">
+            <strong>“As vendas mudaram, mas eu não sei exatamente por quê.”</strong>
+            <p>Falta de visão por produto, cliente, região, canal, período ou outro fator importante para o negócio.</p>
+          </article>
+          <article class="pain">
+            <strong>“Tenho muitos clientes, mas não sei quem está deixando de comprar.”</strong>
+            <p>Clientes valiosos podem estar reduzindo frequência ou valor de compra sem que ninguém perceba a tempo.</p>
+          </article>
+          <article class="pain">
+            <strong>“Toda semana alguém precisa juntar planilhas para saber como a empresa está.”</strong>
+            <p>Informação importante fica presa em tarefas manuais, demoradas e sujeitas a erro.</p>
+          </article>
+          <article class="pain">
+            <strong>“Tenho números diferentes dependendo de quem fez o relatório.”</strong>
+            <p>Sem regras claras e uma visão confiável, decisões começam a ser tomadas em cima de versões diferentes da realidade.</p>
+          </article>
+          <article class="pain">
+            <strong>“Tenho produtos parados, mas não sei onde está o problema.”</strong>
+            <p>Dados de estoque, vendas e demanda podem revelar onde existe capital parado ou oportunidade perdida.</p>
+          </article>
+          <article class="pain">
+            <strong>“Sei que tenho dados, mas não sei qual pergunta fazer.”</strong>
+            <p>Você não precisa chegar com uma solução pronta. Parte do trabalho é descobrir o que vale a pena investigar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="consequence">
+      <div class="container consequence-grid">
+        <div>
+          <div class="section-kicker" style="color:#93C5FD;">O problema por trás do problema</div>
+          <h2>Quando os dados não ajudam, decisões ficam mais lentas e caras.</h2>
+          <p>
+            Muitas empresas não precisam de uma plataforma enorme. Precisam enxergar melhor o que já acontece,
+            reduzir trabalho manual ou responder uma pergunta importante com mais segurança.
+          </p>
+        </div>
+        <div class="numbers">
+          <div class="number">
+            <strong>Tempo perdido</strong>
+            <span>Relatórios e tarefas repetitivas consomem horas que poderiam estar em decisões.</span>
+          </div>
+          <div class="number">
+            <strong>Oportunidades escondidas</strong>
+            <span>Clientes, produtos e padrões importantes podem estar nos dados sem ninguém conseguir enxergá-los.</span>
+          </div>
+          <div class="number">
+            <strong>Decisões no escuro</strong>
+            <span>Quando os números não são confiáveis, até uma boa decisão fica mais difícil de defender.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="como-funciona">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Meu jeito de trabalhar</div>
+          <h2>Você traz o problema. Eu investigo os dados.</h2>
+          <p>Não começo escolhendo uma ferramenta. Primeiro entendo o negócio, os dados disponíveis e o que realmente pode gerar valor.</p>
+        </div>
+
+        <div class="method-grid">
+          <div class="step">
+            <div class="step-no">01</div>
+            <strong>Entender</strong>
+            <p>Conversamos sobre o problema, contexto e decisão que você quer melhorar.</p>
+          </div>
+          <div class="step">
+            <div class="step-no">02</div>
+            <strong>Investigar</strong>
+            <p>Analiso fontes, estrutura, qualidade e o que os dados conseguem responder.</p>
+          </div>
+          <div class="step">
+            <div class="step-no">03</div>
+            <strong>Encontrar</strong>
+            <p>Identifico oportunidades, gargalos e a solução mais adequada ao caso.</p>
+          </div>
+          <div class="step">
+            <div class="step-no">04</div>
+            <strong>Construir</strong>
+            <p>Implemento a solução necessária — análise, automação, integração ou produto de dados.</p>
+          </div>
+          <div class="step">
+            <div class="step-no">05</div>
+            <strong>Acompanhar</strong>
+            <p>Deixo o resultado utilizável no dia a dia e identifico próximos ganhos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="examples">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">O que isso pode virar</div>
+          <h2>O formato da solução depende do problema.</h2>
+          <p>Alguns exemplos de perguntas que podem virar projetos — sem assumir de antemão que a resposta precisa ser um dashboard.</p>
+        </div>
+
+        <div class="example-grid">
+          <article class="example">
+            <span class="example-tag">Vendas</span>
+            <h3>“Por que vendemos menos este mês?”</h3>
+            <p>Investigar evolução, mix, clientes, canais e outros fatores para encontrar os principais responsáveis pela mudança.</p>
+          </article>
+          <article class="example">
+            <span class="example-tag">Clientes</span>
+            <h3>“Quem está deixando de comprar?”</h3>
+            <p>Encontrar padrões de perda ou redução de clientes e transformar isso em uma visão acionável para o time comercial.</p>
+          </article>
+          <article class="example">
+            <span class="example-tag">Automação</span>
+            <h3>“Quanto tempo gastamos fazendo isso toda semana?”</h3>
+            <p>Mapear tarefas manuais e automatizar o que fizer sentido, reduzindo trabalho operacional e risco de erro.</p>
+          </article>
+          <article class="example">
+            <span class="example-tag">Estoque & operação</span>
+            <h3>“Onde estamos perdendo dinheiro ou eficiência?”</h3>
+            <p>Cruzar dados de operação, vendas e estoque para localizar gargalos, produtos parados ou oportunidades.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="investigation">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-kicker">Antes de construir qualquer coisa</div>
+          <h2>Eu faço perguntas.</h2>
+          <p>É aqui que a consultoria começa. A tecnologia entra depois que o problema está claro.</p>
+        </div>
+        <div class="question-grid">
+          <div class="q">Quantas vendas você fez no último mês?</div>
+          <div class="q">Quais clientes compraram menos?</div>
+          <div class="q">Quais produtos estão perdendo demanda?</div>
+          <div class="q">Quanto tempo sua equipe gasta produzindo relatórios?</div>
+          <div class="q">Qual indicador você gostaria de acompanhar, mas hoje não consegue?</div>
+          <div class="q">Qual decisão você gostaria de tomar com mais segurança?</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="container proof-grid">
+        <div class="proof-main">
+          <div class="section-kicker">Experiência por trás do trabalho</div>
+          <h2>Experiência técnica para investigar sem complicar.</h2>
+          <p>
+            Minha experiência combina Data Science, Analytics Engineering e Data Engineering.
+            Trabalhei com problemas de negócio, dados em produção, modelagem, pipelines, qualidade,
+            automação e análises em escala.
+          </p>
+          <div class="proof-list">
+            <div class="proof-item"><div class="check">✓</div><span>Quase 5 anos de experiência profissional, principalmente no iFood.</span></div>
+            <div class="proof-item"><div class="check">✓</div><span>Experiência com milhões de registros processados diariamente.</span></div>
+            <div class="proof-item"><div class="check">✓</div><span>Atuação da pergunta de negócio até a solução de dados em produção.</span></div>
+          </div>
+        </div>
+        <div class="proof-side">
+          <div class="section-kicker">Um princípio</div>
+          <h2 style="font-size:34px;">A tecnologia é o meio. O problema da sua empresa é o ponto de partida.</h2>
+          <p>Se uma planilha bem estruturada resolve, não há motivo para criar uma arquitetura complexa. Se o problema exigir algo maior, a solução pode evoluir.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="contato">
+      <div class="container cta-grid">
+        <div>
+          <div class="section-kicker" style="color:#DBEAFE;">Vamos começar pelo problema</div>
+          <h2>Conte o que está acontecendo na sua empresa.</h2>
+          <p>
+            Não precisa saber o nome da ferramenta, do dashboard ou da tecnologia que precisa.
+            Quero entender o problema primeiro e descobrir se seus dados podem ajudar.
+          </p>
+        </div>
+
+        <form class="form" id="leadForm">
+          <h3>Primeiro, me conte um pouco.</h3>
+          <p class="form-intro">Leva menos de 2 minutos. Ao enviar, o WhatsApp será aberto com as informações preenchidas.</p>
+
+          <div class="field">
+            <label for="name">Seu nome *</label>
+            <input id="name" name="name" required placeholder="Como posso te chamar?">
+          </div>
+
+          <div class="field">
+            <label for="company">Empresa *</label>
+            <input id="company" name="company" required placeholder="Nome da empresa">
+          </div>
+
+          <div class="field">
+            <label for="pain">Qual situação mais parece com a sua? *</label>
+            <select id="pain" name="pain" required>
+              <option value="">Selecione uma opção</option>
+              <option>Tenho dificuldade para entender minhas vendas</option>
+              <option>Quero entender melhor meus clientes</option>
+              <option>Perco muito tempo fazendo relatórios</option>
+              <option>Tenho dados espalhados em vários sistemas</option>
+              <option>Não confio totalmente nos meus números</option>
+              <option>Tenho problemas com estoque/operação</option>
+              <option>Tenho outro problema e quero investigar</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="sources">Onde estão seus dados hoje?</label>
+            <select id="sources" name="sources">
+              <option value="">Selecione uma opção</option>
+              <option>Excel / Google Sheets</option>
+              <option>ERP</option>
+              <option>CRM</option>
+              <option>E-commerce</option>
+              <option>Banco de dados</option>
+              <option>Vários desses lugares</option>
+              <option>Não sei exatamente</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="message">Conte um pouco sobre o problema *</label>
+            <textarea id="message" name="message" required placeholder="O que está acontecendo hoje? O que você gostaria de conseguir enxergar, melhorar ou automatizar?"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="whatsapp">Seu WhatsApp *</label>
+            <input id="whatsapp" name="whatsapp" required placeholder="(xx) 99999-9999">
+          </div>
+
+          <button class="btn btn-primary" type="submit">Quero descobrir o que posso melhorar →</button>
+          <p class="form-note">Sem compromisso. Primeiro entendemos o problema.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>© 2026 Jheysson Douglas · Consultoria de Dados</div>
+      <a href="#top">Voltar ao topo ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('leadForm');
+
+    function track(eventName, params = {}) {
+      if (typeof gtag === 'function') gtag('event', eventName, params);
+    }
+
+    document.querySelectorAll('[data-event]').forEach(el => {
+      el.addEventListener('click', () => track(el.dataset.event));
+    });
+
+    ['name','company','pain','message','whatsapp'].forEach(id => {
+      const el = document.getElementById(id);
+      el.addEventListener('focus', () => {
+        if (!el.dataset.tracked) {
+          el.dataset.tracked = '1';
+          track('lead_form_start', { field: id });
+        }
+      });
+    });
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const data = new FormData(form);
+      const name = data.get('name');
+      const company = data.get('company');
+      const pain = data.get('pain');
+      const sources = data.get('sources') || 'Não informado';
+      const message = data.get('message');
+      const whatsapp = data.get('whatsapp');
+
+      // SUBSTITUA pelo seu número, com DDI e DDD, sem espaços ou símbolos.
+      const consultantNumber = '5562991642970';
+
+      const text =
+`Olá, Jheysson! Quero conversar sobre os dados da minha empresa.
+
+Nome: ${name}
+Empresa: ${company}
+Principal situação: ${pain}
+Onde estão os dados: ${sources}
+Meu WhatsApp: ${whatsapp}
+
+O problema que quero investigar:
+${message}`;
+
+      track('lead_form_submit', { pain: pain, source: sources });
+
+      window.open(
+        'https://wa.me/' + consultantNumber + '?text=' + encodeURIComponent(text),
+        '_blank'
+      );
+    });
+  </script>
+</body>
+</html>
